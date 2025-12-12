@@ -14,7 +14,7 @@ import ServiceItem from "../components/ServiceItem";
 export default function Services() {
   const [service, setService] = useState(0);
   const [open, setOpen] = useState(false);
-  const newImages = service;
+  let newImages = service;
 
   const serviceObject = {
     key: serviceData.services[service],

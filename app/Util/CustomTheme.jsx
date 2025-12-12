@@ -2,6 +2,7 @@ import { createTheme } from "@mui/material";
 
 export const lightTheme = createTheme({
   palette: {
+    mode: "light",
     primary: {
       main: "#048ff0",
       light: "#36A5F3",
@@ -48,10 +49,52 @@ export const lightTheme = createTheme({
       contrastText: "#0F172A",
     },
   },
+  typography: {
+    h1: {
+      fontFamily: "DM Serif Text",
+    },
+    h2: {
+      fontFamily: "DM Serif Text",
+    },
+    h3: {
+      fontFamily: "DM Serif Text",
+    },
+    h4: {
+      fontFamily: "DM Serif Text",
+    },
+    h5: {
+      fontFamily: "DM Serif Text",
+    },
+    h6: {
+      fontFamily: "DM Serif Text",
+    },
+    body1: {
+      fontFamily: "Montserrat",
+    },
+    body2: {
+      fontFamily: "Montserrat",
+    },
+    button: {
+      fontFamily: "Montserrat",
+    },
+    subtitle1: {
+      fontFamily: "Montserrat",
+    },
+    subtitle2: {
+      fontFamily: "Montserrat",
+    },
+    caption: {
+      fontFamily: "Bellefair",
+    },
+    overline: {
+      fontFamily: "Bellefair",
+    },
+  }
 });
 
 export const darkTheme = createTheme({
   palette: {
+    mode: "dark",
     primary: {
       main: "#444444",
       light: "#36A5F3",
@@ -98,4 +141,51 @@ export const darkTheme = createTheme({
       contrastText: "#0B1120",
     },
   },
+  typography: {
+    h1: {
+      fontFamily: "DM Serif Text",
+    },
+    h2: {
+      fontFamily: "DM Serif Text",
+    },
+    h3: {
+      fontFamily: "DM Serif Text",
+    },
+    h4: {
+      fontFamily: "DM Serif Text",
+    },
+    h5: {
+      fontFamily: "DM Serif Text",
+    },
+    h6: {
+      fontFamily: "DM Serif Text",
+    },
+    body1: {
+      fontFamily: "Montserrat",
+    },
+    body2: {
+      fontFamily: "Montserrat",
+    },
+    button: {
+      fontFamily: "Montserrat",
+    },
+    subtitle1: {
+      fontFamily: "Montserrat",
+    },
+    subtitle2: {
+      fontFamily: "Montserrat",
+    },
+    caption: {
+      fontFamily: "Bellefair",
+    },
+    overline: {
+      fontFamily: "Bellefair",
+    },
+  },
 });
+
+export const tailwindTransitions = {
+  buttons: {
+    scale: "transition-transform duration-200 ease-out hover:scale-110 ",
+  },
+};

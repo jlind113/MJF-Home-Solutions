@@ -1,49 +1,10 @@
-import { Box, IconButton, Paper, Typography } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
-
-export function AutoCarousel({ images }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [images.length]);
-
-  return (
-    <Paper
-      elevation={2}
-      sx={{
-        position: "relative",
-        width: "95%",
-        height: "95%",
-        overflow: "hidden",
-        borderRadius: 4,
-      }}
-    >
-      {images.map((image, index) => (
-        <img
-          key={index}
-          src={image}
-          alt={`Slide ${index + 1}`}
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transition: "opacity 1s",
-          }}
-          className={`${index === currentIndex ? "opacity-100" : "opacity-0"}`}
-        />
-      ))}
-    </Paper>
-  );
-}
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import pkg from "react-slick";
+const Slider = pkg.default || pkg;
 
 export function ClickCarousel({ images, serviceID }) {
   const [index, setIndex] = useState(0);
@@ -60,7 +21,7 @@ export function ClickCarousel({ images, serviceID }) {
     } else {
       setIndex(index - 1);
     }
-  };
+  }
 
   function forwardClick() {
     if (index === imageCount) {
@@ -68,7 +29,7 @@ export function ClickCarousel({ images, serviceID }) {
     } else {
       setIndex(index + 1);
     }
-  };
+  }
 
   return (
     <Box
@@ -85,6 +46,7 @@ export function ClickCarousel({ images, serviceID }) {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
+          height: "100%",
         }}
       >
         <IconButton
@@ -99,7 +61,7 @@ export function ClickCarousel({ images, serviceID }) {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "scale-down",
+            objectFit: "cover",
             borderRadius: 8,
           }}
         />
@@ -112,4 +74,68 @@ export function ClickCarousel({ images, serviceID }) {
       </Box>
     </Box>
   );
-};
+}
+
+export function SlickAuto({ images }) {
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 5000,
+    arrows: false,
+    centerMode: false,
+    variableWidth: false,
+    adaptiveHeight: false,
+    lazyLoad: true,
+  };
+
+  return (
+    <Box
+      className="slider-container"
+      sx={{
+        width: "100%",
+        height: "100%",
+        overflow: "hidden",
+        "& .slick-slider": {
+          height: "100%",
+        },
+        "& .slick-list": {
+          height: "100%",
+        },
+        "& .slick-track": {
+          display: "flex",
+          height: "100%",
+        },
+        "& .slick-slide": {
+          height: "inherit",
+          "& > div": {
+            height: "100%",
+          },
+        },
+        "& .slide-wrapper": {
+          height: "100%",
+        },
+      }}
+    >
+      <Slider {...settings}>
+        {images.map((image, idx) => (
+          <div key={idx} className="slide-wrapper">
+            <img
+              src={image}
+              alt={`Slide ${idx}`}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </div>
+        ))}
+      </Slider>
+    </Box>
+  );
+}

@@ -10,7 +10,7 @@ import {
 import "./app.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { lightTheme, darkTheme } from "./Util/Colors";
+import { lightTheme, darkTheme } from "./Util/CustomTheme";
 import { ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import { LightMode, DarkMode } from "@mui/icons-material";
@@ -27,9 +27,11 @@ export const links = () => [
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-    href: "https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap",
-    href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
-  }
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Bellefair&family=DM+Serif+Text:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+  },
 ];
 
 export function Layout({ children }) {
@@ -43,8 +45,8 @@ export function Layout({ children }) {
     } else if (theme === lightTheme) {
       setTheme(darkTheme);
       setThemeIcon(DarkMode);
-    }
-  }
+    };
+  };
 
   return (
     <html lang="en">
