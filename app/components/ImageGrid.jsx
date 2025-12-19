@@ -1,15 +1,22 @@
-import { Box, Paper, ImageList, ImageListItem } from "@mui/material";
+// MUI Imports
+import Paper from "@mui/material/Paper";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+
 import ImageCard from "./ImageCard";
 
 export default function ImageGrid({ images }) {
   return (
     <Paper
+      square
+      variant='outlined'
       sx={{
         width: "100%",
         paddingX: 4,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        backgroundColor: "background.secondary",
       }}
     >
       <ImageList

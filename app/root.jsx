@@ -7,16 +7,21 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import { useState } from "react";
+
+import { ThemeProvider } from "@mui/material";
+import LightMode from "@mui/icons-material/LightMode";
+import DarkMode from '@mui/icons-material/DarkMode';
+
 import "./app.css";
+import { lightTheme, darkTheme } from "./Util/CustomTheme";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { lightTheme, darkTheme } from "./Util/CustomTheme";
-import { ThemeProvider } from "@mui/material";
-import { useState } from "react";
-import { LightMode, DarkMode } from "@mui/icons-material";
 
 export const links = () => [
-  { rel: "preconnect", 
+  { 
+    rel: "preconnect", 
     href: "https://fonts.googleapis.com" 
   },
   {
@@ -31,6 +36,12 @@ export const links = () => [
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Bellefair&family=DM+Serif+Text:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+  },
+  {
+    rel: "icon",
+    href: "/Photos/Logos/Logo-1-48x48.ico",
+    type: "image/ico",
+    sizes: "48x48",
   },
 ];
 

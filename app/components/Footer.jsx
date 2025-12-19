@@ -1,7 +1,11 @@
+// MUI Imports
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import FacebookRounded from "@mui/icons-material/FacebookRounded";
+
 import { NavLink } from "react-router";
 import "../app.css";
-import { Box, Typography, Paper } from "@mui/material";
-import { FacebookRounded } from "@mui/icons-material";
 
 export default function Footer() {
   const services = [
@@ -42,11 +46,14 @@ export default function Footer() {
 
   return (
     <Paper
-      elevation={10}
-      square={true}
+      square
+      variant="outlined"
       sx={{
         width: "100%",
-        backgroundColor: "background.paper",
+        backgroundColor: "background.secondary",
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        borderBottomWidth: 0,
         marginTop: "auto",
       }}
     >
@@ -66,9 +73,9 @@ export default function Footer() {
       >
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <img
-            src="/Images/Logo/MJF-Logo.webp"
+            src="/Photos/Logos/Logo-1-100x100.webp"
             alt="MJF Logo"
-            style={{ width: "80px", height: "80px" }}
+            style={{ width: "100px", height: "100px" }}
           />
           <Typography
             sx={{ color: "text.primary", fontWeight: 600, fontSize: "1.1rem" }}
@@ -178,7 +185,12 @@ export default function Footer() {
 
         <Box>
           <Typography
-            sx={{ color: "text.primary", fontWeight: 600, fontSize: "1.1rem", mb: 2 }}
+            sx={{
+              color: "text.primary",
+              fontWeight: 600,
+              fontSize: "1.1rem",
+              mb: 2,
+            }}
           >
             Service Areas
           </Typography>
@@ -196,7 +208,12 @@ export default function Footer() {
 
         <Box>
           <Typography
-            sx={{ color: "text.primary", fontWeight: 600, fontSize: "1.1rem", mb: 2 }}
+            sx={{
+              color: "text.primary",
+              fontWeight: 600,
+              fontSize: "1.1rem",
+              mb: 2,
+            }}
           >
             Hours
           </Typography>

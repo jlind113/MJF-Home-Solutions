@@ -1,9 +1,18 @@
-import { Box, IconButton } from "@mui/material";
+// MUI Imports
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+
+// MUI Icon Imports
+import ArrowBack from "@mui/icons-material/ArrowBack";
+import ArrowForward from "@mui/icons-material/ArrowForward";
+
 import { useEffect, useState } from "react";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 import pkg from "react-slick";
+
 const Slider = pkg.default || pkg;
 
 export function ClickCarousel({ images, serviceID }) {
@@ -38,7 +47,7 @@ export function ClickCarousel({ images, serviceID }) {
         height: "100%",
         overflow: "hidden",
         borderRadius: 4,
-        backgroundColor: "background.paper",
+        backgroundColor: "transparent",
       }}
     >
       <Box
@@ -89,7 +98,7 @@ export function SlickAuto({ images }) {
     centerMode: false,
     variableWidth: false,
     adaptiveHeight: false,
-    lazyLoad: true,
+    lazyLoad: false,
   };
 
   return (

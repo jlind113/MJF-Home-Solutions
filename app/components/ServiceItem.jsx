@@ -1,4 +1,9 @@
-import { Box, Divider, Paper, Stack, Typography } from "@mui/material";
+// MUI Imports
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import { ClickCarousel } from "./Carousel";
 
 export default function ServiceItem({
@@ -10,12 +15,12 @@ export default function ServiceItem({
 }) {
   return (
     <Paper
-      elevation={4}
+      square
+      variant='outlined'
       sx={{
         width: "60%",
         marginY: 4,
-        borderRadius: 4,
-        backgroundColor: "background.paper",
+        backgroundColor: "background.secondary",
       }}
     >
       <Stack
@@ -26,7 +31,6 @@ export default function ServiceItem({
       >
         <Box
           sx={{
-            backgroundColor: "background.paper",
             width: "50%",
             padding: 2,
             textAlign: "center",
@@ -35,7 +39,6 @@ export default function ServiceItem({
           <Typography
             variant="h3"
             color="text.primary"
-            fontFamily="DM Serif Text"
             textAlign={"center"}
             paddingBottom={2}
           >
@@ -44,12 +47,11 @@ export default function ServiceItem({
           <Divider
             variant="fullWidth"
             orientation="horizontal"
-            sx={{ height: 2, backgroundColor: "text.primary" }}
+            sx={{ height: 2, backgroundColor: "primary.main" }}
           />
           <Typography
             variant="body1"
             color="text.primary"
-            font-family="Montserrat"
             fontSize={18}
             paddingTop={2}
           >
@@ -71,7 +73,6 @@ export default function ServiceItem({
             variant="body1"
             fontSize={18}
             color="text.primary"
-            font-family="Montserrat"
             sx={{ whiteSpace: "break-spaces" }}
           >
             {description}

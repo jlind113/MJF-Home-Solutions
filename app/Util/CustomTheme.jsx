@@ -4,49 +4,31 @@ export const lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#048ff0",
       light: "#36A5F3",
+      main: "#29a2ff",
       dark: "#0264A8",
-      contrastText: "#fff",
     },
     secondary: {
-      main: "#E56614",
       light: "#EA8443",
+      main: "#a6a6ce",
       dark: "#A0470E",
-      contrastText: "#fff",
+    },
+    accent: {
+      light: "#ff8432",
+      main: "#ff6600",
+      dark: "#c34e00",
     },
     background: {
-      default: "#CCCCCC",
-      paper: "#ffffff",
+      primary: "#f3f8fc",
+      paper: "#fff",
+      navbar: "#fff",
+      footer: "#fff",
+      hero: "#fff",
     },
     text: {
-      primary: "#1F2A37",
+      primary: "#0e1316",
       secondary: "#52616B",
       disabled: "#9AA5B1",
-    },
-    error: {
-      main: "#E53935",
-      light: "#EF6F6C",
-      dark: "#B71C1C",
-      contrastText: "#fff",
-    },
-    warning: {
-      main: "#F6A609",
-      light: "#FCD77A",
-      dark: "#C77C04",
-      contrastText: "#1F2A37",
-    },
-    info: {
-      main: "#0284C7",
-      light: "#38BDF8",
-      dark: "#0369A1",
-      contrastText: "#fff",
-    },
-    success: {
-      main: "#2FB67C",
-      light: "#52D899",
-      dark: "#1F7A54",
-      contrastText: "#0F172A",
     },
   },
   typography: {
@@ -89,56 +71,39 @@ export const lightTheme = createTheme({
     overline: {
       fontFamily: "Bellefair",
     },
-  }
+  },
 });
 
 export const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#444444",
-      light: "#36A5F3",
-      dark: "#0264A8",
-      contrastText: "#fff",
+      light: "#44adff",
+      main: "#1197ff",
+      dark: "#0676cc",
     },
     secondary: {
-      main: "#E56614",
       light: "#EA8443",
+      main: "#313159",
       dark: "#A0470E",
-      contrastText: "#fff",
+    },
+    accent: {
+      light: "#ffaf79",
+      main: "#ff8b3d",
+      dark: "#bb5816",
     },
     background: {
-      default: "#222222",
-      paper: "#444444",
+      primary: "#03080c",
+      secondary: "#050518",
+      paper: "#111111",
+      navbar: "#111111",
+      footer: "#111111",
+      hero: "#111111",
     },
     text: {
-      primary: "#F4F4F5",
-      secondary: "#D1D5DB",
-      disabled: "#6B7280",
-    },
-    error: {
-      main: "#F97066",
-      light: "#FCA5A5",
-      dark: "#C2410C",
-      contrastText: "#0B1120",
-    },
-    warning: {
-      main: "#FACC15",
-      light: "#FDE68A",
-      dark: "#CA8A04",
-      contrastText: "#0B1120",
-    },
-    info: {
-      main: "#38BDF8",
-      light: "#7DD3FC",
-      dark: "#0EA5E9",
-      contrastText: "#0B1120",
-    },
-    success: {
-      main: "#34D399",
-      light: "#6EE7B7",
-      dark: "#047857",
-      contrastText: "#0B1120",
+      primary: "#e9eef1",
+      secondary: "#bfbfbf",
+      disabled: "#888888",
     },
   },
   typography: {

@@ -1,7 +1,11 @@
-import { Box, Stack } from "@mui/material";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 import HomeHero from "../components/HomeHero";
 import CardRow from "../components/CardRow";
 import About from "../components/About";
+
+// Test imports
+import TestPage from '../Test/TestPage';
 
 export function meta() {
   return [
@@ -15,7 +19,7 @@ export default function Home() {
     <Box
       sx={{
         height: "100%",
-        backgroundColor: "background.default",
+        backgroundColor: "background.primary",
       }}
     >
       <Stack
@@ -28,7 +32,22 @@ export default function Home() {
         <HomeHero />
         <CardRow />
         <About />
+        <Box width={"100%"} height={"1vh"} />
       </Stack>
     </Box>
   );
 }
+
+// Test function
+
+// export default function Home() {
+//   return (
+//     <Box
+//       sx={{
+//         height: "100%",
+//       }}
+//     >
+//       <TestPage />
+//     </Box>
+//   );
+// }

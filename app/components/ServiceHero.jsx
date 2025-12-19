@@ -1,4 +1,4 @@
-import { Box, Paper } from "@mui/material";
+import Paper from "@mui/material/Paper";
 
 export default function ServiceHero() {
   return (
@@ -7,7 +7,7 @@ export default function ServiceHero() {
         width: "60%",
         height: 500,
         marginY: 4,
-        backgroundColor: "background.paper",
+        backgroundColor: "background.primary",
       }}
     ></Paper>
   );

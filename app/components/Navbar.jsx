@@ -1,19 +1,21 @@
+// MUI Imports
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+
+// MUI Icons Imports
+import Menu from "@mui/icons-material/Menu";
+
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router";
 import "../app.css";
-import {
-  Box,
-  Button,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  Divider,
-  IconButton,
-  Typography,
-  Paper,
-} from "@mui/material";
-import { Menu } from "@mui/icons-material";
 import { tailwindTransitions } from "../Util/CustomTheme";
 
 function NavButton(link, text) {
@@ -130,12 +132,18 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
 
   return (
     <Paper
-      elevation={4}
-      square={true}
+      square
+      variant="outlined"
       sx={{
         width: "100%",
-        backgroundColor: "background.paper",
+        backgroundColor: "background.secondary",
         position: "sticky",
+        zIndex: 1000,
+        borderTopWidth: 0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        borderBottomWidth: 1,
+        borderBottomColor: "secondary.main",
       }}
     >
       <Box
@@ -151,9 +159,9 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <NavLink to={"/"}>
             <img
-              src="/Images/Logo/MJF-Logo-2.png"
+              src="/Photos/Logos/Logo-2-250x150.webp"
               alt="MJF Home Solutions Logo"
-              style={{ height: "4rem" }}
+              style={{ height: "75px" }}
             />
           </NavLink>
           <Box sx={{ display: { sm: "none", lg: "block" } }}>

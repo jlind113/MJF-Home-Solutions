@@ -1,14 +1,16 @@
-import {
-  Box,
-  InputLabel,
-  MenuItem,
-  FormControl,
-  Select,
-  Paper,
-} from "@mui/material";
+// MUI Imports
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Paper from "@mui/material/Paper";
 
-import serviceData from "../Util/ServiceData.json";
+// React Imports
 import { useState } from "react";
+
+// Component Imports
+import serviceData from "../Util/ServiceData.json";
 import ServiceItem from "../components/ServiceItem";
 
 export default function Services() {
@@ -37,18 +39,20 @@ export default function Services() {
   return (
     <Box
       sx={{
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        backgroundColor: "background.default",
+        backgroundColor: "background.primary",
       }}
     >
       <Paper
-        elevation={1}
+        square
+        variant='outlined'
         sx={{
           minWidth: 10,
           maxWidth: 300,
-          backgroundColor: "background.paper",
+          backgroundColor: "background.default",
           marginTop: 6,
           marginBottom: 4,
         }}
