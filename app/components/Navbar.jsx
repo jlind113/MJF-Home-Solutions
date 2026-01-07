@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { NavLink } from "react-router";
-import "../app.css";
+// MUI Imports
 import {
   Box,
   Button,
@@ -8,13 +6,27 @@ import {
   List,
   ListItem,
   ListItemButton,
-  Divider,
   IconButton,
   Typography,
   Paper,
 } from "@mui/material";
-import { Menu } from "@mui/icons-material";
-import NavButton from "./NavButton";
+
+// MUI Icons Imports
+import Menu from "@mui/icons-material/Menu";
+
+import { useState } from "react";
+import { NavLink, useLocation } from "react-router";
+import "../app.css";
+import { buttonHoverStyles, cardEntranceStyles } from "../Style/Animations";
+
+function checkLocation(link) {
+  const location = useLocation();
+  if (link === location.pathname) {
+    return "primary.light";
+  } else {
+    return "text.primary";
+  }
+}
 
 export default function Navbar({ SwapTheme, ThemeIcon }) {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -23,70 +35,58 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
     setOpenDrawer(newState);
   };
 
+  const navLinks = [
+    { destination: "/", text: "Home" },
+    { destination: "/Gallery", text: "Gallery" },
+    { destination: "/Services", text: "Services" },
+    { destination: "/Contact", text: "Contact Us" },
+  ];
+
+  const anim = {...buttonHoverStyles.scale};
+
   const DrawerList = (
-    <Box
-      sx={{ width: 280, backgroundColor: "background.paper" }}
-      role="presentation"
-    >
+    <Box role="presentation" sx={{ width: { xs: "70vw", sm: "50vw" } }}>
       <List>
-        <ListItem>
-          <ListItemButton onClick={toggleDrawer(false)} sx={{ paddingLeft: 2 }}>
-            <NavLink to="/">
-              <Typography
-                sx={{ color: "text.primary", textDecoration: "none" }}
-              >
-                Home
-              </Typography>
-            </NavLink>
-          </ListItemButton>
-        </ListItem>
-        <Divider sx={{ backgroundColor: "text.disabled" }} />
+        {navLinks.map((link, index) => (
+          <ListItem>
+            <ListItemButton
+              onClick={toggleDrawer(false)}
+              sx={{
+                ...cardEntranceStyles.staggeredFadeUp(index),
+                ...buttonHoverStyles.scale,
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
+              <NavLink to={link.destination}>
+                <Typography
+                  variant="button"
+                  color={checkLocation(link.destination)}
+                  sx={{
+                    fontWeight: 550,
+                    fontSize: "0.95rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  {link.text}
+                </Typography>
+              </NavLink>
+            </ListItemButton>
+          </ListItem>
+        ))}
 
-        <ListItem>
-          <ListItemButton onClick={toggleDrawer(false)} sx={{ paddingLeft: 2 }}>
-            <NavLink to="/Gallery">
-              <Typography
-                sx={{ color: "text.primary", textDecoration: "none" }}
-              >
-                Gallery
-              </Typography>
-            </NavLink>
-          </ListItemButton>
-        </ListItem>
-        <Divider sx={{ backgroundColor: "text.disabled" }} />
-
-        <ListItem>
-          <ListItemButton onClick={toggleDrawer(false)} sx={{ paddingLeft: 2 }}>
-            <NavLink to="/Services">
-              <Typography
-                sx={{ color: "text.primary", textDecoration: "none" }}
-              >
-                Services
-              </Typography>
-            </NavLink>
-          </ListItemButton>
-        </ListItem>
-        <Divider sx={{ backgroundColor: "text.disabled" }} />
-
-        <ListItem>
-          <ListItemButton onClick={toggleDrawer(false)} sx={{ paddingLeft: 2 }}>
-            <NavLink to="/Contact">
-              <Typography
-                sx={{
-                  color: "white",
-                  textDecoration: "none",
-                  fontFamily: "Montserrat",
-                  fontWeight: 510,
-                }}
-              >
-                Contact Us
-              </Typography>
-            </NavLink>
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem>
-          <IconButton onClick={() => SwapTheme()}>
+        <ListItem
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <IconButton
+            onClick={() => SwapTheme()}
+            sx={{ ...buttonHoverStyles.scale }}
+          >
             <ThemeIcon sx={{ color: "text.primary" }} />
           </IconButton>
         </ListItem>
@@ -96,40 +96,51 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
 
   return (
     <Paper
-      elevation={4}
-      square={true}
+      square
+      variant="outlined"
       sx={{
         width: "100%",
-        backgroundColor: "background.paper",
+        backgroundColor: "background.secondary",
         position: "sticky",
-        top: 0,
         zIndex: 1000,
+        borderTopWidth: 0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        borderBottomWidth: 1,
+        borderBottomColor: "secondary.main",
       }}
     >
       <Box
         sx={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "1rem 2rem",
+          maxWidth: "80vw",
+          margin: "auto",
+          paddingY: "1rem",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <img
-            src="/Images/Logo/MJF-Logo-2.png"
-            alt="MJF Logo"
-            style={{ height: "60px" }}
-          />
-          <Box sx={{ display: { xs: "none", md: "block" } }}>
+        <Box
+          sx={{
+            ...cardEntranceStyles.fadeUpOnMount,
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          <NavLink to={"/"}>
+            <img
+              src="/Photos/Logos/Logo-2-250x150.webp"
+              alt="MJF Home Solutions Logo"
+              style={{ height: "75px" }}
+            />
+          </NavLink>
+          <Box sx={{ display: { xs: "none", lg: "block" } }}>
             <span>
               <Typography
+                variant="h4"
                 sx={{
                   color: "text.primary",
-                  fontSize: "2rem",
-                  fontWeight: 500,
-                  fontFamily: "DM Serif Text",
                 }}
               >
                 MJF Home Solutions
@@ -145,25 +156,49 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
             alignItems: "center",
           }}
         >
-          <NavButton link={"/"} text={"Home"} />
-          <NavButton link={"/Services"} text={"Services"} />
-          <NavButton link={"/Gallery"} text={"Gallery"} />
-          <NavButton link={"/Contact"} text={"Contact Us"} />
-          <IconButton onClick={() => SwapTheme()}>
-            <ThemeIcon sx={{ color: "text.primary", width: 32, height: 32 }} />
+          {navLinks.map((link) => (
+            <Button
+              key={link.destination}
+              sx={{
+                ...buttonHoverStyles.scale,
+                padding: 0
+              }}
+            >
+              <NavLink to={link.destination}>
+                <Typography
+                  variant="button"
+                  color={checkLocation(link.destination)}
+                  sx={{
+                    fontWeight: 550,
+                    fontSize: "0.95rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  {link.text}
+                </Typography>
+              </NavLink>
+            </Button>
+          ))}
+
+          <IconButton
+            onClick={() => SwapTheme()}
+            sx={{ ...buttonHoverStyles.scale }}
+          >
+            <ThemeIcon
+              sx={{ color: "text.primary", width: "2rem", height: "2rem" }}
+            />
           </IconButton>
         </Box>
 
         <Box sx={{ display: { xs: "block", md: "none" } }}>
           <Button onClick={toggleDrawer(true)} aria-label="Open menu">
             <Menu
-              sx={{ color: "background.paper", width: 32, height: 32 }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.transform = "scale(1.2)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.transform = "scale(1)")
-              }
+              sx={{
+                ...buttonHoverStyles.scale,
+                color: "text.primary",
+                width: "2em",
+                height: "2em",
+              }}
             />
           </Button>
           <Drawer

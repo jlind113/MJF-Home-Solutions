@@ -1,7 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
+
 import HomeHero from "../components/HomeHero";
 import CardRow from "../components/CardRow";
-import About from '../components/About';
+import About from "../components/About";
+import ServiceShowcase from "../components/ServiceShowcase";
 
 export function meta() {
   return [
@@ -15,16 +17,22 @@ export default function Home() {
     <Box
       sx={{
         height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "background.default",
+        backgroundColor: "background.main",
       }}
     >
-      <HomeHero />
-      <CardRow />
-      <About />
+      <Stack
+        direction={"column"}
+        width={"100%"}
+        height={"100%"}
+        alignItems={"center"}
+        spacing={4}
+      >
+        <HomeHero />
+        <CardRow />
+        <About />
+        <ServiceShowcase />
+        <Box width={"100%"} height={"1vh"} />
+      </Stack>
     </Box>
   );
 }

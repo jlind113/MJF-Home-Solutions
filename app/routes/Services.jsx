@@ -1,3 +1,4 @@
+// MUI Imports
 import {
   Box,
   InputLabel,
@@ -5,109 +6,99 @@ import {
   FormControl,
   Select,
   Paper,
+  Stack,
+  Typography,
 } from "@mui/material";
+import { useMemo, useState } from "react";
 
+// Component Imports
 import serviceData from "../Util/ServiceData.json";
-import { useState } from "react";
 import ServiceItem from "../components/ServiceItem";
 
 export default function Services() {
   const [service, setService] = useState(0);
-  const [open, setOpen] = useState(false);
-  const newImages = service;
 
-  const serviceObject = {
-    key: serviceData.services[service],
-  };
+  const services = serviceData.services ?? [];
+
+  const serviceOptions = useMemo(
+    () => services.map((s, index) => ({ value: index, label: s.name })),
+    [services]
+  );
+
+  const currentService = services[service] ?? services[0];
 
   function handleChange(event) {
-    setService(event.target.value);
-    setOpen(false);
-    newImages = 0;
-  }
-
-  function handleClose() {
-    setOpen(false);
-  }
-
-  function handleOpen() {
-    setOpen(true);
+    setService(Number(event.target.value));
   }
 
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        backgroundColor: "background.default",
+        minHeight: "100%",
+        backgroundColor: "background.dark",
+        py: { xs: 4, md: 6 },
       }}
     >
-      <Paper
-        elevation={1}
-        sx={{
-          minWidth: 10,
-          maxWidth: 300,
-          backgroundColor: "background.paper",
-          marginTop: 6,
-          marginBottom: 4,
-        }}
-      >
-        <FormControl fullWidth>
-          <InputLabel id="serviceLabel" sx={{ color: "text.primary" }}>
-            Service
-          </InputLabel>
-          <Select
-            labelId="serviceLabel"
-            id="serviceSelect"
-            open={open}
-            onClose={handleClose}
-            onOpen={handleOpen}
-            value={service}
-            label="Service"
-            autoWidth
-            onChange={handleChange}
-          >
-            <MenuItem value={0} sx={{ color: "text.primary"  }}>
-              Carpentry
-            </MenuItem>
-            <MenuItem value={1} sx={{ color: "text.primary" }}>
-              Ceiling Texture Application
-            </MenuItem>
-            <MenuItem value={2} sx={{ color: "text.primary" }}>
-              Custom Drywall
-            </MenuItem>
-            <MenuItem value={3} sx={{ color: "text.primary" }}>
-              Drywall Finishing
-            </MenuItem>
-            <MenuItem value={4} sx={{ color: "text.primary" }}>
-              Drywall Installation
-            </MenuItem>
-            <MenuItem value={5} sx={{ color: "text.primary" }}>
-              Drywall Repair
-            </MenuItem>
-            <MenuItem value={6} sx={{ color: "text.primary" }}>
-              Flooring
-            </MenuItem>
-          </Select>
-        </FormControl>
-      </Paper>
-
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          marginBottom: 4,
+          width: "100%",
+          maxWidth: 1200,
+          mx: "auto",
+          px: { xs: 2, sm: 3, md: 4 },
         }}
       >
-        <ServiceItem
-          name={serviceObject.key.name}
-          subtext={serviceObject.key.subtext}
-          description={serviceObject.key.description}
-          images={serviceObject.key.images}
-          serviceID={service}
-        />
+        <Stack spacing={2} alignItems="center" textAlign="center">
+          <Typography
+            sx={{ typography: { xs: "h4", md: "h3" }, color: "text.primary" }}
+          >
+            Services
+          </Typography>
+
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{ maxWidth: 760 }}
+          >
+            Choose a service to see a description and photos.
+          </Typography>
+
+          <Paper
+            elevation={1}
+            sx={{
+              width: { xs: "100%", sm: 360 },
+              backgroundColor: "background.light",
+            }}
+          >
+            <FormControl fullWidth size="small">
+              <InputLabel id="serviceLabel">Service</InputLabel>
+              <Select
+                labelId="serviceLabel"
+                id="serviceSelect"
+                value={service}
+                label="Service"
+                onChange={handleChange}
+              >
+                {serviceOptions.map((opt) => (
+                  <MenuItem key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Paper>
+        </Stack>
+
+        <Box sx={{ marginTop: { xs: 3, md: 5 } }}>
+          {currentService ? (
+            <ServiceItem
+              name={currentService.name}
+              subtext={currentService.subtext}
+              description={currentService.description}
+              images={currentService.images}
+              serviceID={service}
+            />
+          ) : null}
+        </Box>
       </Box>
     </Box>
   );

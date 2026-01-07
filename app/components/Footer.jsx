@@ -1,20 +1,22 @@
+// MUI Imports
+import { Box, Typography, Paper } from "@mui/material";
+import FacebookRounded from "@mui/icons-material/FacebookRounded";
+
 import { NavLink } from "react-router";
 import "../app.css";
-import { Box, Typography, Paper } from "@mui/material";
-import { FacebookRounded } from "@mui/icons-material";
 
 export default function Footer() {
   const services = [
-    { path: "/services/DrywallInstallation", label: "Drywall Installation" },
-    { path: "/services/DrywallRepair", label: "Drywall Repair" },
-    { path: "/services/DrywallFinishing", label: "Drywall Finishing" },
+    { path: "/services", label: "Drywall Installation" },
+    { path: "/services", label: "Drywall Repair" },
+    { path: "/services", label: "Drywall Finishing" },
     {
-      path: "/services/CeilingTextureApplication",
+      path: "/services",
       label: "Ceiling Texture Application",
     },
-    { path: "/services/CustomDrywallWork", label: "Custom Drywall Work" },
-    { path: "/services/Flooring", label: "Flooring" },
-    { path: "/services/Carpentry", label: "Carpentry" },
+    { path: "/services", label: "Custom Drywall Work" },
+    { path: "/services", label: "Flooring" },
+    { path: "/services", label: "Carpentry" },
   ];
 
   const serviceAreas = [
@@ -42,12 +44,20 @@ export default function Footer() {
 
   return (
     <Paper
-      elevation={10}
-      square={true}
+      square
+      variant="outlined"
       sx={{
         width: "100%",
-        backgroundColor: "background.paper",
+        backgroundColor: "background.dark",
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        borderBottomWidth: 0,
+        borderTopColor: "secondary.light",
         marginTop: "auto",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        textAlign: { xs: "center", md: "left" },
       }}
     >
       <Box
@@ -64,18 +74,29 @@ export default function Footer() {
           gap: 4,
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            alignItems: { xs: "center", md: "flex-start" },
+          }}
+        >
           <img
-            src="/Images/Logo/MJF-Logo.webp"
+            src="/Photos/Logos/Logo-1-100x100.webp"
             alt="MJF Logo"
-            style={{ width: "80px", height: "80px" }}
+            style={{ width: "100px", height: "100px" }}
           />
           <Typography
-            sx={{ color: "text.primary", fontWeight: 600, fontSize: "1.1rem" }}
+            variant="h4"
+            sx={{ color: "text.primary", fontSize: "1.1rem" }}
           >
             MJF Home Solutions
           </Typography>
-          <Typography sx={{ color: "text.secondary", fontSize: "0.9rem" }}>
+          <Typography
+            variant="body2"
+            sx={{ color: "text.secondary", fontSize: "0.9rem" }}
+          >
             Bountiful, UT, US
           </Typography>
           <a
@@ -98,10 +119,10 @@ export default function Footer() {
 
         <Box>
           <Typography
+            variant="h4"
             sx={{
               color: "text.primary",
-              fontWeight: 600,
-              fontSize: "1.1rem",
+              fontSize: "1.2rem",
               mb: 2,
             }}
           >
@@ -110,10 +131,9 @@ export default function Footer() {
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             <NavLink to="/">
               <Typography
+                variant="body2"
                 sx={{
                   color: "text.secondary",
-                  textDecoration: "none",
-                  fontSize: "0.9rem",
                   "&:hover": { color: "info.light" },
                 }}
               >
@@ -122,10 +142,9 @@ export default function Footer() {
             </NavLink>
             <NavLink to="/Gallery">
               <Typography
+                variant="body2"
                 sx={{
                   color: "text.secondary",
-                  textDecoration: "none",
-                  fontSize: "0.9rem",
                   "&:hover": { color: "info.light" },
                 }}
               >
@@ -134,10 +153,9 @@ export default function Footer() {
             </NavLink>
             <NavLink to="/Contact">
               <Typography
+                variant="body2"
                 sx={{
                   color: "text.secondary",
-                  textDecoration: "none",
-                  fontSize: "0.9rem",
                   "&:hover": { color: "info.light" },
                 }}
               >
@@ -149,10 +167,10 @@ export default function Footer() {
 
         <Box>
           <Typography
+            variant="h4"
             sx={{
               color: "text.primary",
-              fontWeight: 600,
-              fontSize: "1.1rem",
+              fontSize: "1.2rem",
               mb: 2,
             }}
           >
@@ -162,10 +180,9 @@ export default function Footer() {
             {services.map((service) => (
               <NavLink key={service.path} to={service.path}>
                 <Typography
+                  variant="body2"
                   sx={{
                     color: "text.secondary",
-                    textDecoration: "none",
-                    fontSize: "0.9rem",
                     "&:hover": { color: "info.light" },
                   }}
                 >
@@ -178,7 +195,12 @@ export default function Footer() {
 
         <Box>
           <Typography
-            sx={{ color: "text.primary", fontWeight: 600, fontSize: "1.1rem", mb: 2 }}
+            variant="h4"
+            sx={{
+              color: "text.primary",
+              fontSize: "1.2rem",
+              mb: 2,
+            }}
           >
             Service Areas
           </Typography>
@@ -186,7 +208,11 @@ export default function Footer() {
             {serviceAreas.map((area) => (
               <Typography
                 key={area}
-                sx={{ color: "text.secondary", fontSize: "0.9rem" }}
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  "&:hover": { color: "info.light" },
+                }}
               >
                 {area}
               </Typography>
@@ -196,7 +222,12 @@ export default function Footer() {
 
         <Box>
           <Typography
-            sx={{ color: "text.primary", fontWeight: 600, fontSize: "1.1rem", mb: 2 }}
+            variant="h4"
+            sx={{
+              color: "text.primary",
+              fontSize: "1.2rem",
+              mb: 2,
+            }}
           >
             Hours
           </Typography>
@@ -204,7 +235,11 @@ export default function Footer() {
             {hours.map((hour) => (
               <Typography
                 key={hour.day}
-                sx={{ color: "text.secondary", fontSize: "0.9rem" }}
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  "&:hover": { color: "info.light" },
+                }}
               >
                 {hour.day}: {hour.time}
               </Typography>
@@ -221,7 +256,10 @@ export default function Footer() {
           textAlign: "center",
         }}
       >
-        <Typography sx={{ color: "text.secondary", fontSize: "0.9rem" }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: "text.secondary", fontSize: "0.9rem" }}
+        >
           © {new Date().getFullYear()} MJF Home Solutions. All rights reserved.
         </Typography>
       </Box>

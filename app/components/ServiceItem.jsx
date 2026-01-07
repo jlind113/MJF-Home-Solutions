@@ -1,5 +1,7 @@
-import { Box, Divider, Paper, Stack, Typography } from "@mui/material";
-import { ClickCarousel } from "./Carousel";
+// MUI Imports
+import { Box, Divider, Paper, Typography, Grid } from "@mui/material";
+
+import { SlickClick } from "./Carousel";
 
 export default function ServiceItem({
   name,
@@ -10,74 +12,57 @@ export default function ServiceItem({
 }) {
   return (
     <Paper
-      elevation={4}
+      square
+      variant="outlined"
       sx={{
-        width: "60%",
-        marginY: 4,
-        borderRadius: 4,
-        backgroundColor: "background.paper",
+        backgroundColor: "background.light",
+        p: { xs: 2, sm: 3, md: 4 },
       }}
     >
-      <Stack
-        direction={"column"}
-        alignItems={"center"}
-        spacing={4}
-        sx={{ width: "100%", paddingY: 4 }}
-      >
-        <Box
-          sx={{
-            backgroundColor: "background.paper",
-            width: "50%",
-            padding: 2,
-            textAlign: "center",
-          }}
-        >
+      <Grid container spacing={{ xs: 3, md: 4 }} alignItems="stretch">
+        <Grid item xs={12} md={7} sx={{ order: { xs: 1, md: 2 } }}>
+          <Box
+            sx={{
+              width: "100%",
+              aspectRatio: { xs: "4 / 3", md: "16 / 10" },
+              borderRadius: 2,
+              overflow: "hidden",
+            }}
+          >
+            <SlickClick images={images} serviceID={serviceID} />
+          </Box>
+        </Grid>
+
+        <Grid item xs={12} md={5} sx={{ order: { xs: 2, md: 1 } }}>
           <Typography
-            variant="h3"
+            component="h2"
+            sx={{ typography: { xs: "h4", md: "h3" } }}
             color="text.primary"
-            fontFamily="DM Serif Text"
-            textAlign={"center"}
-            paddingBottom={2}
           >
             {name}
           </Typography>
-          <Divider
-            variant="fullWidth"
-            orientation="horizontal"
-            sx={{ height: 2, backgroundColor: "text.primary" }}
-          />
+
           <Typography
-            variant="body1"
-            color="text.primary"
-            font-family="Montserrat"
-            fontSize={18}
-            paddingTop={2}
+            color="text.secondary"
+            sx={{ fontSize: { xs: 16, md: 18 }, mt: 1 }}
           >
             {subtext}
           </Typography>
-        </Box>
-        <Box
-          sx={{
-            width: "60%",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-          }}
-        >
-          <ClickCarousel images={images} serviceID={serviceID} />
-        </Box>
-        <Box width={"60%"} paddingY={4}>
+
+          <Divider sx={{ my: 2, backgroundColor: "primary.main" }} />
+
           <Typography
             variant="body1"
-            fontSize={18}
             color="text.primary"
-            font-family="Montserrat"
-            sx={{ whiteSpace: "break-spaces" }}
+            sx={{
+              fontSize: { xs: 16, md: 18 },
+              whiteSpace: "pre-line",
+            }}
           >
             {description}
           </Typography>
-        </Box>
-      </Stack>
+        </Grid>
+      </Grid>
     </Paper>
   );
 }

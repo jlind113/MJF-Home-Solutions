@@ -1,5 +1,6 @@
-import { Close } from "@mui/icons-material";
+// MUI Imports
 import {
+  Box,
   Card,
   CardActionArea,
   CardMedia,
@@ -11,8 +12,9 @@ import {
   Paper,
   useMediaQuery,
   useTheme,
-  Box,
 } from "@mui/material";
+
+import { Close } from "@mui/icons-material";
 import { Fragment, useState } from "react";
 
 export default function ImageCard({ src, title }) {
@@ -31,10 +33,11 @@ export default function ImageCard({ src, title }) {
   return (
     <Fragment>
       <Paper
+        square
+        variant="outlined"
         sx={{
           overflow: "hidden",
-          borderRadius: 4,
-          backgroundColor: "background.paper",
+          backgroundColor: "background.secondary",
           transition: "transform 0.25s",
           "&:hover": {
             transform: "translateY(-6px)",
@@ -49,7 +52,8 @@ export default function ImageCard({ src, title }) {
               src={src}
               alt={title}
               sx={{
-                height: { xs: 160, sm: 200, lg: 240 },
+                height: "100%",
+                width: "100%",
                 objectFit: "cover",
               }}
               onClick={() => handleClickOpen()}
@@ -58,6 +62,7 @@ export default function ImageCard({ src, title }) {
         </Card>
       </Paper>
 
+      {/* CONVERT TO CARD */}
       <Dialog
         fullScreen={fullScreen}
         open={open}
@@ -69,8 +74,6 @@ export default function ImageCard({ src, title }) {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            backgroundColor: "background.paper",
-            borderRadius: 4
           }}
         >
           <DialogTitle
@@ -82,14 +85,18 @@ export default function ImageCard({ src, title }) {
           <DialogActions>
             <IconButton
               onClick={() => handleClickClose()}
-              sx={{ color: "text.primary", backgroundColor: "background.default" }}
+              sx={{ color: "text.primary" }}
             >
               <Close />
             </IconButton>
           </DialogActions>
         </Box>
         <DialogContent>
-          <img src={src} alt={title} style={{ width: "100%" }} />
+          <img
+            src={src}
+            alt={title}
+            style={{ height: "100%", width: "100%" }}
+          />
         </DialogContent>
       </Dialog>
     </Fragment>

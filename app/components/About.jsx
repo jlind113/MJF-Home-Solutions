@@ -1,101 +1,138 @@
-import { Paper, Box, Typography } from "@mui/material";
-import { FacebookRounded } from "@mui/icons-material";
+// MUI Imports
+import { Paper, Box, Typography, Stack, Divider } from "@mui/material";
+
+// MUI Icon Imports
+import FacebookRounded from "@mui/icons-material/FacebookRounded";
 
 export default function About() {
   return (
     <Paper
-      elevation={4}
+      square
+      variant="outlined"
       sx={{
-        width: "60%",
-        backgroundColor: "background.paper",
-        padding: 2,
-        marginY: 4,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        borderRadius: 4,
-        gap: 6,
+        width: "100%",
+        backgroundColor: "background.light",
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
       }}
     >
-      <Paper
-        elevation={4}
-        sx={{
-          height: "80%",
-          overflow: "hidden",
-          borderRadius: 4,
-        }}
+      <Stack
+        direction={{ xs: "column", lg: "row" }}
+        alignItems={"center"}
+        spacing={2}
       >
-        <img
-          src="/Images/Jobs/5.jpg"
-          alt="Drywall work"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
-      </Paper>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-        <Typography
-          variant="h3"
+        <Box
           sx={{
-            color: "text.primary",
-            borderBottom: "3px solid",
-            borderColor: "primary.main",
-            paddingBottom: 1,
-            fontFamily: "DM Serif Text"
+            height: {
+              xs: "100%",
+              lg: "576px",
+              xl: "720px",
+            },
+            width: {
+              xs: "100%",
+              lg: "1024px",
+              xl: "1280px",
+            },
+            order: { xs: 2, lg: 0 },
           }}
         >
-          About Us
-        </Typography>
-        <Typography
-          variant="body1"
+          <img
+            src="/Photos/Hero/Kitchen-Frame.webp"
+            alt="Drywall work"
+            style={{
+              height: "100%",
+              width: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </Box>
+        <Box
           sx={{
-            fontSize: 18,
-            lineHeight: 1.8,
-            color: "text.primary",
-            width: "80%",
-            fontFamily: "Montserrat",
-            fontWeight: 510,
+            height: { xs: "50%", lg: "100%" },
+            width: { xs: "100%", lg: "50%" },
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          At MJF Home Solutions, we are a trusted drywall company proudly
-          serving Bountiful, UT, and surrounding areas. With our team of skilled
-          professionals, we provide top-quality drywall installation and repair
-          services to meet all your needs. Count on us for reliable workmanship
-          and exceptional customer service to enhance your home's appeal.
-        </Typography>
-        <Box>
           <Typography
-            variant="h6"
+            variant="h2"
             sx={{
-              fontWeight: 500,
               color: "text.primary",
+              textAlign: "center",
+              fontWeight: 700,
+              fontSize: { xs: "2rem", sm: "3rem" },
+              textWrap: "nowrap",
+            }}
+          >
+            About Us
+          </Typography>
+          <Divider
+            sx={{
+              width: "80%",
+              height: 2,
+              marginY: 2,
+              backgroundColor: "primary.main",
+            }}
+          />
+          <Typography
+            variant="body1"
+            sx={{
+              color: "text.primary",
+              textAlign: "left",
+              fontSize: { xs: "1rem", sm: "1.1rem", lg: "1.2rem" },
+              fontWeight: 530,
+              lineHeight: 1.8,
+              mb: 4,
+              maxWidth: 500,
+            }}
+          >
+            At MJF Home Solutions, we are a trusted drywall company proudly
+            serving Bountiful, UT, and surrounding areas. With our team of
+            skilled professionals, we provide top-quality drywall installation
+            and repair services to meet all your needs. Count on us for reliable
+            workmanship and exceptional customer service to enhance your home's
+            appeal.
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 2,
               marginBottom: 2,
             }}
           >
-            Connect with us
-          </Typography>
-          <Box sx={{ display: "flex", gap: 2 }}>
-            <a
-              href="https://www.facebook.com/profile.php?id=100063689374404"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ width: "fit-content" }}
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 500,
+                color: "text.primary",
+              }}
             >
-              <FacebookRounded
-                sx={{
-                  color: "info.main",
-                  fontSize: 48,
-                  cursor: "pointer",
-                  transition: "color 0.2s",
-                  "&:hover": { color: "info.light" },
-                }}
-              />
-            </a>
+              Connect with us
+            </Typography>
+            <Box>
+              <a
+                href="https://www.facebook.com/profile.php?id=100063689374404"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FacebookRounded
+                  sx={{
+                    color: "info.dark",
+                    fontSize: 48,
+                    cursor: "pointer",
+                    transition: "color 0.2s scale 1s",
+                    "&:hover": { color: "info.main", scale: 1.1 },
+                  }}
+                />
+              </a>
+            </Box>
           </Box>
         </Box>
-      </Box>
+      </Stack>
     </Paper>
   );
 }
