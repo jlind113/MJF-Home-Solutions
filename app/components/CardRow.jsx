@@ -1,92 +1,65 @@
 // MUI Imports
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
+import { Paper, Typography, Stack } from "@mui/material";
 
 // MUI Icon Imports
 import CreditCard from "@mui/icons-material/CreditCard";
 import House from "@mui/icons-material/House";
 import Apartment from "@mui/icons-material/Apartment";
+import { cardEntranceStyles } from '../Style/Animations';
 
 export default function CardRow() {
+  const cards = [
+    { id: 0, icon: CreditCard, text: "LICENSED" },
+    { id: 1, icon: House, text: "RESIDENTIAL" },
+    { id: 2, icon: Apartment, text: "COMMERCIAL" },
+  ];
+
   return (
     <Stack
       direction={{ xs: "column", lg: "row" }}
       alignItems={{ xs: "stretch", lg: "center" }}
-      justifyContent={{ xs: "center", lg: "center" }}
-      spacing={{ xs: 4, lg: 8 }}
-      width={{ xs: "50%", lg: "100%" }}
-      paddingY={{ xs: 2, lg: 4 }}
+      justifyContent={"center"}
+      spacing={{ xs: 3, lg: 8 }}
+      width={{ xs: "70%", lg: "100%" }}
+      paddingY={"2rem"}
     >
-      <Paper
-        square
-        elevation={2}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          paddingX: 2,
-          paddingY: 1,
-          marginX: 3,
-          borderWidth: 2,
-          borderColor: "text.primary",
-          backgroundColor: "background.secondary",
-        }}
-      >
-        <CreditCard sx={{ width: 48, height: 48, fill: "text.primary" }} />
-        <Typography
-          variant="button"
-          sx={{ fontSize: 24, paddingX: 1, color: "text.primary" }}
-        >
-          LICENSED
-        </Typography>
-      </Paper>
-      <Paper
-        square
-        elevation={2}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          paddingX: 2,
-          paddingY: 1,
-          marginX: 3,
-          borderWidth: 2,
-          borderColor: "text.primary",
-          backgroundColor: "background.secondary",
-        }}
-      >
-        <House sx={{ width: 48, height: 48, fill: "text.primary" }} />
-        <Typography
-          variant="button"
-          sx={{ fontSize: 24, paddingX: 1, color: "text.primary" }}
-        >
-          RESIDENTIAL
-        </Typography>
-      </Paper>
-      <Paper
-        square
-        elevation={2}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          paddingX: 2,
-          paddingY: 1,
-          marginX: 3,
-          borderWidth: 2,
-          borderColor: "text.primary",
-          backgroundColor: "background.secondary",
-        }}
-      >
-        <Apartment sx={{ width: 48, height: 48, fill: "text.primary" }} />
-        <Typography
-          variant="button"
-          sx={{ fontSize: 24, paddingX: 1, color: "text.primary" }}
-        >
-          COMMERCIAL
-        </Typography>
-      </Paper>
+      {cards.map((card, index) => {
+        const IconComponent = card.icon;
+        return (
+          <Paper
+            square
+            elevation={2}
+            key={card.id}
+            sx={{
+              ...cardEntranceStyles.staggeredFadeUp(index),
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: { xs: "100%", lg: "20%" },
+              borderWidth: 2,
+              borderColor: "text.primary",
+              backgroundColor: "background.light",
+            }}
+          >
+            <IconComponent
+              sx={{
+                width: "3rem",
+                height: "3rem",
+                fill: "text.primary",
+              }}
+            />
+            <Typography
+              variant='button'
+              sx={{
+                fontSize: "1.5rem",
+                paddingX: 1, color: "text.primary",
+              }}
+            >
+              {card.text}
+            </Typography>
+          </Paper>
+        );
+      })}
     </Stack>
   );
 }

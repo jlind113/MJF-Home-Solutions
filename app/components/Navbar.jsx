@@ -1,14 +1,15 @@
 // MUI Imports
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
+import {
+  Box,
+  Button,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  IconButton,
+  Typography,
+  Paper,
+} from "@mui/material";
 
 // MUI Icons Imports
 import Menu from "@mui/icons-material/Menu";
@@ -16,34 +17,15 @@ import Menu from "@mui/icons-material/Menu";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router";
 import "../app.css";
-import { tailwindTransitions } from "../Util/CustomTheme";
+import { buttonHoverStyles, cardEntranceStyles } from "../Style/Animations";
 
-function NavButton(link, text) {
+function checkLocation(link) {
   const location = useLocation();
-
-  function checkLocation() {
-    if (link === location.pathname) {
-      return "primary.light";
-    } else {
-      return "text.primary";
-    }
+  if (link === location.pathname) {
+    return "primary.light";
+  } else {
+    return "text.primary";
   }
-
-  return (
-    <NavLink to={link} className={tailwindTransitions.buttons.scale}>
-      <Typography
-        variant="button"
-        color={checkLocation}
-        sx={{
-          fontWeight: 550,
-          fontSize: "0.95rem",
-          cursor: "pointer",
-        }}
-      >
-        {text}
-      </Typography>
-    </NavLink>
-  );
 }
 
 export default function Navbar({ SwapTheme, ThemeIcon }) {
@@ -53,64 +35,46 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
     setOpenDrawer(newState);
   };
 
+  const navLinks = [
+    { destination: "/", text: "Home" },
+    { destination: "/Gallery", text: "Gallery" },
+    { destination: "/Services", text: "Services" },
+    { destination: "/Contact", text: "Contact Us" },
+  ];
+
+  const anim = {...buttonHoverStyles.scale};
+
   const DrawerList = (
-    <Box role="presentation" sx={{ width: "30vw" }}>
+    <Box role="presentation" sx={{ width: { xs: "70vw", sm: "50vw" } }}>
       <List>
-        <ListItem>
-          <ListItemButton
-            onClick={toggleDrawer(false)}
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-            }}
-          >
-            {NavButton("/", "Home")}
-          </ListItemButton>
-        </ListItem>
-        <Divider sx={{ backgroundColor: "text.disabled" }} />
-
-        <ListItem>
-          <ListItemButton
-            onClick={toggleDrawer(false)}
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-            }}
-          >
-            {NavButton("/Gallery", "Gallery")}
-          </ListItemButton>
-        </ListItem>
-        <Divider sx={{ backgroundColor: "text.disabled" }} />
-
-        <ListItem>
-          <ListItemButton
-            onClick={toggleDrawer(false)}
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-            }}
-          >
-            {NavButton("/Services", "Services")}
-          </ListItemButton>
-        </ListItem>
-        <Divider sx={{ backgroundColor: "text.disabled" }} />
-
-        <ListItem>
-          <ListItemButton
-            onClick={toggleDrawer(false)}
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-            }}
-          >
-            {NavButton("/Contact", "Contact Us")}
-          </ListItemButton>
-        </ListItem>
-        <Divider sx={{ backgroundColor: "text.disabled" }} />
+        {navLinks.map((link, index) => (
+          <ListItem>
+            <ListItemButton
+              onClick={toggleDrawer(false)}
+              sx={{
+                ...cardEntranceStyles.staggeredFadeUp(index),
+                ...buttonHoverStyles.scale,
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
+              <NavLink to={link.destination}>
+                <Typography
+                  variant="button"
+                  color={checkLocation(link.destination)}
+                  sx={{
+                    fontWeight: 550,
+                    fontSize: "0.95rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  {link.text}
+                </Typography>
+              </NavLink>
+            </ListItemButton>
+          </ListItem>
+        ))}
 
         <ListItem
           sx={{
@@ -121,7 +85,7 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
         >
           <IconButton
             onClick={() => SwapTheme()}
-            className={tailwindTransitions.buttons.scale}
+            sx={{ ...buttonHoverStyles.scale }}
           >
             <ThemeIcon sx={{ color: "text.primary" }} />
           </IconButton>
@@ -156,7 +120,14 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
           justifyContent: "space-between",
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+        <Box
+          sx={{
+            ...cardEntranceStyles.fadeUpOnMount,
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
           <NavLink to={"/"}>
             <img
               src="/Photos/Logos/Logo-2-250x150.webp"
@@ -164,7 +135,7 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
               style={{ height: "75px" }}
             />
           </NavLink>
-          <Box sx={{ display: { sm: "none", lg: "block" } }}>
+          <Box sx={{ display: { xs: "none", lg: "block" } }}>
             <span>
               <Typography
                 variant="h4"
@@ -185,13 +156,33 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
             alignItems: "center",
           }}
         >
-          {NavButton("/", "Home")}
-          {NavButton("/Services", "Services")}
-          {NavButton("/Gallery", "Gallery")}
-          {NavButton("/Contact", "Contact Us")}
+          {navLinks.map((link) => (
+            <Button
+              key={link.destination}
+              sx={{
+                ...buttonHoverStyles.scale,
+                padding: 0
+              }}
+            >
+              <NavLink to={link.destination}>
+                <Typography
+                  variant="button"
+                  color={checkLocation(link.destination)}
+                  sx={{
+                    fontWeight: 550,
+                    fontSize: "0.95rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  {link.text}
+                </Typography>
+              </NavLink>
+            </Button>
+          ))}
+
           <IconButton
             onClick={() => SwapTheme()}
-            className={tailwindTransitions.buttons.scale}
+            sx={{ ...buttonHoverStyles.scale }}
           >
             <ThemeIcon
               sx={{ color: "text.primary", width: "2rem", height: "2rem" }}
@@ -202,8 +193,12 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
         <Box sx={{ display: { xs: "block", md: "none" } }}>
           <Button onClick={toggleDrawer(true)} aria-label="Open menu">
             <Menu
-              className={tailwindTransitions.buttons.scale}
-              sx={{ color: "text.primary", width: "2em", height: "2em" }}
+              sx={{
+                ...buttonHoverStyles.scale,
+                color: "text.primary",
+                width: "2em",
+                height: "2em",
+              }}
             />
           </Button>
           <Drawer

@@ -1,85 +1,42 @@
 // MUI Imports
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
+import { Box } from "@mui/material";
 
-// MUI Icon Imports
-import ArrowBack from "@mui/icons-material/ArrowBack";
-import ArrowForward from "@mui/icons-material/ArrowForward";
-
-import { useEffect, useState } from "react";
-
+// Slick Imports
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import pkg from "react-slick";
 
 const Slider = pkg.default || pkg;
 
-export function ClickCarousel({ images, serviceID }) {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    setIndex(0);
-  }, [serviceID]);
-
-  const imageCount = images.length - 1;
-
-  function backClick() {
-    if (index === 0) {
-      setIndex(imageCount);
-    } else {
-      setIndex(index - 1);
-    }
-  }
-
-  function forwardClick() {
-    if (index === imageCount) {
-      setIndex(0);
-    } else {
-      setIndex(index + 1);
-    }
-  }
+export function SlickClick({ images }) {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
     <Box
-      sx={{
-        width: "100%",
-        height: "100%",
-        overflow: "hidden",
-        borderRadius: 4,
-        backgroundColor: "transparent",
-      }}
+      display={"flex"}
+      flexDirection={"row"}
+      justifyContent={"center"}
+      alignItems={"center"}
     >
       <Box
+        className="slider-container"
         sx={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          height: "100%",
+          width: "80%",
         }}
       >
-        <IconButton
-          sx={{ backgroundColor: "background.default", margin: 1 }}
-          onClick={() => backClick()}
-        >
-          <ArrowBack sx={{ color: "text.primary" }} />
-        </IconButton>
-        <img
-          src={images[index]}
-          alt={`Slide ${index}`}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            borderRadius: 8,
-          }}
-        />
-        <IconButton
-          sx={{ backgroundColor: "background.default", margin: 1 }}
-          onClick={() => forwardClick()}
-        >
-          <ArrowForward sx={{ color: "text.primary" }} />
-        </IconButton>
+        <Slider {...settings}>
+          {images.map((image, idx) => (
+            <Box key={idx}>
+              <img src={image} alt={`Slide ${idx}`} />
+            </Box>
+          ))}
+        </Slider>
       </Box>
     </Box>
   );

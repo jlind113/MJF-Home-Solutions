@@ -1,9 +1,5 @@
 // MUI Imports
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
+import { Paper, Box, Typography, Stack, Divider } from "@mui/material";
 
 // MUI Icon Imports
 import FacebookRounded from "@mui/icons-material/FacebookRounded";
@@ -12,10 +8,10 @@ export default function About() {
   return (
     <Paper
       square
-      variant='outlined'
+      variant="outlined"
       sx={{
         width: "100%",
-        backgroundColor: "background.secondary",
+        backgroundColor: "background.light",
         borderLeftWidth: 0,
         borderRightWidth: 0,
       }}
@@ -28,12 +24,14 @@ export default function About() {
         <Box
           sx={{
             height: {
-              xs: "50%",
-              lg: "720px",
+              xs: "100%",
+              lg: "576px",
+              xl: "720px",
             },
             width: {
-              xs: "1280px",
-              lg: "50%",
+              xs: "100%",
+              lg: "1024px",
+              xl: "1280px",
             },
             order: { xs: 2, lg: 0 },
           }}
@@ -64,7 +62,8 @@ export default function About() {
               color: "text.primary",
               textAlign: "center",
               fontWeight: 700,
-              fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+              fontSize: { xs: "2rem", sm: "3rem" },
+              textWrap: "nowrap",
             }}
           >
             About Us
@@ -82,11 +81,11 @@ export default function About() {
             sx={{
               color: "text.primary",
               textAlign: "left",
-              fontSize: 18,
+              fontSize: { xs: "1rem", sm: "1.1rem", lg: "1.2rem" },
               fontWeight: 530,
               lineHeight: 1.8,
               mb: 4,
-              width: "70%"
+              maxWidth: 500,
             }}
           >
             At MJF Home Solutions, we are a trusted drywall company proudly

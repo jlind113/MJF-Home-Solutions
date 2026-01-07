@@ -1,17 +1,18 @@
 // MUI Imports
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import TextField from "@mui/material/TextField";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
-import Divider from "@mui/material/Divider";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-
+import {
+  Box,
+  Grid,
+  Paper,
+  TextField,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  Typography,
+  Tooltip,
+  Divider,
+  Stack,
+  Button,
+} from "@mui/material";
 
 export default function ContactForm() {
   return (

@@ -11,18 +11,18 @@ import { useState } from "react";
 
 import { ThemeProvider } from "@mui/material";
 import LightMode from "@mui/icons-material/LightMode";
-import DarkMode from '@mui/icons-material/DarkMode';
+import DarkMode from "@mui/icons-material/DarkMode";
 
 import "./app.css";
-import { lightTheme, darkTheme } from "./Util/CustomTheme";
+import { lightTheme, darkTheme } from "./Style/CustomTheme";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 export const links = () => [
-  { 
-    rel: "preconnect", 
-    href: "https://fonts.googleapis.com" 
+  {
+    rel: "preconnect",
+    href: "https://fonts.googleapis.com",
   },
   {
     rel: "preconnect",
@@ -31,11 +31,7 @@ export const links = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Bellefair&family=DM+Serif+Text:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Bellefair&family=DM+Serif+Text:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Manrope:wght@200..800&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap",
   },
   {
     rel: "icon",
@@ -56,8 +52,8 @@ export function Layout({ children }) {
     } else if (theme === lightTheme) {
       setTheme(darkTheme);
       setThemeIcon(DarkMode);
-    };
-  };
+    }
+  }
 
   return (
     <html lang="en">

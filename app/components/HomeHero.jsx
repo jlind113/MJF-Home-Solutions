@@ -1,12 +1,33 @@
 // MUI Imports
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-import Paper from "@mui/material/Paper";
+import {
+  Box,
+  Typography,
+  Stack,
+  Divider,
+  Paper,
+} from "@mui/material";
+import { keyframes } from "@mui/system";
 
 import { SlickAuto } from "../components/Carousel";
-import CTASmall from './CTASmall';
+import CTASmall from "./CTASmall";
+import { cardEntranceStyles } from '../Style/Animations';
+
+const float = keyframes`
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+`;
+
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 export default function HomeHero() {
   const carouselImages = [
@@ -21,14 +42,27 @@ export default function HomeHero() {
   return (
     <Paper
       square
-      variant='outlined'
+      variant="outlined"
       sx={{
         width: "100%",
-        height: "fit-content",
-        backgroundColor: "background.secondary",
+        height: "100%",
+        backgroundColor: "background.light",
         borderLeftWidth: 0,
         borderRightWidth: 0,
         borderTopWidth: 0,
+        borderBottomWidth: 1,
+        position: "relative",
+        overflow: "hidden",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2329a2ff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          zIndex: 0,
+        },
       }}
     >
       <Stack
@@ -36,48 +70,45 @@ export default function HomeHero() {
         sx={{
           width: "100%",
           height: "100%",
+          justifyContent: "space-around",
+          alignItems: "center",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <Box
           sx={{
+            ...cardEntranceStyles.fadeUpOnMount,
             width: { xs: "100%", lg: "50%" },
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             paddingX: { xs: 4, sm: 6, lg: 8 },
+            paddingY: { xs: 4, lg: 0 },
           }}
         >
-          <Typography
-            variant="body2"
-            sx={{
-              color: "primary.main",
-              fontWeight: 600,
-              letterSpacing: 2,
-              fontSize: 16,
-              mb: 1,
-            }}
-          >
-            Bountiful, Utah
-          </Typography>
           <Typography
             variant="h2"
             sx={{
               color: "text.primary",
               textAlign: "center",
               fontWeight: 700,
-              fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+              fontSize: { xs: "2.2rem", sm: "3.2rem" },
               textWrap: "nowrap",
+              mb: 2,
             }}
           >
             MJF Home Solutions
           </Typography>
           <Divider
             sx={{
-              width: "60%",
+              width: { xs: "80%", lg: "100%" },
               height: 2,
-              marginY: 2,
-              backgroundColor: "primary.main",
+              marginBottom: 2,
+              background:
+                "linear-gradient(90deg, transparent, #cc5a28, #29a2ff, transparent)",
+              borderRadius: 2,
             }}
           />
           <Typography
@@ -85,11 +116,12 @@ export default function HomeHero() {
             sx={{
               color: "text.primary",
               textAlign: "center",
-              fontSize: 18,
-              fontWeight: 530,
+              fontSize: { xs: "1.1rem", sm: "1.2rem", lg: "1.3rem" },
+              fontWeight: 400,
               lineHeight: 1.8,
               mb: 4,
-              maxWidth: 500,
+              maxWidth: 520,
+              textShadow: "1px 1px 2px rgba(0,0,0,0.05)",
             }}
           >
             Premier drywall experts serving the Bountiful area with exceptional
@@ -97,34 +129,26 @@ export default function HomeHero() {
             decade.
           </Typography>
 
-          {/* CTA Section */}
-          <CTASmall />
+          <Box sx={{ transform: "scale(1.05)" }}>
+            <CTASmall />
+          </Box>
         </Box>
-
-        {/* Carousel Section */}
         <Box
           sx={{
-            width: { xs: "100%", lg: "1280px" },
-            height: { xs: "300px", sm: "400px", lg: "720px" },
-            minHeight: { lg: "50vh" },
+            width: { xs: "100%", lg: "1024px", xl: "1280px" },
+            height: { xs: "100%", lg: "576px", xl: "720px" },
             position: "relative",
             order: { xs: 1, lg: 2 },
+            borderRadius: { xs: 0, lg: 3 },
+            overflow: "hidden",
+            boxShadow: { lg: "0 20px 40px rgba(0,0,0,0.1)" },
+            transition: "transform 0.3s ease-in-out",
+            "&:hover": {
+              transform: { lg: "scale(1.02)" },
+            },
           }}
         >
-          <Box
-            sx={{
-              position: "absolute",
-              inset: 0,
-              "&::after": {
-                content: '""',
-                position: "absolute",
-                inset: 0,
-                pointerEvents: "none",
-              },
-            }}
-          >
-            <SlickAuto images={carouselImages} />
-          </Box>
+          <SlickAuto images={carouselImages} />
         </Box>
       </Stack>
     </Paper>

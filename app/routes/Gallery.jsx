@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import ImageGrid from "../components/ImageGrid";
 
 export default function Gallery() {

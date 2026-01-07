@@ -1,7 +1,5 @@
 // MUI Imports
-import Paper from "@mui/material/Paper";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
+import { Paper, ImageList, ImageListItem } from "@mui/material";
 
 import ImageCard from "./ImageCard";
 
@@ -9,7 +7,7 @@ export default function ImageGrid({ images }) {
   return (
     <Paper
       square
-      variant='outlined'
+      variant="outlined"
       sx={{
         width: "100%",
         paddingX: 4,

@@ -1,4 +1,4 @@
-import Paper from "@mui/material/Paper";
+import { Paper } from "@mui/material";
 
 export default function ServiceHero() {
   return (
