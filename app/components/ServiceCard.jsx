@@ -100,7 +100,6 @@ export default function ServiceCard({ imgSource, serviceText }) {
               opacity: isHovered ? 1 : 0,
               transform: isHovered ? "translateY(0)" : "translateY(10px)",
               transition: "all 0.3s ease",
-              transition: "0.2s",
             }}
           >
             Learn More →
