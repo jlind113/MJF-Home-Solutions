@@ -9,7 +9,7 @@ export default function CTASmall() {
     <Stack
       direction={{ xs: "column", sm: "row" }}
       spacing={2}
-      width={{ xs: "60%", sm: "auto" }}
+      width={"100%"}
     >
       <Button
         component={Link}

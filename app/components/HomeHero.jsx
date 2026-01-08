@@ -129,7 +129,7 @@ export default function HomeHero() {
             decade.
           </Typography>
 
-          <Box sx={{ transform: "scale(1.05)" }}>
+          <Box>
             <CTASmall />
           </Box>
         </Box>
@@ -143,9 +143,6 @@ export default function HomeHero() {
             overflow: "hidden",
             boxShadow: { lg: "0 20px 40px rgba(0,0,0,0.1)" },
             transition: "transform 0.3s ease-in-out",
-            "&:hover": {
-              transform: { lg: "scale(1.02)" },
-            },
           }}
         >
           <SlickAuto images={carouselImages} />
