@@ -16,3 +16,6 @@ mcp.json
 Test
 TestCSS
 TestPage
+
+# React router config so I don't have to keep changing server side rendering
+react-router.config.js
