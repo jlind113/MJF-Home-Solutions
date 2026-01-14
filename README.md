@@ -1,0 +1,1 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/193cce64-7adc-4d64-9e1c-20ff8510fc19/deploy-status)](https://app.netlify.com/projects/mjf-home-solutions/deploys)
