@@ -3,13 +3,7 @@ import { Box, Divider, Paper, Typography, Grid } from "@mui/material";
 
 import { SlickClick } from "./Carousel";
 
-export default function ServiceItem({
-  name,
-  subtext,
-  description,
-  images,
-  serviceID,
-}) {
+export default function ServiceItem({ name, subtext, description, images }) {
   return (
     <Paper
       square
@@ -29,7 +23,7 @@ export default function ServiceItem({
               overflow: "hidden",
             }}
           >
-            <SlickClick images={images} serviceID={serviceID} />
+            <SlickClick images={images} />
           </Box>
         </Grid>
 

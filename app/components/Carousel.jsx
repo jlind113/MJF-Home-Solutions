@@ -8,6 +8,49 @@ import pkg from "react-slick";
 
 const Slider = pkg.default || pkg;
 
+
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "gray",
+        borderRadius: 12,
+        width: "1.5rem",
+        height: "1.5rem",
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "gray",
+        borderRadius: 12,
+        width: "1.5rem",
+        height: "1.5rem",
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
 export function SlickClick({ images }) {
   const settings = {
     dots: true,
@@ -15,6 +58,8 @@ export function SlickClick({ images }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   return (

@@ -32,7 +32,6 @@ export default function ImageCard({ src, title }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Simple img tag like the original */}
         <img
           src={src}
           loading="lazy"
@@ -47,7 +46,6 @@ export default function ImageCard({ src, title }) {
           }}
         />
 
-        {/* Hover Overlay */}
         {isHovered && (
           <Box
             sx={{
@@ -77,7 +75,6 @@ export default function ImageCard({ src, title }) {
           </Box>
         )}
 
-        {/* Title on Hover */}
         {isHovered && (
           <Box
             sx={{
@@ -109,7 +106,6 @@ export default function ImageCard({ src, title }) {
         )}
       </Paper>
 
-      {/* Updated Dialog with new slotProps syntax */}
       <Dialog
         open={open}
         onClose={handleClose}

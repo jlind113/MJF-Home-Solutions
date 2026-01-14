@@ -7,133 +7,133 @@ export default function Gallery() {
   const imageData = [
     {
       img: "/Photos/1100x800/Lightbox (1).webp",
-      title: "Modern Kitchen Installation",
-      category: "carpentry",
+      title: "Drywall Installation",
+      category: "installation",
     },
     {
       img: "/Photos/1100x800/Lightbox (2).webp",
-      title: "Custom Cabinet Work",
-      category: "carpentry",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (3).webp",
-      title: "Professional Finish",
-      category: "carpentry",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (4).webp",
       title: "Ceiling Texture Application",
       category: "ceiling",
     },
     {
+      img: "/Photos/1100x800/Lightbox (3).webp",
+      title: "Ceiling Texture Application",
+      category: "ceiling",
+    },
+    {
+      img: "/Photos/1100x800/Lightbox (4).webp",
+      title: "Drywall Installation",
+      category: "installation",
+    },
+    {
       img: "/Photos/1100x800/Lightbox (5).webp",
-      title: "Smooth Wall Finishing",
-      category: "finishing",
+      title: "Drywall Installation",
+      category: "installation",
     },
     {
       img: "/Photos/1100x800/Lightbox (6).webp",
-      title: "Expert Drywall Finishing",
-      category: "finishing",
+      title: "Drywall Installation",
+      category: "installation",
     },
     {
       img: "/Photos/1100x800/Lightbox (7).webp",
-      title: "New Construction Install",
+      title: "Drywall Installation",
       category: "installation",
     },
     {
       img: "/Photos/1100x800/Lightbox (8).webp",
-      title: "Commercial Installation",
-      category: "installation",
+      title: "Carpentry",
+      category: "carpentry",
     },
     {
       img: "/Photos/1100x800/Lightbox (9).webp",
-      title: "Residential Drywall",
-      category: "installation",
+      title: "Carpentry",
+      category: "carpentry",
     },
     {
       img: "/Photos/1100x800/Lightbox (10).webp",
-      title: "Damage Repair",
-      category: "repair",
+      title: "Installation",
+      category: "installation",
     },
     {
       img: "/Photos/1100x800/Lightbox (11).webp",
-      title: "Luxury Vinyl Flooring",
-      category: "flooring",
+      title: "Installation",
+      category: "installation",
     },
     {
       img: "/Photos/1100x800/Lightbox (12).webp",
-      title: "Built-in Shelving",
-      category: "carpentry",
+      title: "Installation",
+      category: "installation",
     },
     {
       img: "/Photos/1100x800/Lightbox (13).webp",
-      title: "Custom Millwork",
-      category: "carpentry",
+      title: "Installation",
+      category: "installation",
     },
     {
       img: "/Photos/1100x800/Lightbox (14).webp",
-      title: "Entertainment Center",
-      category: "carpentry",
+      title: "Installation",
+      category: "installation",
     },
     {
       img: "/Photos/1100x800/Lightbox (15).webp",
-      title: "Textured Ceiling Work",
-      category: "ceiling",
+      title: "Flooring",
+      category: "flooring",
     },
     {
       img: "/Photos/1100x800/Lightbox (16).webp",
-      title: "Smooth Finish Detail",
-      category: "finishing",
+      title: "Flooring",
+      category: "flooring",
     },
     {
       img: "/Photos/1100x800/Lightbox (17).webp",
-      title: "Paint-Ready Walls",
-      category: "finishing",
+      title: "Flooring",
+      category: "flooring",
     },
     {
       img: "/Photos/1100x800/Lightbox (18).webp",
-      title: "Basement Finishing",
-      category: "installation",
+      title: "Flooring",
+      category: "flooring",
     },
     {
       img: "/Photos/1100x800/Lightbox (19).webp",
-      title: "Office Build-Out",
-      category: "installation",
+      title: "Flooring",
+      category: "flooring",
     },
     {
       img: "/Photos/1100x800/Lightbox (20).webp",
-      title: "Residential Addition",
-      category: "installation",
+      title: "Finishing",
+      category: "finishing",
     },
     {
       img: "/Photos/1100x800/Lightbox (21).webp",
-      title: "Hole Repair",
-      category: "repair",
+      title: "Carpentry",
+      category: "carpentry",
     },
     {
       img: "/Photos/1100x800/Lightbox (22).webp",
-      title: "Hardwood Installation",
-      category: "flooring",
+      title: "Finishing",
+      category: "finishing",
     },
     {
       img: "/Photos/1100x800/Lightbox (23).webp",
-      title: "Multi-Room Project",
-      category: "installation",
+      title: "Finishing",
+      category: "finishing",
     },
     {
       img: "/Photos/1100x800/Lightbox (24).webp",
-      title: "Commercial Space",
-      category: "installation",
+      title: "Finishing",
+      category: "finishing",
     },
     {
       img: "/Photos/1100x800/Lightbox (25).webp",
-      title: "Water Damage Repair",
-      category: "repair",
+      title: "Finishing",
+      category: "finishing",
     },
     {
       img: "/Photos/1100x800/Lightbox (26).webp",
-      title: "Tile Flooring",
-      category: "flooring",
+      title: "Finishing",
+      category: "finishing",
     },
   ];
 
@@ -168,7 +168,6 @@ export default function Gallery() {
         alignItems="center"
         justifyContent={"center"}
       >
-        {/* Header Section */}
         <Box
           sx={{
             textAlign: "center",
@@ -215,7 +214,6 @@ export default function Gallery() {
           />
         </Box>
 
-        {/* Filter Categories */}
         <Box
           sx={{
             ...cardEntranceStyles.fadeUpOnMount,
@@ -256,7 +254,6 @@ export default function Gallery() {
           </Stack>
         </Box>
 
-        {/* Results Count */}
         <Typography
           variant="body2"
           sx={{
@@ -271,7 +268,6 @@ export default function Gallery() {
           {filteredImages.length !== 1 ? "s" : ""}
         </Typography>
 
-        {/* Image Grid */}
         <Box
           sx={{
             width: "100%",

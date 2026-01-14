@@ -9,6 +9,7 @@ import {
   IconButton,
   Typography,
   Paper,
+  useTheme
 } from "@mui/material";
 
 // MUI Icons Imports
@@ -30,19 +31,17 @@ function checkLocation(link) {
 
 export default function Navbar({ SwapTheme, ThemeIcon }) {
   const [openDrawer, setOpenDrawer] = useState(false);
-
   const toggleDrawer = (newState) => () => {
     setOpenDrawer(newState);
   };
-
   const navLinks = [
     { destination: "/", text: "Home" },
     { destination: "/Gallery", text: "Gallery" },
     { destination: "/Services", text: "Services" },
     { destination: "/Contact", text: "Contact Us" },
   ];
-
-  const anim = {...buttonHoverStyles.scale};
+  const theme = useTheme();
+  let label = theme.palette.mode;
 
   const DrawerList = (
     <Box role="presentation" sx={{ width: { xs: "70vw", sm: "50vw" } }}>
@@ -85,10 +84,20 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
         >
           <IconButton
             onClick={() => SwapTheme()}
-            sx={{ ...buttonHoverStyles.scale }}
+            sx={{ ...buttonHoverStyles.scale, width: "3rem", height: "3rem" }}
           >
-            <ThemeIcon sx={{ color: "text.primary" }} />
+            <ThemeIcon
+              sx={{
+                color: "text.primary",
+                width: "2rem",
+                height: "3rem",
+                "&:hover": { color: "text.secondary" },
+              }}
+            />
           </IconButton>
+          <Typography variant="subtitle2">
+            {label.charAt(0).toUpperCase() + label.slice(1)} mode
+          </Typography>
         </ListItem>
       </List>
     </Box>
@@ -161,7 +170,7 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
               key={link.destination}
               sx={{
                 ...buttonHoverStyles.scale,
-                padding: 0
+                padding: 0,
               }}
             >
               <NavLink to={link.destination}>

@@ -17,26 +17,26 @@ import {
 export default function ContactForm() {
   return (
     <Paper
-      square
       elevation={4}
       component={"form"}
-      noValidate
-      autoComplete="off"
+      autoComplete="on"
+      name='contact'
+      method='post'
       sx={{
         width: { xs: "90vw", sm: "80vw", md: "70vw", lg: "60vw", xl: "50vw" },
         height: "fit-content",
-        backgroundColor: "background.secondary",
+        backgroundColor: "background.main",
         marginY: { xs: "2vh", lg: "2vh" },
         paddingX: { xs: "1vw", lg: "2vw" },
       }}
     >
       <Grid
         container
-        component={"form"}
         rowSpacing={2}
         columnSpacing={3}
         sx={{ marginY: "1vh", marginX: "1vw" }}
       >
+        <input type="hidden" name="form-name" value="contact" />
         <Grid size={12}>
           <Typography variant="h6" textAlign={"center"}>
             Contact Us
@@ -49,75 +49,114 @@ export default function ContactForm() {
               type="text"
               variant="outlined"
               id="First Name Input"
+              name="firstName"
               label="First Name"
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.secondary" }}
+              sx={{ backgroundColor: "background.main" }}
             />
           </Tooltip>
         </Grid>
         <Grid size={6}>
-          <TextField
-            required
-            type="text"
-            variant="outlined"
-            id="Last Name Input"
-            label="Last Name"
-            defaultValue={""}
-            size="small"
-            fullWidth
-            sx={{ backgroundColor: "background.secondary" }}
-          />
+          <Tooltip title="Last Name" placement="top-start">
+            <TextField
+              required
+              type="text"
+              variant="outlined"
+              id="Last Name Input"
+              name='lastName'
+              label="Last Name"
+              size="small"
+              fullWidth
+              sx={{ backgroundColor: "background.main" }}
+            />
+          </Tooltip>
         </Grid>
         <Grid size={6}>
-          <TextField
-            required
-            type="tel"
-            variant="outlined"
-            id="Phone Number Input"
-            label="Phone Number"
-            defaultValue={""}
-            size="small"
-            fullWidth
-            sx={{ backgroundColor: "background.secondary" }}
-          />
+          <Tooltip title="Phone Number" placement="top-start">
+            <TextField
+              required
+              type="tel"
+              variant="outlined"
+              id="Phone Number Input"
+              name='phone'
+              label="Phone Number"
+              size="small"
+              fullWidth
+              sx={{ backgroundColor: "background.main" }}
+            />
+          </Tooltip>
         </Grid>
         <Grid size={6}>
-          <TextField
-            required
-            type="text"
-            variant="outlined"
-            label="Address"
-            defaultValue={""}
-            size="small"
-            fullWidth
-            sx={{ backgroundColor: "background.secondary" }}
-          />
+          <Tooltip title="Email" placement="top-start">
+            <TextField
+              type="email"
+              variant="outlined"
+              id="Email Input"
+              name='email'
+              label="Email"
+              size="small"
+              fullWidth
+              sx={{ backgroundColor: "background.main", color: "text.primary" }}
+            />
+          </Tooltip>
         </Grid>
         <Grid size={6}>
-          <TextField
-            type="email"
-            variant="outlined"
-            id="Email Input"
-            label="Email"
-            defaultValue={""}
-            size="small"
-            fullWidth
-            sx={{ backgroundColor: "background.secondary" }}
-          />
+          <Tooltip title="Street Address" placement="top-start">
+            <TextField
+              required
+              type="text"
+              variant="outlined"
+              label="Street Address"
+              name='street'
+              size="small"
+              fullWidth
+              sx={{ backgroundColor: "background.main" }}
+            />
+          </Tooltip>
         </Grid>
         <Grid size={6}>
-          <TextField
-            type="date"
-            variant="outlined"
-            id="Date Input"
-            label="Preferred Date of Service"
-            defaultValue={""}
-            size="small"
-            fullWidth
-            slotProps={{ inputLabel: { shrink: true } }}
-            sx={{ backgroundColor: "background.secondary" }}
-          />
+          <Tooltip title="State" placement="top-start">
+            <TextField
+              required
+              type="text"
+              variant="outlined"
+              label="State"
+              name='state'
+              size="small"
+              fullWidth
+              sx={{ backgroundColor: "background.main" }}
+            />
+          </Tooltip>
+        </Grid>
+        <Grid size={6}>
+          <Tooltip title="Zip Code" placement="top-start">
+            <TextField
+              required
+              type="text"
+              variant="outlined"
+              label="Zip Code"
+              name='zipCode'
+              size="small"
+              fullWidth
+              sx={{ backgroundColor: "background.main" }}
+            />
+          </Tooltip>
+        </Grid>
+        <Grid size={6}>
+          <Tooltip title="Date of Service" placement="top-start">
+            <TextField
+              type="date"
+              variant="outlined"
+              id="Date Input"
+              name='date'
+              label="Preferred Date of Service"
+              size="small"
+              fullWidth
+              slotProps={{ inputLabel: { shrink: true } }}
+              sx={{ backgroundColor: "background.main", color: "text.primary" }}
+            />
+          </Tooltip>
         </Grid>
         <Grid size={12}>
           <Typography variant="body2">Services</Typography>
@@ -129,34 +168,69 @@ export default function ContactForm() {
               backgroundColor: "background.secondary",
               paddingY: 1,
               paddingX: 2,
+              marginTop: 1,
             }}
           >
             <Stack direction={"row"} justifyContent={"space-between"}>
               <FormGroup>
                 <FormControlLabel
-                  control={<Checkbox />}
+                  control={
+                    <Checkbox
+                      name='custom'
+                    />
+                  }
                   label="Custom Drywall"
                 />
                 <FormControlLabel
-                  control={<Checkbox />}
+                  control={
+                    <Checkbox
+                      name='finish'
+                    />
+                  }
                   label="Drywall Finishing"
                 />
                 <FormControlLabel
-                  control={<Checkbox />}
+                  control={
+                    <Checkbox
+                      name='install'
+                    />
+                  }
                   label="Drywall Installation"
                 />
                 <FormControlLabel
-                  control={<Checkbox />}
+                  control={
+                    <Checkbox
+                      name='repair'
+                    />
+                  }
                   label="Drywall Repair"
                 />
               </FormGroup>
               <FormGroup>
-                <FormControlLabel control={<Checkbox />} label="Carpentry" />
                 <FormControlLabel
-                  control={<Checkbox />}
+                  control={
+                    <Checkbox
+                      name='carpentry'
+                    />
+                  }
+                  label="Carpentry"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name='ceiling'
+                    />
+                  }
                   label="Ceiling Texture Application"
                 />
-                <FormControlLabel control={<Checkbox />} label="Flooring" />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name='flooring'
+                    />
+                  }
+                  label="Flooring"
+                />
               </FormGroup>
             </Stack>
           </Paper>
@@ -165,11 +239,12 @@ export default function ContactForm() {
           <Typography variant="body2">How can we help?</Typography>
           <TextField
             type="text"
+            name='comments'
             multiline
             fullWidth
             minRows={4}
-            label={"Type your response here..."}
-            sx={{ backgroundColor: "background.secondary" }}
+            placeholder={"Type your response here..."}
+            sx={{ backgroundColor: "background.main", marginTop: 1 }}
           />
         </Grid>
         <Grid size={12}>
@@ -188,8 +263,8 @@ export default function ContactForm() {
             </Typography>
           </Box>
           <Button
+            type='submit'
             variant="contained"
-            type="submit"
             sx={{
               width: "90%",
               marginX: "5%",

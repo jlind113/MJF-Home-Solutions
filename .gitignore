@@ -8,7 +8,11 @@
 
 # Local Netlify folder
 .netlify
+
+# .vscode folder
 mcp.json
+
+# Test folder
 Test
 TestCSS
 TestPage

@@ -3,6 +3,7 @@ import { Paper, Box, Typography, Stack, Divider } from "@mui/material";
 
 // MUI Icon Imports
 import FacebookRounded from "@mui/icons-material/FacebookRounded";
+import GradientDivider from './GradientDivider';
 
 export default function About() {
   return (
@@ -64,28 +65,23 @@ export default function About() {
               fontWeight: 700,
               fontSize: { xs: "2rem", sm: "3rem" },
               textWrap: "nowrap",
+              marginBottom: 2,
             }}
           >
             About Us
           </Typography>
-          <Divider
-            sx={{
-              width: "80%",
-              height: 2,
-              marginY: 2,
-              backgroundColor: "primary.main",
-            }}
-          />
+          <GradientDivider />
           <Typography
             variant="body1"
             sx={{
               color: "text.primary",
               textAlign: "left",
               fontSize: { xs: "1rem", sm: "1.1rem", lg: "1.2rem" },
+              paddingX: { xs: "3vw", lg: "1vw"},
               fontWeight: 530,
               lineHeight: 1.8,
               mb: 4,
-              maxWidth: 500,
+              maxWidth: { xs: 500, md: 800 },
             }}
           >
             At MJF Home Solutions, we are a trusted drywall company proudly

@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { ThemeProvider } from "@mui/material";
 import LightMode from "@mui/icons-material/LightMode";
@@ -18,6 +18,7 @@ import { lightTheme, darkTheme } from "./Style/CustomTheme";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { SetTheme, GetTheme } from "./Util/Storage";
 
 export const links = () => [
   {
@@ -43,17 +44,21 @@ export const links = () => [
 
 export function Layout({ children }) {
   const [theme, setTheme] = useState(lightTheme);
-  const [themeIcon, setThemeIcon] = useState(LightMode);
+
+  useEffect(() => {
+    const savedTheme = GetTheme();
+    setTheme(savedTheme);
+  }, []);
 
   function SwapTheme() {
-    if (theme === darkTheme) {
-      setTheme(lightTheme);
-      setThemeIcon(LightMode);
-    } else if (theme === lightTheme) {
-      setTheme(darkTheme);
-      setThemeIcon(DarkMode);
-    }
+    const newTheme = theme === lightTheme ? darkTheme : lightTheme;
+    const themeString = newTheme === lightTheme ? "light" : "dark";
+
+    setTheme(newTheme);
+    SetTheme(themeString);
   }
+
+  const themeIcon = theme === lightTheme ? DarkMode : LightMode;
 
   return (
     <html lang="en">
@@ -65,7 +70,7 @@ export function Layout({ children }) {
       </head>
       <body>
         <ThemeProvider theme={theme}>
-          <Navbar SwapTheme={() => SwapTheme()} ThemeIcon={themeIcon} />
+          <Navbar SwapTheme={SwapTheme} ThemeIcon={themeIcon} />
           {children}
           <ScrollRestoration />
           <Scripts />

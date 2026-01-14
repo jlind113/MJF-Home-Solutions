@@ -5,29 +5,26 @@ import { cardEntranceStyles } from "../Style/Animations";
 import { NavLink } from "react-router";
 
 export default function ServiceShowcase() {
-  const serviceRowOne = [
+  const services = [
     {
       id: "drywall-installation",
       image: "/Photos/1100x800/Lightbox (1).webp",
       text: "Drywall Installation",
     },
     {
-      id: "drywall-repair",
+      id: "ceiling-texture",
       image: "/Photos/1100x800/Lightbox (2).webp",
-      text: "Drywall Repair",
+      text: "Ceiling Texture Application",
     },
     {
       id: "drywall-finishing",
       image: "/Photos/1100x800/Lightbox (3).webp",
       text: "Drywall Finishing",
     },
-  ];
-
-  const serviceRowTwo = [
     {
-      id: "ceiling-texture",
+      id: "drywall-repair",
       image: "/Photos/1100x800/Lightbox (5).webp",
-      text: "Ceiling Texture Application",
+      text: "Drywall Repair",
     },
     {
       id: "custom-drywall",
@@ -35,13 +32,36 @@ export default function ServiceShowcase() {
       text: "Custom Drywall Work",
     },
     {
-      id: "flooring",
+      id: "carpentry",
       image: "/Photos/1100x800/Lightbox (8).webp",
-      text: "Flooring",
+      text: "Carpentry",
     },
   ];
 
-  const allServices = [...serviceRowOne, ...serviceRowTwo];
+  function ShowcaseItem(image, text) {
+    return (
+      <Grid
+        size={{ xs: 12, md: 6, lg: 4 }}
+        sx={{
+          display: "flex",
+          justifyContent: "center"
+        }}
+      >
+        <Box
+          sx={{
+            ...cardEntranceStyles.fadeUpOnMount,
+          }}
+        >
+          <NavLink
+            to={"/Services"}
+            style={{ textDecoration: "none", width: "100%" }}
+          >
+            <ServiceCard imgSource={image} serviceText={text} />
+          </NavLink>
+        </Box>
+      </Grid>
+    );
+  }
 
   return (
     <Box
@@ -64,7 +84,6 @@ export default function ServiceShowcase() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            ...cardEntranceStyles.fadeUpOnMount,
           }}
         >
           <Typography
@@ -102,103 +121,19 @@ export default function ServiceShowcase() {
           </Typography>
         </Box>
 
-        <Box sx={{ width: "100%", maxWidth: 1200 }}>
-          <Box sx={{ display: { xs: "none", md: "block" } }}>
-            <Stack
-              direction="row"
-              spacing={3}
-              justifyContent="center"
-              sx={{ marginBottom: 3 }}
-            >
-              {serviceRowOne.map((service, index) => (
-                <Box
-                  key={service.id}
-                  sx={{
-                    ...cardEntranceStyles.staggeredFadeUp(index),
-                    flex: "1 1 auto",
-                    maxWidth: 350,
-                  }}
-                >
-                  <NavLink to="/Services" style={{ textDecoration: "none" }}>
-                    <ServiceCard
-                      imgSource={service.image}
-                      serviceText={service.text}
-                    />
-                  </NavLink>
-                </Box>
-              ))}
-            </Stack>
-
-            <Stack direction="row" spacing={3} justifyContent="center">
-              {serviceRowTwo.map((service, index) => (
-                <Box
-                  key={service.id}
-                  sx={{
-                    ...cardEntranceStyles.staggeredFadeUp(index + 3),
-                    flex: "1 1 auto",
-                    maxWidth: 350,
-                  }}
-                >
-                  <NavLink to="/Services" style={{ textDecoration: "none" }}>
-                    <ServiceCard
-                      imgSource={service.image}
-                      serviceText={service.text}
-                    />
-                  </NavLink>
-                </Box>
-              ))}
-            </Stack>
-          </Box>
-
-          <Box sx={{ display: { xs: "block", md: "none" } }}>
-            <Grid container spacing={{ xs: 2, sm: 3 }} justifyContent="center">
-              {allServices.map((service, index) => (
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}
-                  key={service.id}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    ...cardEntranceStyles.staggeredFadeUp(index),
-                  }}
-                >
-                  <NavLink
-                    to="/Services"
-                    style={{ textDecoration: "none", width: "100%" }}
-                  >
-                    <ServiceCard
-                      imgSource={service.image}
-                      serviceText={service.text}
-                    />
-                  </NavLink>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </Box>
-
-        <Box
-          sx={{
-            textAlign: "center",
-            marginTop: { xs: 2, sm: 3 },
-            ...cardEntranceStyles.fadeUpOnMount,
-            animationDelay: "0.8s",
-            animationFillMode: "both",
-          }}
+        <Grid
+          container
+          spacing={2}
+          sx={{ width: "100%", maxWidth: 1200 }}
+          justifyContent="center"
         >
-          <Typography
-            variant="body2"
-            sx={{
-              color: "text.secondary",
-              fontSize: { xs: "0.9rem", sm: "1rem" },
-              fontStyle: "italic",
-            }}
-          >
-            Click any service to learn more about our expertise
-          </Typography>
-        </Box>
+          {ShowcaseItem(services[0].image, services[0].text)}
+          {ShowcaseItem(services[1].image, services[1].text)}
+          {ShowcaseItem(services[2].image, services[2].text)}
+          {ShowcaseItem(services[3].image, services[3].text)}
+          {ShowcaseItem(services[4].image, services[4].text)}
+          {ShowcaseItem(services[5].image, services[5].text)}
+        </Grid>
       </Stack>
     </Box>
   );

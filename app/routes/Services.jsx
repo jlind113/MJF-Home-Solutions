@@ -1,7 +1,6 @@
 // MUI Imports
 import {
   Box,
-  InputLabel,
   MenuItem,
   FormControl,
   Select,
@@ -9,7 +8,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 // Component Imports
 import serviceData from "../Util/ServiceData.json";
@@ -18,17 +17,10 @@ import ServiceItem from "../components/ServiceItem";
 export default function Services() {
   const [service, setService] = useState(0);
 
-  const services = serviceData.services ?? [];
-
-  const serviceOptions = useMemo(
-    () => services.map((s, index) => ({ value: index, label: s.name })),
-    [services]
-  );
-
-  const currentService = services[service] ?? services[0];
+  const serviceArray = serviceData.services;
 
   function handleChange(event) {
-    setService(Number(event.target.value));
+    setService(event.target.value);
   }
 
   return (
@@ -70,34 +62,31 @@ export default function Services() {
             }}
           >
             <FormControl fullWidth size="small">
-              <InputLabel id="serviceLabel">Service</InputLabel>
               <Select
                 labelId="serviceLabel"
                 id="serviceSelect"
                 value={service}
-                label="Service"
                 onChange={handleChange}
               >
-                {serviceOptions.map((opt) => (
-                  <MenuItem key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </MenuItem>
-                ))}
+                <MenuItem value={0}>{serviceArray[0].name}</MenuItem>
+                <MenuItem value={1}>{serviceArray[1].name}</MenuItem>
+                <MenuItem value={2}>{serviceArray[2].name}</MenuItem>
+                <MenuItem value={3}>{serviceArray[3].name}</MenuItem>
+                <MenuItem value={4}>{serviceArray[4].name}</MenuItem>
+                <MenuItem value={5}>{serviceArray[5].name}</MenuItem>
+                <MenuItem value={6}>{serviceArray[6].name}</MenuItem>
               </Select>
             </FormControl>
           </Paper>
         </Stack>
 
         <Box sx={{ marginTop: { xs: 3, md: 5 } }}>
-          {currentService ? (
-            <ServiceItem
-              name={currentService.name}
-              subtext={currentService.subtext}
-              description={currentService.description}
-              images={currentService.images}
-              serviceID={service}
-            />
-          ) : null}
+          <ServiceItem
+            name={serviceArray[service].name}
+            subtext={serviceArray[service].subtext}
+            description={serviceArray[service].description}
+            images={serviceArray[service].images}
+          />
         </Box>
       </Box>
     </Box>

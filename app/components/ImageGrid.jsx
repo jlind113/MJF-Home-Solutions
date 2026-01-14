@@ -7,7 +7,6 @@ import ImageCard from "./ImageCard";
 export default function ImageGrid({ images }) {
   const [visibleImages, setVisibleImages] = useState([]);
 
-  // Batch load images for better performance
   useEffect(() => {
     setVisibleImages([]);
     const timer = setTimeout(() => {

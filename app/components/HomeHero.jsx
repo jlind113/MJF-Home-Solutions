@@ -11,23 +11,8 @@ import { keyframes } from "@mui/system";
 import { SlickAuto } from "../components/Carousel";
 import CTASmall from "./CTASmall";
 import { cardEntranceStyles } from '../Style/Animations';
+import GradientDivider from "./GradientDivider";
 
-const float = keyframes`
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-`;
-
-const fadeInUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
 
 export default function HomeHero() {
   const carouselImages = [
@@ -101,16 +86,7 @@ export default function HomeHero() {
           >
             MJF Home Solutions
           </Typography>
-          <Divider
-            sx={{
-              width: { xs: "80%", lg: "100%" },
-              height: 2,
-              marginBottom: 2,
-              background:
-                "linear-gradient(90deg, transparent, #cc5a28, #29a2ff, transparent)",
-              borderRadius: 2,
-            }}
-          />
+          <GradientDivider />
           <Typography
             variant="body1"
             sx={{
