@@ -58,7 +58,7 @@ export function Layout({ children }) {
     SetTheme(themeString);
   }
 
-  const themeIcon = theme === lightTheme ? DarkMode : LightMode;
+  const themeIcon = theme === lightTheme ? LightMode : DarkMode;
 
   return (
     <html lang="en">

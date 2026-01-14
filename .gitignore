@@ -17,5 +17,5 @@ Test
 TestCSS
 TestPage
 
-# React router config so I don't have to keep changing server side rendering
-react-router.config.js
+# Misc files
+client-only-route.jsx

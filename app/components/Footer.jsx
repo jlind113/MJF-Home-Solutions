@@ -33,13 +33,13 @@ export default function Footer() {
   ];
 
   const hours = [
-    { day: "Sunday", time: "01:00 AM - 12:59 PM" },
-    { day: "Monday", time: "09:00 AM - 05:00 PM" },
-    { day: "Tuesday", time: "09:00 AM - 05:00 PM" },
-    { day: "Wednesday", time: "09:00 AM - 05:00 PM" },
-    { day: "Thursday", time: "09:00 AM - 05:00 PM" },
-    { day: "Friday", time: "09:00 AM - 05:00 PM" },
-    { day: "Saturday", time: "09:00 AM - 05:00 PM" },
+    { day: "Sun", time: "09:00 AM - 9:00 PM" },
+    { day: "Mon", time: "09:00 AM - 05:00 PM" },
+    { day: "Tue", time: "09:00 AM - 05:00 PM" },
+    { day: "Wed", time: "09:00 AM - 05:00 PM" },
+    { day: "Thu", time: "09:00 AM - 05:00 PM" },
+    { day: "Fri", time: "09:00 AM - 05:00 PM" },
+    { day: "Sat", time: "09:00 AM - 05:00 PM" },
   ];
 
   return (
@@ -64,7 +64,7 @@ export default function Footer() {
         sx={{
           maxWidth: 1200,
           margin: "0 auto",
-          padding: { xs: "2rem 1rem", md: "3rem 2rem" },
+          padding: { xs: "2rem 1rem", md: "3rem 1rem" },
           display: "grid",
           gridTemplateColumns: {
             xs: "1fr",
@@ -151,6 +151,17 @@ export default function Footer() {
                 Gallery
               </Typography>
             </NavLink>
+            <NavLink to={"/Services"}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  "&:hover": { color: "info.light" },
+                }}
+              >
+                Services
+              </Typography>
+            </NavLink>
             <NavLink to="/Contact">
               <Typography
                 variant="body2"
@@ -174,34 +185,6 @@ export default function Footer() {
               mb: 2,
             }}
           >
-            Services
-          </Typography>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            {services.map((service) => (
-              <NavLink key={service.path} to={service.path}>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: "text.secondary",
-                    "&:hover": { color: "info.light" },
-                  }}
-                >
-                  {service.label}
-                </Typography>
-              </NavLink>
-            ))}
-          </Box>
-        </Box>
-
-        <Box>
-          <Typography
-            variant="h4"
-            sx={{
-              color: "text.primary",
-              fontSize: "1.2rem",
-              mb: 2,
-            }}
-          >
             Service Areas
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
@@ -211,7 +194,6 @@ export default function Footer() {
                 variant="body2"
                 sx={{
                   color: "text.secondary",
-                  "&:hover": { color: "info.light" },
                 }}
               >
                 {area}
@@ -238,7 +220,6 @@ export default function Footer() {
                 variant="body2"
                 sx={{
                   color: "text.secondary",
-                  "&:hover": { color: "info.light" },
                 }}
               >
                 {hour.day}: {hour.time}
@@ -246,11 +227,43 @@ export default function Footer() {
             ))}
           </Box>
         </Box>
+
+        <Box>
+          <Typography
+            variant="h4"
+            sx={{
+              color: "text.primary",
+              fontSize: "1.2rem",
+              mb: 2,
+            }}
+          >
+            Contact
+          </Typography>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
+              Call: 555-555-5555
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
+              Email: MJF@homesolution.com
+            </Typography>
+          </Box>
+        </Box>
       </Box>
 
       <Box
         sx={{
-          borderTop: "1px solid",
+          borderTopWidth: 1,
+          borderStyle: "solid",
           color: "text.primary",
           padding: "1.5rem 2rem",
           textAlign: "center",

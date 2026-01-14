@@ -46,12 +46,11 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
   const DrawerList = (
     <Box role="presentation" sx={{ width: { xs: "70vw", sm: "50vw" } }}>
       <List>
-        {navLinks.map((link, index) => (
+        {navLinks.map((link) => (
           <ListItem>
             <ListItemButton
               onClick={toggleDrawer(false)}
               sx={{
-                ...cardEntranceStyles.staggeredFadeUp(index),
                 ...buttonHoverStyles.scale,
                 display: "flex",
                 flexDirection: "row",
@@ -171,6 +170,7 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
               sx={{
                 ...buttonHoverStyles.scale,
                 padding: 0,
+                backgroundColor: "transparent",
               }}
             >
               <NavLink to={link.destination}>

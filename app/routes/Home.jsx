@@ -8,7 +8,9 @@ import ServiceShowcase from "../components/ServiceShowcase";
 export function meta() {
   return [
     { title: "MJF Home Solutions" },
-    { name: "It's a site", content: "Welcome to MJF Home Solutions!" },
+    { name: "description", content: "Commercial and residential construction" },
+    { name: "keywords", content: "Construction, Drywall, Carpentry, Flooring, Home improvement, Remodeling, Repair, Installation" },
+    { name: "author", content: "Jack Lindgren" }
   ];
 }
 

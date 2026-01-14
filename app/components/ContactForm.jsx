@@ -20,8 +20,8 @@ export default function ContactForm() {
       elevation={4}
       component={"form"}
       autoComplete="on"
-      name='contact'
-      method='post'
+      name="contact"
+      method="post"
       sx={{
         width: { xs: "90vw", sm: "80vw", md: "70vw", lg: "60vw", xl: "50vw" },
         height: "fit-content",
@@ -64,7 +64,7 @@ export default function ContactForm() {
               type="text"
               variant="outlined"
               id="Last Name Input"
-              name='lastName'
+              name="lastName"
               label="Last Name"
               size="small"
               fullWidth
@@ -79,7 +79,7 @@ export default function ContactForm() {
               type="tel"
               variant="outlined"
               id="Phone Number Input"
-              name='phone'
+              name="phone"
               label="Phone Number"
               size="small"
               fullWidth
@@ -93,7 +93,7 @@ export default function ContactForm() {
               type="email"
               variant="outlined"
               id="Email Input"
-              name='email'
+              name="email"
               label="Email"
               size="small"
               fullWidth
@@ -108,7 +108,7 @@ export default function ContactForm() {
               type="text"
               variant="outlined"
               label="Street Address"
-              name='street'
+              name="street"
               size="small"
               fullWidth
               sx={{ backgroundColor: "background.main" }}
@@ -122,7 +122,7 @@ export default function ContactForm() {
               type="text"
               variant="outlined"
               label="State"
-              name='state'
+              name="state"
               size="small"
               fullWidth
               sx={{ backgroundColor: "background.main" }}
@@ -136,7 +136,7 @@ export default function ContactForm() {
               type="text"
               variant="outlined"
               label="Zip Code"
-              name='zipCode'
+              name="zipCode"
               size="small"
               fullWidth
               sx={{ backgroundColor: "background.main" }}
@@ -149,7 +149,7 @@ export default function ContactForm() {
               type="date"
               variant="outlined"
               id="Date Input"
-              name='date'
+              name="date"
               label="Preferred Date of Service"
               size="small"
               fullWidth
@@ -174,61 +174,33 @@ export default function ContactForm() {
             <Stack direction={"row"} justifyContent={"space-between"}>
               <FormGroup>
                 <FormControlLabel
-                  control={
-                    <Checkbox
-                      name='custom'
-                    />
-                  }
+                  control={<Checkbox name="custom" />}
                   label="Custom Drywall"
                 />
                 <FormControlLabel
-                  control={
-                    <Checkbox
-                      name='finish'
-                    />
-                  }
+                  control={<Checkbox name="finish" />}
                   label="Drywall Finishing"
                 />
                 <FormControlLabel
-                  control={
-                    <Checkbox
-                      name='install'
-                    />
-                  }
+                  control={<Checkbox name="install" />}
                   label="Drywall Installation"
                 />
                 <FormControlLabel
-                  control={
-                    <Checkbox
-                      name='repair'
-                    />
-                  }
+                  control={<Checkbox name="repair" />}
                   label="Drywall Repair"
                 />
               </FormGroup>
               <FormGroup>
                 <FormControlLabel
-                  control={
-                    <Checkbox
-                      name='carpentry'
-                    />
-                  }
+                  control={<Checkbox name="carpentry" />}
                   label="Carpentry"
                 />
                 <FormControlLabel
-                  control={
-                    <Checkbox
-                      name='ceiling'
-                    />
-                  }
+                  control={<Checkbox name="ceiling" />}
                   label="Ceiling Texture Application"
                 />
                 <FormControlLabel
-                  control={
-                    <Checkbox
-                      name='flooring'
-                    />
-                  }
+                  control={<Checkbox name="flooring" />}
                   label="Flooring"
                 />
               </FormGroup>
@@ -236,14 +208,14 @@ export default function ContactForm() {
           </Paper>
         </Grid>
         <Grid size={12}>
-          <Typography variant="body2">How can we help?</Typography>
+          <Typography variant="body2">Comments</Typography>
           <TextField
             type="text"
-            name='comments'
+            name="comments"
             multiline
             fullWidth
             minRows={4}
-            placeholder={"Type your response here..."}
+            placeholder={"Add any additional comments here..."}
             sx={{ backgroundColor: "background.main", marginTop: 1 }}
           />
         </Grid>
@@ -257,13 +229,11 @@ export default function ContactForm() {
               marginY={"1%"}
             >
               By providing your phone number, you agree to receive text messages
-              (SMS) from MJF Home Solutions. You can unsubscribe at anytime by
-              replying STOP. Message and data rates may apply. Message frequency
-              varies. See our Privacy Policy for more details.
+              (SMS) from MJF Home Solutions. Message and data rates may apply.
             </Typography>
           </Box>
           <Button
-            type='submit'
+            type="submit"
             variant="contained"
             sx={{
               width: "90%",
