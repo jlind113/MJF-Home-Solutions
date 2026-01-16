@@ -47,7 +47,7 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
     <Box role="presentation" sx={{ width: { xs: "70vw", sm: "50vw" } }}>
       <List>
         {navLinks.map((link) => (
-          <ListItem>
+          <ListItem key={link.destination}>
             <ListItemButton
               onClick={toggleDrawer(false)}
               sx={{
@@ -179,7 +179,7 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
                   color={checkLocation(link.destination)}
                   sx={{
                     fontWeight: 550,
-                    fontSize: "0.95rem",
+                    fontSize: "1.1rem",
                     cursor: "pointer",
                   }}
                 >

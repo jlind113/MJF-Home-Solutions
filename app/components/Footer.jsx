@@ -1,24 +1,12 @@
 // MUI Imports
 import { Box, Typography, Paper } from "@mui/material";
 import FacebookRounded from "@mui/icons-material/FacebookRounded";
+import GitHub from "@mui/icons-material/GitHub";
 
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import "../app.css";
 
 export default function Footer() {
-  const services = [
-    { path: "/services", label: "Drywall Installation" },
-    { path: "/services", label: "Drywall Repair" },
-    { path: "/services", label: "Drywall Finishing" },
-    {
-      path: "/services",
-      label: "Ceiling Texture Application",
-    },
-    { path: "/services", label: "Custom Drywall Work" },
-    { path: "/services", label: "Flooring" },
-    { path: "/services", label: "Carpentry" },
-  ];
-
   const serviceAreas = [
     "Ogden, UT",
     "Layton, UT",
@@ -246,7 +234,7 @@ export default function Footer() {
                 color: "text.secondary",
               }}
             >
-              Call: 555-555-5555
+              Call: 801-555-5555
             </Typography>
             <Typography
               variant="body2"
@@ -254,7 +242,7 @@ export default function Footer() {
                 color: "text.secondary",
               }}
             >
-              Email: MJF@homesolution.com
+              Email: Mattford51@yahoo.com
             </Typography>
           </Box>
         </Box>
@@ -274,6 +262,23 @@ export default function Footer() {
           sx={{ color: "text.secondary", fontSize: "0.9rem" }}
         >
           © {new Date().getFullYear()} MJF Home Solutions. All rights reserved.
+        </Typography>
+        <Typography
+          variant="subtitle2"
+          sx={{
+            color: "text.secondary",
+            fontSize: "0.9rem",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
+          Designed by: Jack Lindgren
+          <Link to={"https://github.com/jlind113"}>
+            <GitHub />
+          </Link>
         </Typography>
       </Box>
     </Paper>

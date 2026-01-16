@@ -1,7 +1,8 @@
 // MUI Imports
-import { Box, Divider, Paper, Typography, Grid } from "@mui/material";
+import { Box, Paper, Typography, Grid } from "@mui/material";
 
 import { SlickClick } from "./Carousel";
+import GradientDivider from "./GradientDivider";
 
 export default function ServiceItem({ name, subtext, description, images }) {
   return (
@@ -10,41 +11,35 @@ export default function ServiceItem({ name, subtext, description, images }) {
       variant="outlined"
       sx={{
         backgroundColor: "background.light",
-        p: { xs: 2, sm: 3, md: 4 },
+        paddingX: "2vw",
+        paddingY: "2vh",
       }}
     >
-      <Grid container spacing={{ xs: 3, md: 4 }} alignItems="stretch">
-        <Grid item xs={12} md={7} sx={{ order: { xs: 1, md: 2 } }}>
-          <Box
-            sx={{
-              width: "100%",
-              aspectRatio: { xs: "4 / 3", md: "16 / 10" },
-              borderRadius: 2,
-              overflow: "hidden",
-            }}
-          >
-            <SlickClick images={images} />
-          </Box>
-        </Grid>
-
-        <Grid item xs={12} md={5} sx={{ order: { xs: 2, md: 1 } }}>
+      <Grid container spacing={2}>
+        <Grid size={12}>
           <Typography
-            component="h2"
-            sx={{ typography: { xs: "h4", md: "h3" } }}
-            color="text.primary"
+            variant="h3"
+            sx={{ color: "text.primary", textAlign: "center" }}
           >
             {name}
           </Typography>
+        </Grid>
+        
+        <Grid size={12}>
+          <GradientDivider />
+        </Grid>
 
+        <Grid size={12}>
           <Typography
-            color="text.secondary"
-            sx={{ fontSize: { xs: 16, md: 18 }, mt: 1 }}
+            variant='body1'
+            color="text.primary"
+            sx={{ fontSize: { xs: 16, md: 18 } }}
           >
             {subtext}
           </Typography>
+        </Grid>
 
-          <Divider sx={{ my: 2, backgroundColor: "primary.main" }} />
-
+        <Grid size={12}>
           <Typography
             variant="body1"
             color="text.primary"
@@ -55,6 +50,18 @@ export default function ServiceItem({ name, subtext, description, images }) {
           >
             {description}
           </Typography>
+        </Grid>
+
+        <Grid size={12}>
+          <Box
+            sx={{
+              width: "100%",
+              paddingX: {xs: "4vw", md: "2vw"},
+              paddingY: "1vh"
+            }}
+          >
+            <SlickClick images={images} />
+          </Box>
         </Grid>
       </Grid>
     </Paper>

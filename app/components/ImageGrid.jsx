@@ -1,5 +1,5 @@
 // MUI Imports
-import { Paper, Grid, Box } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import { useState, useEffect } from "react";
 
 import ImageCard from "./ImageCard";
@@ -31,11 +31,7 @@ export default function ImageGrid({ images }) {
       >
         {visibleImages.map((item, index) => (
           <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
+            size={{xs: 12, sm: 6, md: 4, lg: 3}}
             key={`${item.img}-${index}`}
             sx={{
               display: "flex",

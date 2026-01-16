@@ -64,25 +64,45 @@ export function SlickClick({ images }) {
 
   return (
     <Box
-      display={"flex"}
-      flexDirection={"row"}
-      justifyContent={"center"}
-      alignItems={"center"}
+      className="slider-container"
+      sx={{
+        '& .slick-slider': {
+          marginBottom: 0,
+        },
+        '& .slick-list': {
+          marginBottom: 0,
+        },
+        '& .slick-track': {
+          marginBottom: 0,
+        },
+        '& .slick-slide': {
+          marginBottom: 0,
+          '& > div': {
+            marginBottom: 0,
+            lineHeight: 0,
+          }
+        }
+      }}
     >
-      <Box
-        className="slider-container"
-        sx={{
-          width: "80%",
-        }}
-      >
-        <Slider {...settings}>
-          {images.map((image, idx) => (
-            <Box key={idx}>
-              <img src={image} alt={`Slide ${idx}`} />
-            </Box>
-          ))}
-        </Slider>
-      </Box>
+      <Slider {...settings}>
+        {images.map((image, idx) => (
+          <Box key={idx} sx={{ lineHeight: 0 }}>
+            <img 
+              src={image} 
+              alt={`Slide ${idx}`} 
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
+                margin: 0,
+                padding: 0,
+                verticalAlign: 'bottom'
+              }}
+            />
+          </Box>
+        ))}
+      </Slider>
     </Box>
   );
 }
@@ -97,51 +117,44 @@ export function SlickAuto({ images }) {
     speed: 1000,
     autoplaySpeed: 5000,
     arrows: false,
-    centerMode: false,
-    variableWidth: false,
-    adaptiveHeight: false,
-    lazyLoad: false,
   };
 
   return (
     <Box
       className="slider-container"
       sx={{
-        width: "100%",
-        height: "100%",
-        overflow: "hidden",
-        "& .slick-slider": {
-          height: "100%",
+        '& .slick-slider': {
+          marginBottom: 0,
         },
-        "& .slick-list": {
-          height: "100%",
+        '& .slick-list': {
+          marginBottom: 0,
         },
-        "& .slick-track": {
-          display: "flex",
-          height: "100%",
+        '& .slick-track': {
+          marginBottom: 0,
         },
-        "& .slick-slide": {
-          height: "inherit",
-          "& > div": {
-            height: "100%",
-          },
-        },
-        "& .slide-wrapper": {
-          height: "100%",
-        },
+        '& .slick-slide': {
+          marginBottom: 0,
+          '& > div': {
+            marginBottom: 0,
+            lineHeight: 0,
+          }
+        }
       }}
     >
       <Slider {...settings}>
-        {images.map((image, idx) => (
-          <div key={idx} className="slide-wrapper">
+        {images.map((image, index) => (
+          <div key={index} style={{ lineHeight: 0, margin: 0, padding: 0 }}>
             <img
               src={image}
-              alt={`Slide ${idx}`}
+              alt={`Slide ${index}`}
               style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
+                margin: 0,
+                padding: 0,
+                verticalAlign: 'bottom'
               }}
             />
           </div>

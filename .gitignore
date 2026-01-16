@@ -17,5 +17,7 @@ Test
 TestCSS
 TestPage
 
-# Misc files
+# Misc files and folder
 client-only-route.jsx
+PresentationChecklist.md
+.github

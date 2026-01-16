@@ -14,6 +14,8 @@ import {
   Button,
 } from "@mui/material";
 
+import CustomTextField from "./CustomTextField";
+
 export default function ContactForm() {
   return (
     <Paper
@@ -42,122 +44,78 @@ export default function ContactForm() {
             Contact Us
           </Typography>
         </Grid>
-        <Grid size={6}>
-          <Tooltip title="First Name" placement="top-start">
-            <TextField
-              required
-              type="text"
-              variant="outlined"
-              id="First Name Input"
-              name="firstName"
-              label="First Name"
-              size="small"
-              fullWidth
-              sx={{ backgroundColor: "background.main" }}
-            />
-          </Tooltip>
-        </Grid>
-        <Grid size={6}>
-          <Tooltip title="Last Name" placement="top-start">
-            <TextField
-              required
-              type="text"
-              variant="outlined"
-              id="Last Name Input"
-              name="lastName"
-              label="Last Name"
-              size="small"
-              fullWidth
-              sx={{ backgroundColor: "background.main" }}
-            />
-          </Tooltip>
-        </Grid>
-        <Grid size={6}>
-          <Tooltip title="Phone Number" placement="top-start">
-            <TextField
-              required
-              type="tel"
-              variant="outlined"
-              id="Phone Number Input"
-              name="phone"
-              label="Phone Number"
-              size="small"
-              fullWidth
-              sx={{ backgroundColor: "background.main" }}
-            />
-          </Tooltip>
-        </Grid>
-        <Grid size={6}>
-          <Tooltip title="Email" placement="top-start">
-            <TextField
-              type="email"
-              variant="outlined"
-              id="Email Input"
-              name="email"
-              label="Email"
-              size="small"
-              fullWidth
-              sx={{ backgroundColor: "background.main", color: "text.primary" }}
-            />
-          </Tooltip>
-        </Grid>
-        <Grid size={6}>
-          <Tooltip title="Street Address" placement="top-start">
-            <TextField
-              required
-              type="text"
-              variant="outlined"
-              label="Street Address"
-              name="street"
-              size="small"
-              fullWidth
-              sx={{ backgroundColor: "background.main" }}
-            />
-          </Tooltip>
-        </Grid>
-        <Grid size={6}>
-          <Tooltip title="State" placement="top-start">
-            <TextField
-              required
-              type="text"
-              variant="outlined"
-              label="State"
-              name="state"
-              size="small"
-              fullWidth
-              sx={{ backgroundColor: "background.main" }}
-            />
-          </Tooltip>
-        </Grid>
-        <Grid size={6}>
-          <Tooltip title="Zip Code" placement="top-start">
-            <TextField
-              required
-              type="text"
-              variant="outlined"
-              label="Zip Code"
-              name="zipCode"
-              size="small"
-              fullWidth
-              sx={{ backgroundColor: "background.main" }}
-            />
-          </Tooltip>
-        </Grid>
+
+        <CustomTextField
+          tipTitle={"First Name"}
+          required={true}
+          type={"text"}
+          name={"firstName"}
+          label={"First Name"}
+        />
+
+        <CustomTextField
+          tipTitle={"Last Name"}
+          required={true}
+          type={"text"}
+          name={"lastName"}
+          label={"Last Name"}
+        />
+
+        <CustomTextField
+          tipTitle={"Phone Number"} 
+          required={true}
+          type={"tel"}
+          name={"phone"}
+          label={"Phone Number"}
+        />
+
+        <CustomTextField
+          tipTitle={"Email"} 
+          required={true}
+          type={"email"}
+          name={"email"}
+          label={"Email"}
+        />
+
+        <CustomTextField
+          tipTitle={"Street Address"} 
+          required={false}
+          type={"text"}
+          name={"street"}
+          label={"Street Address"}
+        />
+
+        <CustomTextField
+          tipTitle={"State"} 
+          required={false}
+          type={"text"}
+          name={"state"}
+          label={"State"}
+        />
+
+        <CustomTextField
+          tipTitle={"Zip Code"} 
+          required={false}
+          type={"text"}
+          name={"zipCode"}
+          label={"Zip Code"}
+        />
+
         <Grid size={6}>
           <Tooltip title="Date of Service" placement="top-start">
             <TextField
               type="date"
               variant="outlined"
-              id="Date Input"
               name="date"
               label="Preferred Date of Service"
               size="small"
               fullWidth
               slotProps={{ inputLabel: { shrink: true } }}
-              sx={{ backgroundColor: "background.main", color: "text.primary" }}
+              sx={{ backgroundColor: "background.main" }}
             />
           </Tooltip>
         </Grid>
+
         <Grid size={12}>
           <Typography variant="body2">Services</Typography>
           <Paper

@@ -1,5 +1,5 @@
 // MUI Imports
-import { Paper, Box, Typography, Stack, Divider } from "@mui/material";
+import { Paper, Box, Typography, Stack } from "@mui/material";
 
 // MUI Icon Imports
 import FacebookRounded from "@mui/icons-material/FacebookRounded";
@@ -65,7 +65,7 @@ export default function About() {
               fontWeight: 700,
               fontSize: { xs: "2rem", sm: "3rem" },
               textWrap: "nowrap",
-              marginBottom: 2,
+              marginBottom: 1,
             }}
           >
             About Us
@@ -80,7 +80,7 @@ export default function About() {
               paddingX: { xs: "3vw", lg: "1vw"},
               fontWeight: 530,
               lineHeight: 1.8,
-              mb: 4,
+              marginY: 1,
               maxWidth: { xs: 500, md: 800 },
             }}
           >

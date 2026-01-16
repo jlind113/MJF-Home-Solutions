@@ -5,7 +5,7 @@ import { Paper, Typography, Stack } from "@mui/material";
 import CreditCard from "@mui/icons-material/CreditCard";
 import House from "@mui/icons-material/House";
 import Apartment from "@mui/icons-material/Apartment";
-import { cardEntranceStyles } from '../Style/Animations';
+import { cardEntranceStyles } from "../Style/Animations";
 
 export default function CardRow() {
   const cards = [
@@ -36,6 +36,7 @@ export default function CardRow() {
               alignItems: "center",
               justifyContent: "center",
               width: { xs: "100%", lg: "20%" },
+              paddingY: "0.1rem",
               borderWidth: 2,
               borderColor: "text.primary",
               backgroundColor: "background.light",
@@ -49,10 +50,11 @@ export default function CardRow() {
               }}
             />
             <Typography
-              variant='button'
+              variant="button"
               sx={{
                 fontSize: "1.5rem",
-                paddingX: 1, color: "text.primary",
+                paddingX: 1,
+                color: "text.primary",
               }}
             >
               {card.text}

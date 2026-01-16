@@ -4,9 +4,8 @@ export default function GradientDivider() {
     return (
         <Divider
             sx={{
-                width: { xs: "80%", lg: "100%" },
+                width: "100%",
                 height: 2,
-                marginBottom: 2,
                 background: "linear-gradient(90deg, transparent, #cc5a28, #29a2ff, transparent)",
                 borderRadius: 2,
             }}
