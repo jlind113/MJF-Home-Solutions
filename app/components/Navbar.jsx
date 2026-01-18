@@ -9,16 +9,18 @@ import {
   IconButton,
   Typography,
   Paper,
-  useTheme
+  useColorScheme,
 } from "@mui/material";
 
 // MUI Icons Imports
 import Menu from "@mui/icons-material/Menu";
+import LightMode from "@mui/icons-material/LightMode";
+import DarkMode from "@mui/icons-material/DarkMode";
 
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router";
 import "../app.css";
-import { buttonHoverStyles, cardEntranceStyles } from "../Style/Animations";
+import { hoverAnims } from "../Style/Animations";
 
 function checkLocation(link) {
   const location = useLocation();
@@ -29,42 +31,58 @@ function checkLocation(link) {
   }
 }
 
-export default function Navbar({ SwapTheme, ThemeIcon }) {
+export default function Navbar() {
+  const { mode, setMode } = useColorScheme();
+  
+  // Change color theme
+  const handleThemeToggle = () => {
+    setMode(mode === "light" ? "dark" : "light");
+  };
+  
   const [openDrawer, setOpenDrawer] = useState(false);
+  // Change nav drawer open and close state
   const toggleDrawer = (newState) => () => {
     setOpenDrawer(newState);
   };
+  
+  // Change icon for the color theme button
+  const ThemeIcon = mode === "light" ? LightMode : DarkMode;
+  // Early return if there's no mode available. Prevents SSR issues
+  if (!mode) {
+    return null;
+  }
   const navLinks = [
     { destination: "/", text: "Home" },
     { destination: "/Gallery", text: "Gallery" },
     { destination: "/Services", text: "Services" },
     { destination: "/Contact", text: "Contact Us" },
   ];
-  const theme = useTheme();
-  let label = theme.palette.mode;
 
   const DrawerList = (
     <Box role="presentation" sx={{ width: { xs: "70vw", sm: "50vw" } }}>
       <List>
         {navLinks.map((link) => (
-          <ListItem key={link.destination}>
+          <ListItem
+            key={link.destination}
+            sx={{ marginTop: "2vh"}}
+          >
             <ListItemButton
               onClick={toggleDrawer(false)}
               sx={{
-                ...buttonHoverStyles.scale,
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "center",
+                ...hoverAnims.drawerLink,
               }}
             >
-              <NavLink to={link.destination}>
+              <NavLink to={link.destination} style={{ height: 0 }}>
                 <Typography
                   variant="button"
                   color={checkLocation(link.destination)}
                   sx={{
-                    fontWeight: 550,
                     fontSize: "0.95rem",
                     cursor: "pointer",
+                    ...hoverAnims.linkHover,
                   }}
                 >
                   {link.text}
@@ -77,26 +95,24 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
         <ListItem
           sx={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: "column",
             justifyContent: "center",
+            marginTop: "2vh"
           }}
         >
           <IconButton
-            onClick={() => SwapTheme()}
-            sx={{ ...buttonHoverStyles.scale, width: "3rem", height: "3rem" }}
+            onClick={handleThemeToggle}
+            sx={{ "&:hover": { backgroundColor: "transparent" } }}
           >
             <ThemeIcon
               sx={{
                 color: "text.primary",
                 width: "2rem",
-                height: "3rem",
-                "&:hover": { color: "text.secondary" },
+                height: "2rem",
+                ...hoverAnims.themeIcon,
               }}
             />
           </IconButton>
-          <Typography variant="subtitle2">
-            {label.charAt(0).toUpperCase() + label.slice(1)} mode
-          </Typography>
         </ListItem>
       </List>
     </Box>
@@ -130,7 +146,6 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
       >
         <Box
           sx={{
-            ...cardEntranceStyles.fadeUpOnMount,
             display: "flex",
             alignItems: "center",
             gap: 2,
@@ -148,7 +163,7 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
               <Typography
                 variant="h4"
                 sx={{
-                  color: "text.primary",
+                  color: "text.primary"
                 }}
               >
                 MJF Home Solutions
@@ -168,7 +183,7 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
             <Button
               key={link.destination}
               sx={{
-                ...buttonHoverStyles.scale,
+                ...hoverAnims.scale,
                 padding: 0,
                 backgroundColor: "transparent",
               }}
@@ -178,9 +193,9 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
                   variant="button"
                   color={checkLocation(link.destination)}
                   sx={{
-                    fontWeight: 550,
                     fontSize: "1.1rem",
                     cursor: "pointer",
+                    ...hoverAnims.linkHover
                   }}
                 >
                   {link.text}
@@ -190,11 +205,16 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
           ))}
 
           <IconButton
-            onClick={() => SwapTheme()}
-            sx={{ ...buttonHoverStyles.scale }}
+            onClick={handleThemeToggle}
+            sx={{ "&:hover": { backgroundColor: "transparent" } }}
           >
             <ThemeIcon
-              sx={{ color: "text.primary", width: "2rem", height: "2rem" }}
+              sx={{
+                color: "text.primary",
+                width: "2rem",
+                height: "2rem",
+                ...hoverAnims.themeIcon,
+              }}
             />
           </IconButton>
         </Box>
@@ -203,7 +223,7 @@ export default function Navbar({ SwapTheme, ThemeIcon }) {
           <Button onClick={toggleDrawer(true)} aria-label="Open menu">
             <Menu
               sx={{
-                ...buttonHoverStyles.scale,
+                ...hoverAnims.scale,
                 color: "text.primary",
                 width: "2em",
                 height: "2em",

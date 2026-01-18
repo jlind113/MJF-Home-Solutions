@@ -1,4 +1,5 @@
 import { Divider } from '@mui/material';
+import { leftToRight } from '../Style/Gradients';
 
 export default function GradientDivider() {
     return (
@@ -6,7 +7,7 @@ export default function GradientDivider() {
             sx={{
                 width: "100%",
                 height: 2,
-                background: "linear-gradient(90deg, transparent, #cc5a28, #29a2ff, transparent)",
+                ...leftToRight.orangeToBlue,
                 borderRadius: 2,
             }}
         />

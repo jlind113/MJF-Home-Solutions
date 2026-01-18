@@ -1,163 +1,54 @@
 import { Box, Typography, Stack, Chip, Divider } from "@mui/material";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import ImageGrid from "../components/ImageGrid";
-import { cardEntranceStyles } from "../Style/Animations";
+import { entranceAnims } from "../Style/Animations";
+import { services } from '../Util/ServiceInfo';
 
 export default function Gallery() {
-  const imageData = [
-    {
-      img: "/Photos/1100x800/Lightbox (1).webp",
-      title: "Drywall Installation",
-      category: "installation",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (2).webp",
-      title: "Ceiling Texture Application",
-      category: "ceiling",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (3).webp",
-      title: "Ceiling Texture Application",
-      category: "ceiling",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (4).webp",
-      title: "Drywall Installation",
-      category: "installation",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (5).webp",
-      title: "Drywall Installation",
-      category: "installation",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (6).webp",
-      title: "Drywall Installation",
-      category: "installation",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (7).webp",
-      title: "Drywall Installation",
-      category: "installation",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (8).webp",
-      title: "Carpentry",
-      category: "carpentry",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (9).webp",
-      title: "Carpentry",
-      category: "carpentry",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (10).webp",
-      title: "Installation",
-      category: "installation",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (11).webp",
-      title: "Installation",
-      category: "installation",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (12).webp",
-      title: "Installation",
-      category: "installation",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (13).webp",
-      title: "Installation",
-      category: "installation",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (14).webp",
-      title: "Installation",
-      category: "installation",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (15).webp",
-      title: "Flooring",
-      category: "flooring",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (16).webp",
-      title: "Flooring",
-      category: "flooring",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (17).webp",
-      title: "Flooring",
-      category: "flooring",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (18).webp",
-      title: "Flooring",
-      category: "flooring",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (19).webp",
-      title: "Flooring",
-      category: "flooring",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (20).webp",
-      title: "Finishing",
-      category: "finishing",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (21).webp",
-      title: "Carpentry",
-      category: "carpentry",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (22).webp",
-      title: "Finishing",
-      category: "finishing",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (23).webp",
-      title: "Finishing",
-      category: "finishing",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (24).webp",
-      title: "Finishing",
-      category: "finishing",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (25).webp",
-      title: "Finishing",
-      category: "finishing",
-    },
-    {
-      img: "/Photos/1100x800/Lightbox (26).webp",
-      title: "Finishing",
-      category: "finishing",
-    },
-  ];
+  const imageData = useMemo(() => {
+    const allImages = [];
+    Object.keys(services).forEach(serviceKey => {
+      const service = services[serviceKey];
+      if (service.images && service.images.length > 0) {
+        // Only add images that have a valid path
+        service.images.forEach(image => {
+          if (image.path && image.path.trim() !== "") {
+            allImages.push({
+              ...image,
+              category: serviceKey, // Ensure category matches the service key
+            });
+          }
+        });
+      }
+    });
+    return allImages;
+  }, []);
 
   const categories = [
     { key: "all", label: "All Work" },
-    { key: "carpentry", label: "Carpentry" },
-    { key: "installation", label: "Installation" },
-    { key: "finishing", label: "Finishing" },
-    { key: "flooring", label: "Flooring" },
-    { key: "repair", label: "Repair" },
-    { key: "ceiling", label: "Ceiling Work" },
+    { key: "carpentry", label: services.carpentry.name },
+    { key: "installation", label: services.installation.name },
+    { key: "finishing", label: services.finishing.name },
+    { key: "flooring", label: services.flooring.name },
+    { key: "repair", label: services.repair.name },
+    { key: "ceiling", label: services.ceiling.name },
+    { key: "custom", label: services.custom.name },
   ];
 
   const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const filteredImages =
-    selectedCategory === "all"
-      ? imageData
-      : imageData.filter((image) => image.category === selectedCategory);
+  const filteredImages = useMemo(() => {
+    if (selectedCategory === "all") {
+      return imageData;
+    }
+    const filtered = imageData.filter((image) => image.category === selectedCategory);
+    return filtered;
+  }, [imageData, selectedCategory]);
 
   return (
     <Box
       sx={{
-        backgroundColor: "background.main",
+        backgroundColor: "background.default",
         minHeight: "100vh",
         paddingY: { xs: 3, sm: 4, md: 6 },
         paddingX: { xs: 2, sm: 3 },
@@ -175,7 +66,7 @@ export default function Gallery() {
             flexDirection: "column",
             alignItems: "center",
             maxWidth: 800,
-            ...cardEntranceStyles.fadeUpOnMount,
+            ...entranceAnims.fadeUpOnMount,
           }}
         >
           <Typography
@@ -216,7 +107,7 @@ export default function Gallery() {
 
         <Box
           sx={{
-            ...cardEntranceStyles.fadeUpOnMount,
+            ...entranceAnims.fadeUpOnMount,
             animationDelay: "0.2s",
             animationFillMode: "both",
           }}
@@ -259,7 +150,7 @@ export default function Gallery() {
           sx={{
             color: "text.secondary",
             fontSize: "0.95rem",
-            ...cardEntranceStyles.fadeUpOnMount,
+            ...entranceAnims.fadeUpOnMount,
             animationDelay: "0.4s",
             animationFillMode: "both",
           }}
@@ -272,7 +163,7 @@ export default function Gallery() {
           sx={{
             width: "100%",
             maxWidth: 1400,
-            ...cardEntranceStyles.fadeUpOnMount,
+            ...entranceAnims.fadeUpOnMount,
             animationDelay: "0.6s",
             animationFillMode: "both",
           }}

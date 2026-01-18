@@ -1,6 +1,6 @@
 import { Button, Stack } from "@mui/material";
 import { Link } from "react-router";
-import { buttonHoverStyles, cardEntranceStyles } from "../Style/Animations";
+import { hoverAnims, entranceAnims } from "../Style/Animations";
 
 export default function CTASmall() {
   function CTAButton(link, text) {
@@ -10,8 +10,8 @@ export default function CTASmall() {
         to={link}
         variant="contained"
         sx={{
-          ...buttonHoverStyles.scale,
-          ...cardEntranceStyles.fadeUpOnMount,
+          ...hoverAnims.scale,
+          ...entranceAnims.fadeUpOnMount,
           px: {xs: "1.5rem", lg: "2rem"},
           py: {xs: "0.6rem", lg: "0.8rem"},
           fontWeight: 500,

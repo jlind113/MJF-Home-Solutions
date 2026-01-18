@@ -11,13 +11,21 @@ import {
 import { useState } from "react";
 
 // Component Imports
-import serviceData from "../Util/ServiceData.json";
+import {services} from "../Util/ServiceInfo";
 import ServiceItem from "../components/ServiceItem";
 
 export default function Services() {
   const [service, setService] = useState(0);
 
-  const serviceArray = serviceData.services;
+  const serviceArray = [
+    services.carpentry,
+    services.ceiling,
+    services.custom,
+    services.finishing,
+    services.installation,
+    services.repair,
+    services.flooring
+  ]
 
   function handleChange(event) {
     setService(event.target.value);

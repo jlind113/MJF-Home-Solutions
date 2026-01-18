@@ -3,6 +3,7 @@ import { Grid, Box } from "@mui/material";
 import { useState, useEffect } from "react";
 
 import ImageCard from "./ImageCard";
+import { entranceAnims } from '../Style/Animations';
 
 export default function ImageGrid({ images }) {
   const [visibleImages, setVisibleImages] = useState([]);
@@ -32,24 +33,14 @@ export default function ImageGrid({ images }) {
         {visibleImages.map((item, index) => (
           <Grid
             size={{xs: 12, sm: 6, md: 4, lg: 3}}
-            key={`${item.img}-${index}`}
+            key={`${item.path}-${index}`}
             sx={{
               display: "flex",
               justifyContent: "center",
-              animation: `fadeInScale 0.6s ease-out ${index * 0.05}s both`,
-              "@keyframes fadeInScale": {
-                from: {
-                  opacity: 0,
-                  transform: "scale(0.9) translateY(20px)",
-                },
-                to: {
-                  opacity: 1,
-                  transform: "scale(1) translateY(0)",
-                },
-              },
+              ...entranceAnims.gridFadeIn(index)
             }}
           >
-            <ImageCard src={item.img} title={item.title} index={index} />
+            <ImageCard src={item.path} title={item.name} index={index} alt={item.alt} />
           </Grid>
         ))}
       </Grid>

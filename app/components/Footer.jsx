@@ -3,33 +3,12 @@ import { Box, Typography, Paper } from "@mui/material";
 import FacebookRounded from "@mui/icons-material/FacebookRounded";
 import GitHub from "@mui/icons-material/GitHub";
 
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
 import "../app.css";
+import { hoverAnims } from "../Style/Animations";
+import { serviceAreas, hours, contactInfo } from "../Util/CompanyInfo";
 
 export default function Footer() {
-  const serviceAreas = [
-    "Ogden, UT",
-    "Layton, UT",
-    "Bountiful, UT",
-    "Roy, UT",
-    "Clearfield, UT",
-    "Kaysville, UT",
-    "Syracuse, UT",
-    "Farmington, UT",
-    "Clinton, UT",
-    "North Salt Lake, UT",
-  ];
-
-  const hours = [
-    { day: "Sun", time: "09:00 AM - 9:00 PM" },
-    { day: "Mon", time: "09:00 AM - 05:00 PM" },
-    { day: "Tue", time: "09:00 AM - 05:00 PM" },
-    { day: "Wed", time: "09:00 AM - 05:00 PM" },
-    { day: "Thu", time: "09:00 AM - 05:00 PM" },
-    { day: "Fri", time: "09:00 AM - 05:00 PM" },
-    { day: "Sat", time: "09:00 AM - 05:00 PM" },
-  ];
-
   return (
     <Paper
       square
@@ -91,15 +70,13 @@ export default function Footer() {
             href="https://www.facebook.com/profile.php?id=100063689374404"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ width: "fit-content" }}
           >
             <FacebookRounded
               sx={{
-                color: "info.main",
+                color: "info.dark",
                 fontSize: 40,
                 cursor: "pointer",
-                transition: "color 0.2s",
-                "&:hover": { color: "info.light" },
+                ...hoverAnims.facebookIcon,
               }}
             />
           </a>
@@ -111,51 +88,55 @@ export default function Footer() {
             sx={{
               color: "text.primary",
               fontSize: "1.2rem",
-              mb: 2,
+              marginBottom: 2,
             }}
           >
             Company
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <NavLink to="/">
+            <NavLink to="/" style={{ width: "fit-content" }}>
               <Typography
                 variant="body2"
                 sx={{
+                  width: "fit-content",
                   color: "text.secondary",
-                  "&:hover": { color: "info.light" },
+                  ...hoverAnims.linkHover,
                 }}
               >
                 Home
               </Typography>
             </NavLink>
-            <NavLink to="/Gallery">
+            <NavLink to="/Gallery" style={{ width: "fit-content" }}>
               <Typography
                 variant="body2"
                 sx={{
+                  width: "fit-content",
                   color: "text.secondary",
-                  "&:hover": { color: "info.light" },
+                  ...hoverAnims.linkHover,
                 }}
               >
                 Gallery
               </Typography>
             </NavLink>
-            <NavLink to={"/Services"}>
+            <NavLink to={"/Services"} style={{ width: "fit-content" }}>
               <Typography
                 variant="body2"
                 sx={{
+                  width: "fit-content",
                   color: "text.secondary",
-                  "&:hover": { color: "info.light" },
+                  ...hoverAnims.linkHover,
                 }}
               >
                 Services
               </Typography>
             </NavLink>
-            <NavLink to="/Contact">
+            <NavLink to="/Contact" style={{ width: "fit-content" }}>
               <Typography
                 variant="body2"
                 sx={{
+                  width: "fit-content",
                   color: "text.secondary",
-                  "&:hover": { color: "info.light" },
+                  ...hoverAnims.linkHover,
                 }}
               >
                 Contact Us
@@ -196,7 +177,7 @@ export default function Footer() {
             sx={{
               color: "text.primary",
               fontSize: "1.2rem",
-              mb: 2,
+              marginBottom: 2,
             }}
           >
             Hours
@@ -222,7 +203,7 @@ export default function Footer() {
             sx={{
               color: "text.primary",
               fontSize: "1.2rem",
-              mb: 2,
+              marginBottom: 2,
             }}
           >
             Contact
@@ -234,7 +215,7 @@ export default function Footer() {
                 color: "text.secondary",
               }}
             >
-              Call: 801-555-5555
+              Call: {contactInfo.phone}
             </Typography>
             <Typography
               variant="body2"
@@ -242,7 +223,7 @@ export default function Footer() {
                 color: "text.secondary",
               }}
             >
-              Email: Mattford51@yahoo.com
+              Email: {contactInfo.email}
             </Typography>
           </Box>
         </Box>
@@ -261,7 +242,7 @@ export default function Footer() {
           variant="subtitle2"
           sx={{ color: "text.secondary", fontSize: "0.9rem" }}
         >
-          © {new Date().getFullYear()} MJF Home Solutions. All rights reserved.
+          © 2026 MJF Home Solutions. All rights reserved.
         </Typography>
         <Typography
           variant="subtitle2"
@@ -276,9 +257,18 @@ export default function Footer() {
           }}
         >
           Designed by: Jack Lindgren
-          <Link to={"https://github.com/jlind113"}>
-            <GitHub />
-          </Link>
+          <a
+            href="https://github.com/jlind113"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GitHub
+              sx={{
+                cursor: "pointer",
+                ...hoverAnims.scale,
+              }}
+            />
+          </a>
         </Typography>
       </Box>
     </Paper>

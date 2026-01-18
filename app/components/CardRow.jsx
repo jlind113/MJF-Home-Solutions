@@ -5,7 +5,7 @@ import { Paper, Typography, Stack } from "@mui/material";
 import CreditCard from "@mui/icons-material/CreditCard";
 import House from "@mui/icons-material/House";
 import Apartment from "@mui/icons-material/Apartment";
-import { cardEntranceStyles } from "../Style/Animations";
+import { entranceAnims } from "../Style/Animations";
 
 export default function CardRow() {
   const cards = [
@@ -31,7 +31,7 @@ export default function CardRow() {
             elevation={2}
             key={card.id}
             sx={{
-              ...cardEntranceStyles.staggeredFadeUp(index),
+              ...entranceAnims.staggeredFadeUp(index),
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

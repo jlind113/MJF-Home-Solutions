@@ -3,23 +3,18 @@ import { useState } from "react";
 
 export default function ServiceCard({ imgSource, serviceText }) {
   const [isHovered, setIsHovered] = useState(false);
+  // State to trigger animations
 
   return (
     <Card
       sx={{
-        width: "100%",
-        maxWidth: { xs: "100%", sm: 350 },
+        maxWidth: { xs: 250, sm: 280, md: 320 },
         height: { xs: 250, sm: 280, md: 320 },
-        backgroundColor: "background.main",
-        overflow: "hidden",
         borderRadius: 2,
-        position: "relative",
         cursor: "pointer",
-        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+        transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
         "&:hover": {
           transform: "translateY(-8px)",
-          boxShadow: "0 12px 24px rgba(0, 0, 0, 0.15)",
         },
       }}
       onMouseEnter={() => setIsHovered(true)}
@@ -32,6 +27,7 @@ export default function ServiceCard({ imgSource, serviceText }) {
           overflow: "hidden",
         }}
       >
+        {/* Image Component */}
         <Box
           component="img"
           src={imgSource}
@@ -48,6 +44,7 @@ export default function ServiceCard({ imgSource, serviceText }) {
           }}
         />
 
+          {/* Image Gradient overlay */}
         <Box
           sx={{
             position: "absolute",
@@ -56,8 +53,8 @@ export default function ServiceCard({ imgSource, serviceText }) {
             right: 0,
             bottom: 0,
             background: isHovered
-              ? "linear-gradient(to top, rgba(41, 162, 255, 0.8) 0%, rgba(41, 162, 255, 0.2) 50%, transparent 100%)"
-              : "linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%)",
+              ? "linear-gradient(to top, #1f7fcc 0%, #1f7eccbe 15%, transparent 30%)"
+              : "linear-gradient(to top, #000000 0%, #00000096 15%, transparent 30%)",
             transition: "background 0.3s ease",
           }}
         />
@@ -81,7 +78,6 @@ export default function ServiceCard({ imgSource, serviceText }) {
               fontWeight: 600,
               fontSize: { xs: "1.1rem", sm: "1.2rem" },
               lineHeight: 1.3,
-              textShadow: "0 2px 4px rgba(0,0,0,0.3)",
               ...(isHovered && {
                 transform: "translateY(-4px)",
                 transition: "transform 0.3s ease",
@@ -94,7 +90,7 @@ export default function ServiceCard({ imgSource, serviceText }) {
           <Typography
             variant="body2"
             sx={{
-              color: "rgba(255, 255, 255, 0.9)",
+              color: "#ffffffe6",
               fontSize: "0.85rem",
               marginTop: 0.5,
               opacity: isHovered ? 1 : 0,
@@ -102,7 +98,7 @@ export default function ServiceCard({ imgSource, serviceText }) {
               transition: "all 0.3s ease",
             }}
           >
-            Learn More →
+            View Our Services →
           </Typography>
         </Box>
       </Box>

@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 
 import CustomTextField from "./CustomTextField";
+import { hoverAnims } from '../Style/Animations';
 
 export default function ContactForm() {
   return (
@@ -40,8 +41,8 @@ export default function ContactForm() {
       >
         <input type="hidden" name="form-name" value="contact" />
         <Grid size={12}>
-          <Typography variant="h6" textAlign={"center"}>
-            Contact Us
+          <Typography variant="h4" textAlign={"center"}>
+            Get In Touch
           </Typography>
         </Grid>
 
@@ -62,7 +63,7 @@ export default function ContactForm() {
         />
 
         <CustomTextField
-          tipTitle={"Phone Number"} 
+          tipTitle={"Phone Number"}
           required={true}
           type={"tel"}
           name={"phone"}
@@ -70,7 +71,7 @@ export default function ContactForm() {
         />
 
         <CustomTextField
-          tipTitle={"Email"} 
+          tipTitle={"Email"}
           required={true}
           type={"email"}
           name={"email"}
@@ -78,7 +79,7 @@ export default function ContactForm() {
         />
 
         <CustomTextField
-          tipTitle={"Street Address"} 
+          tipTitle={"Street Address"}
           required={false}
           type={"text"}
           name={"street"}
@@ -86,7 +87,7 @@ export default function ContactForm() {
         />
 
         <CustomTextField
-          tipTitle={"State"} 
+          tipTitle={"State"}
           required={false}
           type={"text"}
           name={"state"}
@@ -94,7 +95,7 @@ export default function ContactForm() {
         />
 
         <CustomTextField
-          tipTitle={"Zip Code"} 
+          tipTitle={"Zip Code"}
           required={false}
           type={"text"}
           name={"zipCode"}
@@ -190,18 +191,27 @@ export default function ContactForm() {
               (SMS) from MJF Home Solutions. Message and data rates may apply.
             </Typography>
           </Box>
-          <Button
-            type="submit"
-            variant="contained"
+          <Box
             sx={{
-              width: "90%",
-              marginX: "5%",
-              marginTop: "1vh",
-              backgroundColor: "primary.main",
+              width: "100%",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
             }}
           >
-            Send
-          </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                width: "40%",
+                marginTop: "1vh",
+                backgroundColor: "primary.main",
+                ...hoverAnims.scale,
+              }}
+            >
+              Send
+            </Button>
+          </Box>
         </Grid>
       </Grid>
     </Paper>

@@ -4,6 +4,7 @@ import { Paper, Box, Typography, Stack } from "@mui/material";
 // MUI Icon Imports
 import FacebookRounded from "@mui/icons-material/FacebookRounded";
 import GradientDivider from './GradientDivider';
+import { hoverAnims } from '../Style/Animations';
 
 export default function About() {
   return (
@@ -38,7 +39,7 @@ export default function About() {
           }}
         >
           <img
-            src="/Photos/Hero/Kitchen-Frame.webp"
+            src="/Photos/Hero/kitchenRemodel-2.webp"
             alt="Drywall work"
             style={{
               height: "100%",
@@ -120,8 +121,7 @@ export default function About() {
                     color: "info.dark",
                     fontSize: 48,
                     cursor: "pointer",
-                    transition: "color 0.2s scale 1s",
-                    "&:hover": { color: "info.main", scale: 1.1 },
+                    ...hoverAnims.facebookIcon,
                   }}
                 />
               </a>

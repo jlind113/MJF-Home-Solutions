@@ -1,62 +1,30 @@
 import { Typography, Stack, Box, Grid, Divider } from "@mui/material";
 
 import ServiceCard from "./ServiceCard";
-import { cardEntranceStyles } from "../Style/Animations";
+import { entranceAnims } from "../Style/Animations";
 import { NavLink } from "react-router";
+import { services } from "../Util/ServiceInfo";
 
 export default function ServiceShowcase() {
-  const services = [
-    {
-      id: "drywall-installation",
-      image: "/Photos/1100x800/Lightbox (1).webp",
-      text: "Drywall Installation",
-    },
-    {
-      id: "ceiling-texture",
-      image: "/Photos/1100x800/Lightbox (2).webp",
-      text: "Ceiling Texture Application",
-    },
-    {
-      id: "drywall-finishing",
-      image: "/Photos/1100x800/Lightbox (3).webp",
-      text: "Drywall Finishing",
-    },
-    {
-      id: "drywall-repair",
-      image: "/Photos/1100x800/Lightbox (5).webp",
-      text: "Drywall Repair",
-    },
-    {
-      id: "custom-drywall",
-      image: "/Photos/1100x800/Lightbox (6).webp",
-      text: "Custom Drywall Work",
-    },
-    {
-      id: "carpentry",
-      image: "/Photos/1100x800/Lightbox (8).webp",
-      text: "Carpentry",
-    },
-  ];
-
-  function ShowcaseItem(image, text) {
+  function ShowcaseItem(image, text, alt) {
     return (
       <Grid
         size={{ xs: 12, md: 6, lg: 4 }}
         sx={{
           display: "flex",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
         <Box
           sx={{
-            ...cardEntranceStyles.fadeUpOnMount,
+            ...entranceAnims.fadeUpOnMount,
           }}
         >
           <NavLink
             to={"/Services"}
             style={{ textDecoration: "none", width: "100%" }}
           >
-            <ServiceCard imgSource={image} serviceText={text} />
+            <ServiceCard imgSource={image} serviceText={text} alt={alt} />
           </NavLink>
         </Box>
       </Grid>
@@ -127,12 +95,36 @@ export default function ServiceShowcase() {
           sx={{ width: "100%", maxWidth: 1200 }}
           justifyContent="center"
         >
-          {ShowcaseItem(services[0].image, services[0].text)}
-          {ShowcaseItem(services[1].image, services[1].text)}
-          {ShowcaseItem(services[2].image, services[2].text)}
-          {ShowcaseItem(services[3].image, services[3].text)}
-          {ShowcaseItem(services[4].image, services[4].text)}
-          {ShowcaseItem(services[5].image, services[5].text)}
+          {ShowcaseItem(
+            services.carpentry.images[0].path,
+            services.carpentry.name,
+            services.carpentry.images[0].alt,
+          )}
+          {ShowcaseItem(
+            services.ceiling.images[0].path,
+            services.ceiling.name,
+            services.ceiling.images[0].alt,
+          )}
+          {ShowcaseItem(
+            services.custom.images[0].path,
+            services.custom.name,
+            services.custom.images[0].alt,
+          )}
+          {ShowcaseItem(
+            services.finishing.images[0].path,
+            services.finishing.name,
+            services.finishing.images[0].alt,
+          )}
+          {ShowcaseItem(
+            services.installation.images[0].path,
+            services.installation.name,
+            services.installation.images[0].alt,
+          )}
+          {ShowcaseItem(
+            services.flooring.images[0].path,
+            services.flooring.name,
+            services.flooring.images[0].alt,
+          )}
         </Grid>
       </Stack>
     </Box>

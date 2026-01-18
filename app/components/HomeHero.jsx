@@ -8,18 +8,17 @@ import {
 
 import { SlickAuto } from "../components/Carousel";
 import CTASmall from "./CTASmall";
-import { cardEntranceStyles } from '../Style/Animations';
 import GradientDivider from "./GradientDivider";
 
 
 export default function HomeHero() {
   const carouselImages = [
-    "/Photos/Hero/Animal-Shelter.webp",
-    "/Photos/Hero/Drywall.webp",
-    "/Photos/Hero/Kitchen-Cabetry.webp",
-    "/Photos/Hero/Kitchen-Frame.webp",
-    "/Photos/Hero/Shelving.webp",
-    "/Photos/Hero/Stairs.webp",
+    "/Photos/Hero/customDrywall.webp",
+    "/Photos/Hero/drywallInstallation.webp",
+    "/Photos/Hero/kitchenRemodel.webp",
+    "/Photos/Hero/kitchenRemodel-2.webp",
+    "/Photos/Hero/shelvingCarpentry.webp",
+    "/Photos/Hero/stairsCarpentry.webp",
   ];
 
   return (
@@ -33,7 +32,6 @@ export default function HomeHero() {
         borderRightWidth: 0,
         borderTopWidth: 0,
         borderBottomWidth: 1,
-        ...cardEntranceStyles.fadeUpOnMount,
       }}
     >
       <Stack
@@ -55,7 +53,6 @@ export default function HomeHero() {
             sx={{
               color: "text.primary",
               textAlign: "center",
-              fontWeight: 700,
               fontSize: { xs: "2.2rem", sm: "3.2rem" },
               textWrap: "nowrap",
               marginY: "1vh",
@@ -69,11 +66,8 @@ export default function HomeHero() {
           <Typography
             variant="body1"
             sx={{
-              color: "text.primary",
               textAlign: "center",
               fontSize: { xs: "1.1rem", sm: "1.2rem", lg: "1.3rem" },
-              fontWeight: 400,
-              lineHeight: 1.8,
               marginY: "1vh",
               maxWidth: 520,
             }}
@@ -91,7 +85,6 @@ export default function HomeHero() {
         <Box
           sx={{
             width: {xs: "100%", lg: "60%" },
-            transition: "transform 0.3s ease-in-out",
           }}
         >
           <SlickAuto images={carouselImages} />

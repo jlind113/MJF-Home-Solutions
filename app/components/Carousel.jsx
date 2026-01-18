@@ -88,8 +88,8 @@ export function SlickClick({ images }) {
         {images.map((image, idx) => (
           <Box key={idx} sx={{ lineHeight: 0 }}>
             <img 
-              src={image} 
-              alt={`Slide ${idx}`} 
+              src={image.path} 
+              alt={image.alt} 
               style={{
                 width: '100%',
                 height: '100%',
