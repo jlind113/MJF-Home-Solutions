@@ -22,7 +22,6 @@ export default function ContactForm() {
     <Paper
       elevation={4}
       component={"form"}
-      autoComplete="on"
       name="contact"
       method="post"
       sx={{
@@ -40,6 +39,7 @@ export default function ContactForm() {
         sx={{ marginY: "1vh", marginX: "1vw" }}
       >
         <input type="hidden" name="form-name" value="contact" />
+        
         <Grid size={12}>
           <Typography variant="h4" textAlign={"center"}>
             Get In Touch

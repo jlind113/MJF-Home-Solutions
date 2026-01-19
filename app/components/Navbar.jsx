@@ -22,8 +22,7 @@ import { NavLink, useLocation } from "react-router";
 import "../app.css";
 import { hoverAnims } from "../Style/Animations";
 
-function checkLocation(link) {
-  const location = useLocation();
+function checkLocation(link, location) {
   if (link === location.pathname) {
     return "primary.light";
   } else {
@@ -33,13 +32,14 @@ function checkLocation(link) {
 
 export default function Navbar() {
   const { mode, setMode } = useColorScheme();
+  const location = useLocation();
+  const [openDrawer, setOpenDrawer] = useState(false);
   
   // Change color theme
   const handleThemeToggle = () => {
     setMode(mode === "light" ? "dark" : "light");
   };
   
-  const [openDrawer, setOpenDrawer] = useState(false);
   // Change nav drawer open and close state
   const toggleDrawer = (newState) => () => {
     setOpenDrawer(newState);
@@ -47,10 +47,12 @@ export default function Navbar() {
   
   // Change icon for the color theme button
   const ThemeIcon = mode === "light" ? LightMode : DarkMode;
+
   // Early return if there's no mode available. Prevents SSR issues
   if (!mode) {
     return null;
   }
+
   const navLinks = [
     { destination: "/", text: "Home" },
     { destination: "/Gallery", text: "Gallery" },
@@ -78,7 +80,7 @@ export default function Navbar() {
               <NavLink to={link.destination} style={{ height: 0 }}>
                 <Typography
                   variant="button"
-                  color={checkLocation(link.destination)}
+                  color={checkLocation(link.destination, location)}
                   sx={{
                     fontSize: "0.95rem",
                     cursor: "pointer",
@@ -191,7 +193,7 @@ export default function Navbar() {
               <NavLink to={link.destination}>
                 <Typography
                   variant="button"
-                  color={checkLocation(link.destination)}
+                  color={checkLocation(link.destination, location)}
                   sx={{
                     fontSize: "1.1rem",
                     cursor: "pointer",
