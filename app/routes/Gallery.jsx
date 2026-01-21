@@ -1,21 +1,23 @@
-import { Box, Typography, Stack, Chip, Divider } from "@mui/material";
+import { Box, Typography, Stack, Chip } from "@mui/material";
 import { useState, useMemo } from "react";
 import ImageGrid from "../components/ImageGrid";
-import { entranceAnims } from "../Style/Animations";
-import { services } from '../Util/ServiceInfo';
+import { entranceAnims, hoverAnims } from "../Style/Animations";
+import { services } from "../Util/ServiceInfo";
+import Header from "../components/textItems/Header";
+import GradientDivider from "../components/GradientDivider";
+import BodyText from "../components/textItems/BodyText";
 
 export default function Gallery() {
   const imageData = useMemo(() => {
     const allImages = [];
-    Object.keys(services).forEach(serviceKey => {
+    Object.keys(services).forEach((serviceKey) => {
       const service = services[serviceKey];
       if (service.images && service.images.length > 0) {
-        // Only add images that have a valid path
-        service.images.forEach(image => {
+        service.images.forEach((image) => {
           if (image.path && image.path.trim() !== "") {
             allImages.push({
               ...image,
-              category: serviceKey, // Ensure category matches the service key
+              category: serviceKey,
             });
           }
         });
@@ -41,7 +43,9 @@ export default function Gallery() {
     if (selectedCategory === "all") {
       return imageData;
     }
-    const filtered = imageData.filter((image) => image.category === selectedCategory);
+    const filtered = imageData.filter(
+      (image) => image.category === selectedCategory,
+    );
     return filtered;
   }, [imageData, selectedCategory]);
 
@@ -69,40 +73,13 @@ export default function Gallery() {
             ...entranceAnims.fadeUpOnMount,
           }}
         >
-          <Typography
-            variant="h2"
-            sx={{
-              color: "text.primary",
-              fontWeight: 700,
-              fontSize: { xs: "2.5rem", sm: "3rem", md: "3.5rem" },
-              marginBottom: 2,
-            }}
-          >
-            Project Gallery
-          </Typography>
+          <Header text={"Project Gallery"} />
 
-          <Typography
-            variant="h6"
-            sx={{
-              color: "text.secondary",
-              fontSize: { xs: "1.1rem", sm: "1.2rem" },
-              lineHeight: 1.6,
-              marginBottom: 1,
-            }}
-          >
-            Showcasing Our Work
-          </Typography>
+          <Box sx={{ marginBottom: 2 }}>
+            <BodyText text={"Showcasing Our Work"} />
+          </Box>
 
-          <Divider
-            sx={{
-              width: { xs: "80%", lg: "100%" },
-              height: 2,
-              marginBottom: 2,
-              background:
-                "linear-gradient(90deg, transparent, #cc5a28, #29a2ff, transparent)",
-              borderRadius: 2,
-            }}
-          />
+          <GradientDivider />
         </Box>
 
         <Box
@@ -115,10 +92,12 @@ export default function Gallery() {
           <Stack
             direction="row"
             spacing={1}
-            gap={1}
-            flexWrap="wrap"
-            justifyContent="center"
-            sx={{ maxWidth: 700 }}
+            sx={{
+              maxWidth: 700,
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: 1,
+            }}
           >
             {categories.map((category) => (
               <Chip
@@ -134,11 +113,7 @@ export default function Gallery() {
                 sx={{
                   margin: 0.5,
                   cursor: "pointer",
-                  transition: "all 0.3s ease",
-                  "&:hover": {
-                    transform: "translateY(-2px)",
-                    boxShadow: "0 4px 12px rgba(41, 162, 255, 0.3)",
-                  },
+                  ...hoverAnims.scale,
                 }}
               />
             ))}

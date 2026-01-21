@@ -1,36 +1,37 @@
-import { Typography, Stack, Box, Grid, Divider } from "@mui/material";
-
+import { Typography, Stack, Box, Grid } from "@mui/material";
 import ServiceCard from "./ServiceCard";
 import { entranceAnims } from "../Style/Animations";
 import { NavLink } from "react-router";
 import { services } from "../Util/ServiceInfo";
+import Header from "./textItems/Header";
+import GradientDivider from "./GradientDivider";
 
-export default function ServiceShowcase() {
-  function ShowcaseItem(image, text, alt) {
-    return (
-      <Grid
-        size={{ xs: 12, md: 6, lg: 4 }}
+function ShowcaseItem({ image, text, alt }) {
+  return (
+    <Grid
+      size={{ xs: 12, md: 6, lg: 4 }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <Box
         sx={{
-          display: "flex",
-          justifyContent: "center",
+          ...entranceAnims.fadeUpOnMount,
         }}
       >
-        <Box
-          sx={{
-            ...entranceAnims.fadeUpOnMount,
-          }}
+        <NavLink
+          to={"/Services"}
+          style={{ textDecoration: "none", width: "100%" }}
         >
-          <NavLink
-            to={"/Services"}
-            style={{ textDecoration: "none", width: "100%" }}
-          >
-            <ServiceCard imgSource={image} serviceText={text} alt={alt} />
-          </NavLink>
-        </Box>
-      </Grid>
-    );
-  }
+          <ServiceCard imgSource={image} serviceText={text} alt={alt} />
+        </NavLink>
+      </Box>
+    </Grid>
+  );
+}
 
+export default function ServiceShowcase() {
   return (
     <Box
       sx={{
@@ -54,27 +55,8 @@ export default function ServiceShowcase() {
             alignItems: "center",
           }}
         >
-          <Typography
-            variant="h3"
-            sx={{
-              color: "text.primary",
-              fontWeight: 700,
-              fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-              marginBottom: 1,
-              position: "relative",
-            }}
-          >
-            Our Services
-          </Typography>
-          <Divider
-            sx={{
-              width: { xs: "80%", lg: "100%" },
-              height: 2,
-              background:
-                "linear-gradient(90deg, transparent, #cc5a28, #29a2ff, transparent)",
-              borderRadius: 2,
-            }}
-          />
+          <Header text={"Our Services"} />
+          <GradientDivider />
           <Typography
             variant="body1"
             sx={{
@@ -95,36 +77,36 @@ export default function ServiceShowcase() {
           sx={{ width: "100%", maxWidth: 1200 }}
           justifyContent="center"
         >
-          {ShowcaseItem(
-            services.carpentry.images[0].path,
-            services.carpentry.name,
-            services.carpentry.images[0].alt,
-          )}
-          {ShowcaseItem(
-            services.ceiling.images[0].path,
-            services.ceiling.name,
-            services.ceiling.images[0].alt,
-          )}
-          {ShowcaseItem(
-            services.custom.images[0].path,
-            services.custom.name,
-            services.custom.images[0].alt,
-          )}
-          {ShowcaseItem(
-            services.finishing.images[0].path,
-            services.finishing.name,
-            services.finishing.images[0].alt,
-          )}
-          {ShowcaseItem(
-            services.installation.images[0].path,
-            services.installation.name,
-            services.installation.images[0].alt,
-          )}
-          {ShowcaseItem(
-            services.flooring.images[0].path,
-            services.flooring.name,
-            services.flooring.images[0].alt,
-          )}
+          <ShowcaseItem
+            image={services.carpentry.images[0].path}
+            text={services.carpentry.name}
+            alt={services.carpentry.images[0].alt}
+          />
+          <ShowcaseItem
+            image={services.ceiling.images[0].path}
+            text={services.ceiling.name}
+            alt={services.ceiling.images[0].alt}
+          />
+          <ShowcaseItem
+            image={services.custom.images[0].path}
+            text={services.custom.name}
+            alt={services.custom.images[0].alt}
+          />
+          <ShowcaseItem
+            image={services.finishing.images[0].path}
+            text={services.finishing.name}
+            alt={services.finishing.images[0].alt}
+          />
+          <ShowcaseItem
+            image={services.installation.images[0].path}
+            text={services.installation.name}
+            alt={services.installation.images[0].alt}
+          />
+          <ShowcaseItem
+            image={services.flooring.images[0].path}
+            text={services.flooring.name}
+            alt={services.flooring.images[0].alt}
+          />
         </Grid>
       </Stack>
     </Box>

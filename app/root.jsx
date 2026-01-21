@@ -6,12 +6,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-
 import { ThemeProvider } from "@mui/material";
-
 import "./app.css";
 import { theme } from "./Style/CustomTheme";
-
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 

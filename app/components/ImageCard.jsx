@@ -1,4 +1,3 @@
-// MUI Imports
 import { Box, Paper, Dialog, IconButton, Typography } from "@mui/material";
 import { Close, ZoomIn } from "@mui/icons-material";
 import { useState } from "react";

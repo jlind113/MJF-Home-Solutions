@@ -1,15 +1,9 @@
-// MUI Imports
-import {
-  Box,
-  Typography,
-  Stack,
-  Paper,
-} from "@mui/material";
-
+import { Box, Stack, Paper } from "@mui/material";
 import { SlickAuto } from "../components/Carousel";
 import CTASmall from "./CTASmall";
 import GradientDivider from "./GradientDivider";
-
+import Header from "./textItems/Header";
+import BodyText from "./textItems/BodyText";
 
 export default function HomeHero() {
   const carouselImages = [
@@ -34,9 +28,7 @@ export default function HomeHero() {
         borderBottomWidth: 1,
       }}
     >
-      <Stack
-        direction={{ xs: "column", lg: "row" }}
-      >
+      <Stack direction={{ xs: "column", lg: "row" }}>
         <Box
           sx={{
             width: { xs: "100%", lg: "40%" },
@@ -48,34 +40,19 @@ export default function HomeHero() {
             paddingY: { xs: "2vh", lg: 0 },
           }}
         >
-          <Typography
-            variant="h2"
-            sx={{
-              color: "text.primary",
-              textAlign: "center",
-              fontSize: { xs: "2.2rem", sm: "3.2rem" },
-              textWrap: "nowrap",
-              marginY: "1vh",
-            }}
-          >
-            MJF Home Solutions
-          </Typography>
+          <Header text={"MJF Home Solutions"} />
 
           <GradientDivider />
-
-          <Typography
-            variant="body1"
-            sx={{
-              textAlign: "center",
-              fontSize: { xs: "1.1rem", sm: "1.2rem", lg: "1.3rem" },
-              marginY: "1vh",
-              maxWidth: 520,
-            }}
-          >
-            Premier drywall experts serving the Bountiful area with exceptional
-            installation, repair services, and customer satisfaction for over a
-            decade.
-          </Typography>
+          
+          <Box sx={{ marginY: "1vh", maxWidth: 520, textAlign: "center" }}>
+            <BodyText
+              text={
+                "Premier drywall experts serving the Bountiful area with exceptional " +
+                "installation, repair services, and customer satisfaction for over a " +
+                "decade."
+              }
+            />
+          </Box>
 
           <Box>
             <CTASmall />
@@ -84,7 +61,7 @@ export default function HomeHero() {
         </Box>
         <Box
           sx={{
-            width: {xs: "100%", lg: "60%" },
+            width: { xs: "100%", lg: "60%" },
           }}
         >
           <SlickAuto images={carouselImages} />

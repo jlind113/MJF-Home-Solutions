@@ -1,4 +1,3 @@
-// MUI Imports
 import {
   Box,
   MenuItem,
@@ -9,8 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-
-// Component Imports
 import {services} from "../Util/ServiceInfo";
 import ServiceItem from "../components/ServiceItem";
 

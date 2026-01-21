@@ -1,7 +1,5 @@
-// MUI Imports
 import { Grid, Box } from "@mui/material";
 import { useState, useEffect } from "react";
-
 import ImageCard from "./ImageCard";
 import { entranceAnims } from '../Style/Animations';
 

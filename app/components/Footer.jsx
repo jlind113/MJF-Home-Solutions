@@ -1,12 +1,64 @@
-// MUI Imports
 import { Box, Typography, Paper } from "@mui/material";
-import FacebookRounded from "@mui/icons-material/FacebookRounded";
 import GitHub from "@mui/icons-material/GitHub";
-
 import { NavLink } from "react-router";
 import "../app.css";
 import { hoverAnims } from "../Style/Animations";
 import { serviceAreas, hours, contactInfo } from "../Util/CompanyInfo";
+import FacebookLink from './FacebookLink';
+
+function CompanyLink({link, text}) {
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        display: "flex",
+        flexDirection: { xs: "row", md: "column" },
+        justifyContent: "center",
+      }}
+    >
+      <NavLink to={link} style={{ width: "fit-content" }}>
+        <Typography
+          variant="body2"
+          sx={{
+            width: "fit-content",
+            color: "text.secondary",
+            ...hoverAnims.linkHover,
+          }}
+        >
+          {text}
+        </Typography>
+      </NavLink>
+    </Box>
+  )
+};
+
+function HeaderItem({text}) {
+  return (
+    <Typography
+      variant="h4"
+      sx={{
+        color: "text.primary",
+        fontSize: "1.2rem",
+        marginBottom: 2,
+      }}
+    >
+      {text}
+    </Typography>
+  );
+};
+
+function ListItem({text}) {
+  return (
+    <Typography
+      variant="body2"
+      sx={{
+        color: "text.secondary",
+      }}
+    >
+      {text}
+    </Typography>
+  );
+};
 
 export default function Footer() {
   return (
@@ -54,179 +106,51 @@ export default function Footer() {
             alt="MJF Logo"
             style={{ width: "100px", height: "100px" }}
           />
-          <Typography
-            variant="h4"
-            sx={{ color: "text.primary", fontSize: "1.1rem" }}
-          >
-            MJF Home Solutions
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{ color: "text.secondary", fontSize: "0.9rem" }}
-          >
-            Bountiful, UT, US
-          </Typography>
-          <a
-            href="https://www.facebook.com/profile.php?id=100063689374404"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FacebookRounded
-              sx={{
-                color: "info.dark",
-                fontSize: 40,
-                cursor: "pointer",
-                ...hoverAnims.facebookIcon,
-              }}
-            />
-          </a>
+          <HeaderItem text={"MJF Home Solutions"} />
+          <ListItem text={"Bountiful, UT, US"} />
+          <FacebookLink />
         </Box>
 
         <Box>
-          <Typography
-            variant="h4"
-            sx={{
-              color: "text.primary",
-              fontSize: "1.2rem",
-              marginBottom: 2,
-            }}
-          >
-            Company
-          </Typography>
+          <HeaderItem text={"Company"} />
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <NavLink to="/" style={{ width: "fit-content" }}>
-              <Typography
-                variant="body2"
-                sx={{
-                  width: "fit-content",
-                  color: "text.secondary",
-                  ...hoverAnims.linkHover,
-                }}
-              >
-                Home
-              </Typography>
-            </NavLink>
-            <NavLink to="/Gallery" style={{ width: "fit-content" }}>
-              <Typography
-                variant="body2"
-                sx={{
-                  width: "fit-content",
-                  color: "text.secondary",
-                  ...hoverAnims.linkHover,
-                }}
-              >
-                Gallery
-              </Typography>
-            </NavLink>
-            <NavLink to={"/Services"} style={{ width: "fit-content" }}>
-              <Typography
-                variant="body2"
-                sx={{
-                  width: "fit-content",
-                  color: "text.secondary",
-                  ...hoverAnims.linkHover,
-                }}
-              >
-                Services
-              </Typography>
-            </NavLink>
-            <NavLink to="/Contact" style={{ width: "fit-content" }}>
-              <Typography
-                variant="body2"
-                sx={{
-                  width: "fit-content",
-                  color: "text.secondary",
-                  ...hoverAnims.linkHover,
-                }}
-              >
-                Contact Us
-              </Typography>
-            </NavLink>
+            <CompanyLink link={"/"} text={"Home"} />
+            <CompanyLink link={"/Gallery"} text={"Gallery"} />
+            <CompanyLink link={"/Services"} text={"Services"} />
+            <CompanyLink link={"/Contact"} text={"Contact Us"} />
           </Box>
         </Box>
 
         <Box>
-          <Typography
-            variant="h4"
-            sx={{
-              color: "text.primary",
-              fontSize: "1.2rem",
-              mb: 2,
-            }}
-          >
-            Service Areas
-          </Typography>
+          <HeaderItem text={"Service Areas"} />
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             {serviceAreas.map((area) => (
-              <Typography
-                key={area}
-                variant="body2"
-                sx={{
-                  color: "text.secondary",
-                }}
-              >
-                {area}
-              </Typography>
+              <Box key={area}>
+                <ListItem text={area} />
+              </Box>
             ))}
           </Box>
         </Box>
 
         <Box>
-          <Typography
-            variant="h4"
-            sx={{
-              color: "text.primary",
-              fontSize: "1.2rem",
-              marginBottom: 2,
-            }}
-          >
-            Hours
-          </Typography>
+          <HeaderItem text={"Hours"} />
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             {hours.map((hour) => (
-              <Typography
-                key={hour.day}
-                variant="body2"
-                sx={{
-                  color: "text.secondary",
-                }}
-              >
-                {hour.day}: {hour.time}
-              </Typography>
+              <Box key={hour.day}>
+                <ListItem text={`${hour.day}` + ": " + `${hour.time}`} />
+              </Box>
             ))}
           </Box>
         </Box>
 
         <Box>
-          <Typography
-            variant="h4"
-            sx={{
-              color: "text.primary",
-              fontSize: "1.2rem",
-              marginBottom: 2,
-            }}
-          >
-            Contact
-          </Typography>
+          <HeaderItem text={"Contact"} />
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <Typography
-              variant="body2"
-              sx={{
-                color: "text.secondary",
-              }}
-            >
-              Call: {contactInfo.phone}
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                color: "text.secondary",
-              }}
-            >
-              Email: {contactInfo.email}
-            </Typography>
+            <ListItem text={"Call: " + `${contactInfo.phone}`} />
+            <ListItem text={"Email: " + `${contactInfo.email}`} />
           </Box>
         </Box>
+
       </Box>
 
       <Box

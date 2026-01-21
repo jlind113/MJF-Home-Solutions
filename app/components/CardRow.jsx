@@ -1,7 +1,4 @@
-// MUI Imports
 import { Paper, Typography, Stack } from "@mui/material";
-
-// MUI Icon Imports
 import CreditCard from "@mui/icons-material/CreditCard";
 import House from "@mui/icons-material/House";
 import Apartment from "@mui/icons-material/Apartment";

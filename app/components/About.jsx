@@ -1,10 +1,8 @@
-// MUI Imports
 import { Paper, Box, Typography, Stack } from "@mui/material";
-
-// MUI Icon Imports
-import FacebookRounded from "@mui/icons-material/FacebookRounded";
-import GradientDivider from './GradientDivider';
-import { hoverAnims } from '../Style/Animations';
+import GradientDivider from "./GradientDivider";
+import FacebookLink from "./FacebookLink";
+import Header from "./textItems/Header";
+import BodyText from "./textItems/BodyText";
 
 export default function About() {
   return (
@@ -41,6 +39,7 @@ export default function About() {
           <img
             src="/Photos/Hero/kitchenRemodel-2.webp"
             alt="Drywall work"
+            loading="lazy"
             style={{
               height: "100%",
               width: "100%",
@@ -58,40 +57,32 @@ export default function About() {
             alignItems: "center",
           }}
         >
-          <Typography
-            variant="h2"
+          <Header text={"About Us"} />
+
+          <Box sx={{ width: "100%", paddingX: { xs: "2vw", lg: 0 } }}>
+            <GradientDivider />
+          </Box>
+
+          <Box
             sx={{
-              color: "text.primary",
-              textAlign: "center",
-              fontWeight: 700,
-              fontSize: { xs: "2rem", sm: "3rem" },
-              textWrap: "nowrap",
-              marginBottom: 1,
-            }}
-          >
-            About Us
-          </Typography>
-          <GradientDivider />
-          <Typography
-            variant="body1"
-            sx={{
-              color: "text.primary",
               textAlign: "left",
-              fontSize: { xs: "1rem", sm: "1.1rem", lg: "1.2rem" },
-              paddingX: { xs: "3vw", lg: "1vw"},
-              fontWeight: 530,
-              lineHeight: 1.8,
+              paddingX: { xs: "3vw", lg: "1vw" },
               marginY: 1,
               maxWidth: { xs: 500, md: 800 },
             }}
           >
-            At MJF Home Solutions, we are a trusted drywall company proudly
-            serving Bountiful, UT, and surrounding areas. With our team of
-            skilled professionals, we provide top-quality drywall installation
-            and repair services to meet all your needs. Count on us for reliable
-            workmanship and exceptional customer service to enhance your home's
-            appeal.
-          </Typography>
+            <BodyText
+              text={
+                "At MJF Home Solutions, we are a trusted drywall company proudly " +
+                "serving Bountiful, UT, and surrounding areas. With our team of " +
+                "skilled professionals, we provide top-quality drywall installation " +
+                "and repair services to meet all your needs. Count on us for reliable " +
+                "workmanship and exceptional customer service to enhance your home's " +
+                "appeal."
+              }
+            />
+          </Box>
+
           <Box
             sx={{
               display: "flex",
@@ -111,20 +102,7 @@ export default function About() {
               Connect with us
             </Typography>
             <Box>
-              <a
-                href="https://www.facebook.com/profile.php?id=100063689374404"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FacebookRounded
-                  sx={{
-                    color: "info.dark",
-                    fontSize: 48,
-                    cursor: "pointer",
-                    ...hoverAnims.facebookIcon,
-                  }}
-                />
-              </a>
+              <FacebookLink />
             </Box>
           </Box>
         </Box>

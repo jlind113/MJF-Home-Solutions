@@ -1,13 +1,9 @@
-// MUI Imports
 import { Box } from "@mui/material";
-
-// Slick Imports
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import pkg from "react-slick";
 
 const Slider = pkg.default || pkg;
-
 
 function NextArrow(props) {
   const { className, style, onClick } = props;
@@ -66,38 +62,38 @@ export function SlickClick({ images }) {
     <Box
       className="slider-container"
       sx={{
-        '& .slick-slider': {
+        "& .slick-slider": {
           marginBottom: 0,
         },
-        '& .slick-list': {
+        "& .slick-list": {
           marginBottom: 0,
         },
-        '& .slick-track': {
+        "& .slick-track": {
           marginBottom: 0,
         },
-        '& .slick-slide': {
+        "& .slick-slide": {
           marginBottom: 0,
-          '& > div': {
+          "& > div": {
             marginBottom: 0,
             lineHeight: 0,
-          }
-        }
+          },
+        },
       }}
     >
       <Slider {...settings}>
         {images.map((image, idx) => (
           <Box key={idx} sx={{ lineHeight: 0 }}>
-            <img 
-              src={image.path} 
-              alt={image.alt} 
+            <img
+              src={image.path}
+              alt={image.alt}
               style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block',
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
                 margin: 0,
                 padding: 0,
-                verticalAlign: 'bottom'
+                verticalAlign: "bottom",
               }}
             />
           </Box>
@@ -123,22 +119,22 @@ export function SlickAuto({ images }) {
     <Box
       className="slider-container"
       sx={{
-        '& .slick-slider': {
+        "& .slick-slider": {
           marginBottom: 0,
         },
-        '& .slick-list': {
+        "& .slick-list": {
           marginBottom: 0,
         },
-        '& .slick-track': {
+        "& .slick-track": {
           marginBottom: 0,
         },
-        '& .slick-slide': {
+        "& .slick-slide": {
           marginBottom: 0,
-          '& > div': {
+          "& > div": {
             marginBottom: 0,
             lineHeight: 0,
-          }
-        }
+          },
+        },
       }}
     >
       <Slider {...settings}>
@@ -148,13 +144,13 @@ export function SlickAuto({ images }) {
               src={image}
               alt={`Slide ${index}`}
               style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block',
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
                 margin: 0,
                 padding: 0,
-                verticalAlign: 'bottom'
+                verticalAlign: "bottom",
               }}
             />
           </div>

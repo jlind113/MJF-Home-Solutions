@@ -1,6 +1,4 @@
-// MUI Imports
 import { Box, Paper, Typography, Grid } from "@mui/material";
-
 import { SlickClick } from "./Carousel";
 import GradientDivider from "./GradientDivider";
 

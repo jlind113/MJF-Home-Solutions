@@ -1,4 +1,3 @@
-// MUI Imports
 import {
   Box,
   Button,
@@ -11,12 +10,9 @@ import {
   Paper,
   useColorScheme,
 } from "@mui/material";
-
-// MUI Icons Imports
 import Menu from "@mui/icons-material/Menu";
 import LightMode from "@mui/icons-material/LightMode";
 import DarkMode from "@mui/icons-material/DarkMode";
-
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router";
 import "../app.css";

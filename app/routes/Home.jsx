@@ -1,5 +1,4 @@
 import { Box, Stack } from "@mui/material";
-
 import HomeHero from "../components/HomeHero";
 import CardRow from "../components/CardRow";
 import About from "../components/About";
