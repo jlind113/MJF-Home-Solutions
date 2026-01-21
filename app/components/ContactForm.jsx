@@ -24,7 +24,7 @@ export default function ContactForm() {
       sx={{
         width: { xs: "90vw", sm: "80vw", md: "70vw", lg: "60vw", xl: "50vw" },
         height: "fit-content",
-        backgroundColor: "background.main",
+        backgroundColor: "background.light",
         marginY: { xs: "2vh", lg: "2vh" },
         paddingX: { xs: "1vw", lg: "2vw" },
       }}
@@ -53,7 +53,7 @@ export default function ContactForm() {
               label={"First Name"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main" }}
+              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -68,7 +68,7 @@ export default function ContactForm() {
               label={"Last Name"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main" }}
+              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -83,7 +83,7 @@ export default function ContactForm() {
               label={"Phone Number"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main" }}
+              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -98,7 +98,7 @@ export default function ContactForm() {
               label={"Email"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main" }}
+              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -112,7 +112,7 @@ export default function ContactForm() {
               label={"Street Address"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main" }}
+              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -126,7 +126,7 @@ export default function ContactForm() {
               label={"State"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main" }}
+              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -140,7 +140,7 @@ export default function ContactForm() {
               label={"Zip Code"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main" }}
+              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -155,7 +155,7 @@ export default function ContactForm() {
               label={"Preferred Date of Service"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main" }}
+              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -167,10 +167,11 @@ export default function ContactForm() {
             sx={{
               borderColor: "text.disabled",
               borderWidth: 1,
-              backgroundColor: "background.secondary",
+              backgroundColor: "background.main",
               paddingY: 1,
               paddingX: 2,
               marginTop: 1,
+              borderRadius: 1,
             }}
           >
             <Stack direction={"row"} justifyContent={"space-between"}>
@@ -218,7 +219,11 @@ export default function ContactForm() {
             fullWidth
             minRows={4}
             placeholder={"Add any additional comments here..."}
-            sx={{ backgroundColor: "background.main", marginTop: 1 }}
+            sx={{
+              backgroundColor: "background.main",
+              marginTop: 1,
+              borderRadius: 1,
+            }}
           />
         </Grid>
         <Grid size={12}>

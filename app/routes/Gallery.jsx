@@ -7,6 +7,32 @@ import Header from "../components/textItems/Header";
 import GradientDivider from "../components/GradientDivider";
 import BodyText from "../components/textItems/BodyText";
 
+export function meta() {
+  return [
+    { title: "Project Gallery - MJF Home Solutions Drywall & Construction Portfolio Utah" },
+    { 
+      name: "description", 
+      content: "Browse our project gallery showcasing professional drywall installation, carpentry, flooring, and custom construction work throughout Utah. See the quality of our craftsmanship." 
+    },
+    { 
+      name: "keywords", 
+      content: "drywall gallery Utah, construction portfolio, carpentry examples, flooring projects, before after drywall, professional construction gallery, Utah home improvement examples" 
+    },
+    { name: "author", content: "Jack Lindgren" },
+    { property: "og:title", content: "Project Gallery - MJF Home Solutions Construction Portfolio" },
+    { 
+      property: "og:description", 
+      content: "Explore our gallery of completed drywall, carpentry, and flooring projects throughout Utah. Quality craftsmanship and professional results." 
+    },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: "https://mjf-home-solutions.netlify.app/Gallery" },
+    { property: "og:image", content: "https://mjf-home-solutions.netlify.app/Photos/Hero/kitchenRemodel.webp" },
+    { name: "robots", content: "index, follow" },
+    { name: "geo.region", content: "UT" },
+    { name: "geo.placename", content: "Bountiful, Utah" }
+  ];
+}
+
 export default function Gallery() {
   const imageData = useMemo(() => {
     const allImages = [];
@@ -52,7 +78,7 @@ export default function Gallery() {
   return (
     <Box
       sx={{
-        backgroundColor: "background.default",
+        backgroundColor: "background.dark",
         minHeight: "100vh",
         paddingY: { xs: 3, sm: 4, md: 6 },
         paddingX: { xs: 2, sm: 3 },

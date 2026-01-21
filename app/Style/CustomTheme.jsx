@@ -23,6 +23,7 @@ export const theme = createTheme({
           light: "#FFFFFF",
           main: "#F2F2F2",
           dark: "#E5E5E5",
+          navbar: "#FFFFFF",
         },
         text: {
           primary: "#1f2937",
@@ -52,6 +53,7 @@ export const theme = createTheme({
           light: "#373737",
           main: "#212121",
           dark: "#0F0F0F",
+          navbar: "#0F0F0F",
         },
         text: {
           primary: "#e9eef1",

@@ -100,6 +100,7 @@ export default function Navbar() {
         >
           <IconButton
             onClick={handleThemeToggle}
+            aria-label='Toggle theme'
             sx={{ "&:hover": { backgroundColor: "transparent" } }}
           >
             <ThemeIcon
@@ -122,7 +123,7 @@ export default function Navbar() {
       variant="outlined"
       sx={{
         width: "100%",
-        backgroundColor: "background.secondary",
+        backgroundColor: "background.navbar",
         position: "sticky",
         zIndex: 1000,
         borderTopWidth: 0,
@@ -203,6 +204,7 @@ export default function Navbar() {
           ))}
 
           <IconButton
+            aria-label='Toggle theme'
             onClick={handleThemeToggle}
             sx={{ "&:hover": { backgroundColor: "transparent" } }}
           >
