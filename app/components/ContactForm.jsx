@@ -49,7 +49,7 @@ export default function ContactForm() {
               required
               type={"text"}
               variant="outlined"
-              name={"firstname"}
+              name={"firstName"}
               label={"First Name"}
               size="small"
               fullWidth
@@ -108,7 +108,7 @@ export default function ContactForm() {
             <TextField
               type={"text"}
               variant="outlined"
-              name={""}
+              name={"street"}
               label={"Street Address"}
               size="small"
               fullWidth
