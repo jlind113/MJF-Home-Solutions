@@ -12,13 +12,13 @@ export const serviceAreas = [
 ];
 
 export const hours = [
-  { day: "Sun", time: "09:00 AM - 9:00 PM" },
-  { day: "Mon", time: "09:00 AM - 05:00 PM" },
-  { day: "Tue", time: "09:00 AM - 05:00 PM" },
-  { day: "Wed", time: "09:00 AM - 05:00 PM" },
-  { day: "Thu", time: "09:00 AM - 05:00 PM" },
-  { day: "Fri", time: "09:00 AM - 05:00 PM" },
-  { day: "Sat", time: "09:00 AM - 05:00 PM" },
+  { day: "Sun", time: "9:00 AM - 5:00 PM" },
+  { day: "Mon", time: "9:00 AM - 5:00 PM" },
+  { day: "Tue", time: "9:00 AM - 5:00 PM" },
+  { day: "Wed", time: "9:00 AM - 5:00 PM" },
+  { day: "Thu", time: "9:00 AM - 5:00 PM" },
+  { day: "Fri", time: "9:00 AM - 5:00 PM" },
+  { day: "Sat", time: "9:00 AM - 5:00 PM" },
 ];
 
 export const contactInfo = {
