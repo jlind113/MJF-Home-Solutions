@@ -1,35 +1,9 @@
-import { Typography, Stack, Box, Grid } from "@mui/material";
-import ServiceCard from "./ServiceCard";
-import { entranceAnims } from "../Style/Animations";
-import { NavLink } from "react-router";
+import { Stack, Box, Grid } from "@mui/material";
 import { services } from "../Util/ServiceInfo";
 import Header from "./textItems/Header";
 import GradientDivider from "./GradientDivider";
-
-function ShowcaseItem({ image, text, alt }) {
-  return (
-    <Grid
-      size={{ xs: 12, md: 6, lg: 4 }}
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <Box
-        sx={{
-          ...entranceAnims.fadeUpOnMount,
-        }}
-      >
-        <NavLink
-          to={"/Services"}
-          style={{ textDecoration: "none", width: "100%" }}
-        >
-          <ServiceCard imgSource={image} serviceText={text} alt={alt} />
-        </NavLink>
-      </Box>
-    </Grid>
-  );
-}
+import ShowcaseItem from './ShowcaseItem';
+import BodyText from "./textItems/BodyText";
 
 export default function ServiceShowcase() {
   return (
@@ -57,18 +31,11 @@ export default function ServiceShowcase() {
         >
           <Header text={"Our Services"} />
           <GradientDivider />
-          <Typography
-            variant="body1"
-            sx={{
-              color: "text.secondary",
-              fontSize: { xs: "1rem", sm: "1.1rem" },
-              maxWidth: 600,
-              marginTop: 2,
-            }}
-          >
-            Professional construction services tailored to meet your residential
-            and commercial needs
-          </Typography>
+
+          <Box sx={{ maxWidth: "500px" }}>
+            <BodyText text={"Professional construction services tailored to meet your residential and commercial needs"} />
+          </Box>
+
         </Box>
 
         <Grid

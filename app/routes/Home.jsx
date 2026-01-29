@@ -3,6 +3,7 @@ import HomeHero from "../components/HomeHero";
 import CardRow from "../components/CardRow";
 import About from "../components/About";
 import ServiceShowcase from "../components/ServiceShowcase";
+import ReviewSection from '../components/reviews/ReviewSection';
 
 export function meta() {
   return [
@@ -52,6 +53,7 @@ export default function Home() {
         <CardRow />
         <About />
         <ServiceShowcase />
+        <ReviewSection />
         <Box width={"100%"} height={"1vh"} />
       </Stack>
     </Box>
