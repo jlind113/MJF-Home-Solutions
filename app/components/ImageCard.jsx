@@ -1,7 +1,7 @@
 import { Box, Paper, Dialog, IconButton, Typography } from "@mui/material";
 import { Close, ZoomIn } from "@mui/icons-material";
 import { useState } from "react";
-import { entranceAnims, hoverAnims } from '../Style/Animations';
+import { entranceAnims, hoverAnims } from "../Style/Animations";
 
 export default function ImageCard({ src, title, alt }) {
   const [open, setOpen] = useState(false);
@@ -21,7 +21,7 @@ export default function ImageCard({ src, title, alt }) {
           cursor: "pointer",
           position: "relative",
           borderRadius: 2,
-          ...hoverAnims.scale
+          ...hoverAnims.scale,
         }}
         onClick={handleOpen}
         onMouseEnter={() => setIsHovered(true)}
@@ -49,19 +49,18 @@ export default function ImageCard({ src, title, alt }) {
               left: 0,
               right: 0,
               bottom: 0,
-              background:
-                "linear-gradient(135deg, #29a2ffb3, #cc5a28b3)",
+              background: "linear-gradient(135deg, #29a2ffb3, #cc5a28b3)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              ...entranceAnims.fadeIn
+              ...entranceAnims.fadeIn,
             }}
           >
             <ZoomIn
               sx={{
                 color: "white",
                 fontSize: "2rem",
-                ...entranceAnims.fadeUpOnMount
+                ...entranceAnims.fadeUpOnMount,
               }}
             />
           </Box>
@@ -76,7 +75,7 @@ export default function ImageCard({ src, title, alt }) {
               right: 0,
               background: "rgba(0, 0, 0, 0.8)",
               padding: 1,
-              ...hoverAnims.imageCardHover
+              ...hoverAnims.imageCardHover,
             }}
           >
             <Typography
@@ -112,7 +111,7 @@ export default function ImageCard({ src, title, alt }) {
             },
           },
         }}
-        sx={{...entranceAnims.fadeIn}}
+        sx={{ ...entranceAnims.fadeIn }}
       >
         <Box
           sx={{
@@ -131,7 +130,7 @@ export default function ImageCard({ src, title, alt }) {
               right: 8,
               color: "white",
               backgroundColor: "#000000",
-              ...hoverAnims.linkHover
+              ...hoverAnims.linkHover,
             }}
           >
             <Close />

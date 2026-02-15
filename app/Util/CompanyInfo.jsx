@@ -22,6 +22,6 @@ export const hours = [
 ];
 
 export const contactInfo = {
-    phone: "(801) 300-5579",
-    email: "Mattford51@yahoo.com"
+  phone: "(801) 300-5579",
+  email: "Mattford51@yahoo.com",
 };

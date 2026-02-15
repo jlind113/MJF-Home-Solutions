@@ -4,15 +4,16 @@ import CTASmall from "./CTASmall";
 import GradientDivider from "./GradientDivider";
 import Header from "./textItems/Header";
 import BodyText from "./textItems/BodyText";
+import { HomeInfo } from "../Util/HomeInfo";
 
 export default function HomeHero() {
   const carouselImages = [
-    "/Photos/Hero/customDrywall.webp",
-    "/Photos/Hero/drywallInstallation.webp",
-    "/Photos/Hero/kitchenRemodel.webp",
-    "/Photos/Hero/kitchenRemodel-2.webp",
-    "/Photos/Hero/shelvingCarpentry.webp",
-    "/Photos/Hero/stairsCarpentry.webp",
+    HomeInfo.hero.images[0].src,
+    HomeInfo.hero.images[1].src,
+    HomeInfo.hero.images[2].src,
+    HomeInfo.hero.images[3].src,
+    HomeInfo.hero.images[4].src,
+    HomeInfo.hero.images[5].src,
   ];
 
   return (
@@ -40,24 +41,18 @@ export default function HomeHero() {
             paddingY: { xs: "2vh", lg: 0 },
           }}
         >
-          <Header text={"MJF Home Solutions"} />
+          <Header text={HomeInfo.hero.text.header} />
 
           <GradientDivider />
-          
+
           <Box sx={{ marginY: "1vh", maxWidth: 520, textAlign: "center" }}>
-            <BodyText
-              text={
-                "Premier drywall experts serving the Bountiful area with exceptional " +
-                "installation, repair services, and customer satisfaction for over a " +
-                "decade."
-              }
-            />
+            <BodyText text={HomeInfo.hero.text.body}/>
           </Box>
 
           <Box>
             <CTASmall />
           </Box>
-
+          
         </Box>
         <Box
           sx={{

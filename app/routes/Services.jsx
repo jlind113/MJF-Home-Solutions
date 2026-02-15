@@ -8,37 +8,12 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import {services} from "../Util/ServiceInfo";
+import { services } from "../Util/ServiceInfo";
 import ServiceItem from "../components/ServiceItem";
+import { ServiceMeta } from "../Util/MetaInfo";
 
 export function meta() {
-  return [
-    { title: "Services - MJF Home Solutions Drywall, Carpentry & Flooring Services Utah" },
-    { 
-      name: "description", 
-      content: "Comprehensive home improvement services including drywall installation & repair, custom carpentry, flooring, ceiling texture application. Licensed professionals serving Utah communities." 
-    },
-    { 
-      name: "keywords", 
-      content: "drywall installation Utah, drywall repair services, carpentry contractors, flooring installation, ceiling texture, custom drywall work, home improvement services Utah, construction contractors" 
-    },
-    { name: "author", content: "Jack Lindgren" },
-    { property: "og:title", content: "Professional Home Improvement Services - MJF Home Solutions Utah" },
-    { 
-      property: "og:description", 
-      content: "Expert drywall, carpentry, and flooring services in Utah. Custom installations, repairs, and finishing work by licensed professionals." 
-    },
-    { property: "og:type", content: "website" },
-    { property: "og:url", content: "https://mjf-home-solutions.netlify.app/Services" },
-    { property: "og:image", content: "https://mjf-home-solutions.netlify.app/Photos/1100x800/drywallInstall.webp" },
-    { name: "geo.region", content: "UT" },
-    { name: "geo.placename", content: "Bountiful, Utah" },
-    { name: "ICBM", content: "40.889389, -111.880768" },
-    { name: "robots", content: "index, follow" },
-    { name: "contact", content: "(801) 300-5579" },
-    { name: "service-type", content: "home improvement, drywall, carpentry, flooring" },
-    { name: "service-area", content: "Utah, Bountiful, Ogden, Layton, Kaysville" }
-  ];
+  return ServiceMeta;
 }
 
 export default function Services() {
@@ -51,8 +26,8 @@ export default function Services() {
     services.finishing,
     services.installation,
     services.repair,
-    services.flooring
-  ]
+    services.flooring,
+  ];
 
   function handleChange(event) {
     setService(event.target.value);

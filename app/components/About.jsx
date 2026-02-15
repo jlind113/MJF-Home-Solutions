@@ -3,6 +3,7 @@ import GradientDivider from "./GradientDivider";
 import FacebookLink from "./FacebookLink";
 import Header from "./textItems/Header";
 import BodyText from "./textItems/BodyText";
+import { HomeInfo } from "../Util/HomeInfo";
 
 export default function About() {
   return (
@@ -37,8 +38,8 @@ export default function About() {
           }}
         >
           <img
-            src="/Photos/Hero/kitchenRemodel-2.webp"
-            alt="Drywall work"
+            src={HomeInfo.about.image.src}
+            alt={HomeInfo.about.image.alt}
             loading="lazy"
             style={{
               height: "100%",
@@ -71,16 +72,7 @@ export default function About() {
               maxWidth: { xs: 500, md: 800 },
             }}
           >
-            <BodyText
-              text={
-                "At MJF Home Solutions, we are a trusted drywall company proudly " +
-                "serving Bountiful, UT, and surrounding areas. With our team of " +
-                "skilled professionals, we provide top-quality drywall installation " +
-                "and repair services to meet all your needs. Count on us for reliable " +
-                "workmanship and exceptional customer service to enhance your home's " +
-                "appeal."
-              }
-            />
+            <BodyText text={HomeInfo.about.text} />
           </Box>
 
           <Box
