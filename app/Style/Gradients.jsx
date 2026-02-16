@@ -15,3 +15,9 @@ export const bottomToTop = {
         background: "linear-gradient(to top, #1f7fcc 0%, #1f7eccbe 15%, transparent 30%)"
     }
 }
+
+export const diagonal = {
+    blackToBlue: {
+        background: "linear-gradient(176.4deg, #000000d5 40%, #29a2ffd5 200%)",
+    }
+}

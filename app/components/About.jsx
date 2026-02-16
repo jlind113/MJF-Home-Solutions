@@ -12,7 +12,7 @@ export default function About() {
       variant="outlined"
       sx={{
         width: "100%",
-        backgroundColor: "transparent",
+        backgroundColor: "background.main",
         borderLeftWidth: 0,
         borderRightWidth: 0,
       }}

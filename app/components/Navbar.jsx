@@ -18,6 +18,8 @@ import { NavLink, useLocation } from "react-router";
 import "../app.css";
 import { hoverAnims } from "../Style/Animations";
 
+import { diagonal } from '../Style/Gradients';
+
 function checkLocation(link, location) {
   if (link === location.pathname) {
     return "primary.light";

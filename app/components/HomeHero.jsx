@@ -22,7 +22,7 @@ export default function HomeHero() {
       variant="outlined"
       sx={{
         width: "100%",
-        backgroundColor: "transparent",
+        backgroundColor: "background.main",
         borderLeftWidth: 0,
         borderRightWidth: 0,
         borderTopWidth: 0,

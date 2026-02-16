@@ -71,7 +71,7 @@ export default function ReviewCard({
         <Box>
           <Typography
             variant="body1"
-            sx={{ color: "text.primary", textAlign: "center" }}
+            sx={{ color: "text.primary", textAlign: "center", fontSize: "1.1rem" }}
           >
             {review}
           </Typography>
@@ -85,14 +85,14 @@ export default function ReviewCard({
           >
             <Box>
               <Typography
-                variant="body2"
-                sx={{ color: "text.primary", textAlign: "center" }}
+                variant="body1"
+                sx={{ color: "text.primary", textAlign: "left" }}
               >
                 {name}
               </Typography>
               <Typography
-                variant="body1"
-                sx={{ color: "text.primary", textAlign: "center" }}
+                variant="body2"
+                sx={{ color: "text.primary", textAlign: "left" }}
               >
                 {location}
               </Typography>

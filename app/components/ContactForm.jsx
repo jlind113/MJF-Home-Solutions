@@ -13,11 +13,12 @@ import {
   Button,
 } from "@mui/material";
 import { hoverAnims } from "../Style/Animations";
+import Header from "./textItems/Header";
 
 export default function ContactForm() {
   return (
     <Paper
-      variant='outlined'
+      variant="outlined"
       elevation={0}
       component={"form"}
       name="contact"
@@ -26,22 +27,20 @@ export default function ContactForm() {
         width: { xs: "90vw", sm: "80vw", md: "70vw", lg: "60vw", xl: "50vw" },
         height: "fit-content",
         backgroundColor: "background.main",
-        marginY: { xs: "2vh", lg: "2vh" },
-        paddingX: { xs: "1vw", lg: "2vw" },
+        marginY: { xs: "2em", lg: "2em" },
+        padding: { xs: "1em", lg: "2em" },
       }}
     >
       <Grid
         container
         rowSpacing={2}
         columnSpacing={3}
-        sx={{ marginY: "1vh", marginX: "1vw" }}
+        sx={{ marginY: "1em", marginX: "1em" }}
       >
         <input type="hidden" name="form-name" value="contact" />
 
         <Grid size={12}>
-          <Typography variant="h4" textAlign={"center"}>
-            Get In Touch
-          </Typography>
+          <Header text={"Get In Touch"} />
         </Grid>
 
         <Grid size={6}>
@@ -169,9 +168,9 @@ export default function ContactForm() {
               borderColor: "text.disabled",
               borderWidth: 1,
               backgroundColor: "background.light",
-              paddingY: 1,
-              paddingX: 2,
-              marginTop: 1,
+              paddingY: "0.5em",
+              paddingX: "2em",
+              marginTop: "1em",
               borderRadius: 1,
             }}
           >
@@ -222,7 +221,7 @@ export default function ContactForm() {
             placeholder={"Add any additional comments here..."}
             sx={{
               backgroundColor: "background.light",
-              marginTop: 1,
+              marginTop: "1em",
               borderRadius: 1,
             }}
           />
@@ -261,7 +260,7 @@ export default function ContactForm() {
               variant="contained"
               sx={{
                 width: "40%",
-                marginTop: "1vh",
+                marginTop: "1em",
                 backgroundColor: "primary.main",
                 ...hoverAnims.scale,
               }}
