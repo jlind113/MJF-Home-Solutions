@@ -17,14 +17,15 @@ import { hoverAnims } from "../Style/Animations";
 export default function ContactForm() {
   return (
     <Paper
-      elevation={4}
+      variant='outlined'
+      elevation={0}
       component={"form"}
       name="contact"
       method="post"
       sx={{
         width: { xs: "90vw", sm: "80vw", md: "70vw", lg: "60vw", xl: "50vw" },
         height: "fit-content",
-        backgroundColor: "background.light",
+        backgroundColor: "background.main",
         marginY: { xs: "2vh", lg: "2vh" },
         paddingX: { xs: "1vw", lg: "2vw" },
       }}
@@ -53,7 +54,7 @@ export default function ContactForm() {
               label={"First Name"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
+              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -68,7 +69,7 @@ export default function ContactForm() {
               label={"Last Name"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
+              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -83,7 +84,7 @@ export default function ContactForm() {
               label={"Phone Number"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
+              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -98,7 +99,7 @@ export default function ContactForm() {
               label={"Email"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
+              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -112,7 +113,7 @@ export default function ContactForm() {
               label={"Street Address"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
+              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -126,7 +127,7 @@ export default function ContactForm() {
               label={"State"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
+              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -140,7 +141,7 @@ export default function ContactForm() {
               label={"Zip Code"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
+              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -155,7 +156,7 @@ export default function ContactForm() {
               label={"Preferred Date of Service"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.main", borderRadius: 1 }}
+              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
             />
           </Tooltip>
         </Grid>
@@ -167,7 +168,7 @@ export default function ContactForm() {
             sx={{
               borderColor: "text.disabled",
               borderWidth: 1,
-              backgroundColor: "background.main",
+              backgroundColor: "background.light",
               paddingY: 1,
               paddingX: 2,
               marginTop: 1,
@@ -220,7 +221,7 @@ export default function ContactForm() {
             minRows={4}
             placeholder={"Add any additional comments here..."}
             sx={{
-              backgroundColor: "background.main",
+              backgroundColor: "background.light",
               marginTop: 1,
               borderRadius: 1,
             }}
@@ -228,12 +229,20 @@ export default function ContactForm() {
         </Grid>
         <Grid size={12}>
           <Divider sx={{ width: "100%", backgroundColor: "text.disabled" }} />
-          <Box sx={{ width: "100%" }}>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
             <Typography
               variant="body2"
               fontSize={13}
               color="text.secondary"
-              marginY={"1%"}
+              width={"90%"}
+              marginY={"1em"}
             >
               By providing your phone number, you agree to receive text messages
               (SMS) from MJF Home Solutions. Message and data rates may apply.

@@ -2,6 +2,7 @@ import { Box, Paper, Dialog, IconButton, Typography } from "@mui/material";
 import { Close, ZoomIn } from "@mui/icons-material";
 import { useState } from "react";
 import { entranceAnims, hoverAnims } from "../Style/Animations";
+import { leftToRight } from '../Style/Gradients';
 
 export default function ImageCard({ src, title, alt }) {
   const [open, setOpen] = useState(false);
@@ -49,7 +50,7 @@ export default function ImageCard({ src, title, alt }) {
               left: 0,
               right: 0,
               bottom: 0,
-              background: "linear-gradient(135deg, #29a2ffb3, #cc5a28b3)",
+              ...leftToRight.blueToOrange,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -73,7 +74,7 @@ export default function ImageCard({ src, title, alt }) {
               bottom: 0,
               left: 0,
               right: 0,
-              background: "rgba(0, 0, 0, 0.8)",
+              background: "#000000cc",
               padding: 1,
               ...hoverAnims.imageCardHover,
             }}
@@ -107,7 +108,7 @@ export default function ImageCard({ src, title, alt }) {
           },
           backdrop: {
             sx: {
-              backgroundColor: "rgba(0, 0, 0, 0.9)",
+              backgroundColor: "#000000e6",
             },
           },
         }}

@@ -12,7 +12,7 @@ export default function ServiceShowcase() {
         width: "100%",
         paddingY: { xs: 3, sm: 4, md: 6 },
         paddingX: { xs: 2, sm: 3, md: 4 },
-        backgroundColor: "background.main",
+        backgroundColor: "transparent",
       }}
     >
       <Stack

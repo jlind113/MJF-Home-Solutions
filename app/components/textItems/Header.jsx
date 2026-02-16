@@ -8,7 +8,6 @@ export default function Header({ text }) {
         color: "text.primary",
         textAlign: "center",
         fontSize: { xs: "2.2rem", sm: "3.2rem" },
-        textWrap: "nowrap",
         marginY: "1vh",
       }}
     >

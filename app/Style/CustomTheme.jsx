@@ -22,7 +22,7 @@ export const theme = createTheme({
         background: {
           light: "#FFFFFF",
           main: "#F2F2F2",
-          dark: "#E5E5E5",
+          dark: "#c2c2c2",
           navbar: "#FFFFFF",
         },
         text: {
@@ -51,7 +51,7 @@ export const theme = createTheme({
         },
         background: {
           light: "#373737",
-          main: "#212121",
+          main: "#031329d8",
           dark: "#0F0F0F",
           navbar: "#0F0F0F",
         },

@@ -36,13 +36,13 @@ export const links = () => [
 
 function AppContent({ children }) {
   return (
-    <>
+    <div>
       <Navbar />
       {children}
       <ScrollRestoration />
       <Scripts />
       <Footer />
-    </>
+    </div>
   );
 }
 
@@ -56,7 +56,7 @@ export function Layout({ children }) {
         <Links />
       </head>
       <body>
-        <ThemeProvider theme={theme} defaultMode='system'>
+        <ThemeProvider theme={theme} defaultMode="system">
           <AppContent>{children}</AppContent>
         </ThemeProvider>
       </body>

@@ -1,37 +1,32 @@
 import ReviewCard from "./ReviewCard";
 import { Box, Stack } from "@mui/material";
+import { Reviews } from "../../Util/ReviewInfo";
 
 export default function ReviewSection() {
   return (
     <Box
       sx={{
-        backgroundColor: "background.main",
+        backgroundColor: "transparent",
         width: "100%",
-        paddingY: "2rem",
+        padding: "1rem",
       }}
     >
-      <Stack direction={"row"} spacing={4} justifyContent={"center"}>
-        <ReviewCard
-          review={"Review Here"}
-          name={"Name Here"}
-          location={"Location"}
-          starCount={5}
-          link={"https://youtu.be/dQw4w9WgXcQ?si=hHPD4B8cbT5aIm7W"}
-        />
-        <ReviewCard
-          review={"Review Here"}
-          name={"Name Here"}
-          location={"Location"}
-          starCount={3}
-          link={"https://youtu.be/dQw4w9WgXcQ?si=hHPD4B8cbT5aIm7W"}
-        />
-        <ReviewCard
-          review={"Review Here"}
-          name={"Name Here"}
-          location={"Location"}
-          starCount={4}
-          link={"https://youtu.be/dQw4w9WgXcQ?si=hHPD4B8cbT5aIm7W"}
-        />
+      <Stack
+        direction={{ xs: "column", md: "row" }}
+        spacing={{ xs: 2, md: 4 }}
+        sx={{ justifyContent: "center", alignItems: "center", padding: "1em" }}
+      >
+        {Reviews.map((review, i) => (
+          <ReviewCard
+            key={i}
+            review={review.review}
+            name={review.name}
+            location={review.location}
+            starCount={review.starCount}
+            link={review.link}
+            linkIcon={review.linkIcon}
+          />
+        ))}
       </Stack>
     </Box>
   );

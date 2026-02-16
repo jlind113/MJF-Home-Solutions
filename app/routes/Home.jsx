@@ -5,6 +5,7 @@ import About from "../components/About";
 import ServiceShowcase from "../components/ServiceShowcase";
 import ReviewSection from "../components/reviews/ReviewSection";
 import { HomeMeta } from "../Util/MetaInfo";
+import FAQSection from '../components/FAQ/FAQSection';
 
 export function meta() {
   return HomeMeta;
@@ -30,6 +31,7 @@ export default function Home() {
         <About />
         <ServiceShowcase />
         <ReviewSection />
+        <FAQSection />
         <Box width={"100%"} height={"1vh"} />
       </Stack>
     </Box>

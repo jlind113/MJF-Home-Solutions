@@ -13,7 +13,7 @@ function CompanyLink({link, text}) {
         width: "100%",
         display: "flex",
         flexDirection: { xs: "row", md: "column" },
-        justifyContent: "center",
+        justifyContent: "center"
       }}
     >
       <NavLink to={link} style={{ width: "fit-content" }}>
@@ -67,7 +67,7 @@ export default function Footer() {
       variant="outlined"
       sx={{
         width: "100%",
-        backgroundColor: "background.dark",
+        backgroundColor: "background.navbar",
         borderLeftWidth: 0,
         borderRightWidth: 0,
         borderBottomWidth: 0,

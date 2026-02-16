@@ -5,10 +5,11 @@ import GradientDivider from "./GradientDivider";
 export default function ServiceItem({ name, subtext, description, images }) {
   return (
     <Paper
-      square
+      
       variant="outlined"
       sx={{
-        backgroundColor: "background.light",
+        backgroundColor: "background.main",
+        borderColor: "primary.main",
         paddingX: "2vw",
         paddingY: "2vh",
       }}

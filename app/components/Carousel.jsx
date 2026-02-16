@@ -11,15 +11,11 @@ function NextArrow(props) {
     <div
       className={className}
       style={{
+        display: "block",
+        background: "#004175a8",
+        borderRadius: 10,
+        scale: 1.2,
         ...style,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "gray",
-        borderRadius: 12,
-        width: "1.5rem",
-        height: "1.5rem",
       }}
       onClick={onClick}
     />
@@ -32,15 +28,11 @@ function PrevArrow(props) {
     <div
       className={className}
       style={{
+        display: "block",
+        background: "#004175a8",
+        borderRadius: 10,
+        scale: 1.2,
         ...style,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "gray",
-        borderRadius: 12,
-        width: "1.5rem",
-        height: "1.5rem",
       }}
       onClick={onClick}
     />
@@ -59,7 +51,7 @@ export function SlickClick({ images }) {
   };
 
   return (
-    <Box
+    <div
       className="slider-container"
       sx={{
         "& .slick-slider": {
@@ -82,7 +74,7 @@ export function SlickClick({ images }) {
     >
       <Slider {...settings}>
         {images.map((image, idx) => (
-          <Box key={idx} sx={{ lineHeight: 0 }}>
+          <div key={idx} style={{ lineHeight: 0, margin: 0, padding: 0 }}>
             <img
               src={image.path}
               alt={image.alt}
@@ -96,10 +88,10 @@ export function SlickClick({ images }) {
                 verticalAlign: "bottom",
               }}
             />
-          </Box>
+          </div>
         ))}
       </Slider>
-    </Box>
+    </div>
   );
 }
 
