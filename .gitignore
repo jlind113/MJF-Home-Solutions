@@ -10,7 +10,10 @@
 .netlify
 
 # .vscode folder
+.vscode
 mcp.json
+extensions.json
+settings.json
 
 # Test folder
 Test
