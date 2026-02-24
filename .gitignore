@@ -10,7 +10,7 @@
 .netlify
 
 # .vscode folder
-.vscode
+/.vscode
 mcp.json
 extensions.json
 settings.json
