@@ -7,23 +7,32 @@ export default function ShowcaseItem({ image, text, alt }) {
   return (
     <Grid
       size={{ xs: 12, md: 6, lg: 4 }}
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-      }}
+      sx={style.gridContainer}
     >
       <Box
-        sx={{
-          ...entranceAnims.fadeUpOnMount,
-        }}
+        sx={style.boxContainer}
       >
         <NavLink
           to={"/Services"}
-          style={{ textDecoration: "none", width: "100%" }}
+          style={style.navLink}
         >
           <ServiceCard imgSource={image} serviceText={text} alt={alt} />
         </NavLink>
       </Box>
     </Grid>
   );
+}
+
+const style = {
+  gridContainer: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  boxContainer: {
+    ...entranceAnims.fadeUpOnMount
+  },
+  navLink: {
+    textDecoration: "none", 
+    width: "100%"
+  }
 }

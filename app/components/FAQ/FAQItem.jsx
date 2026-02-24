@@ -6,23 +6,34 @@ import SubText from "../textItems/SubText";
 export default function FAQItem({ question, answer }) {
   return (
     <Accordion
-      sx={{
-        backgroundColor: "background.main",
-      }}
+      sx={style.accordionRoot}
     >
       <AccordionSummary
         expandIcon={<ExpandMore />}
         aria-controls="panel-content"
         id="panel-header"
-        sx={{ backgroundColor: "background.main" }}
+        sx={style.summary}
       >
         <BodyText text={question} />
       </AccordionSummary>
       <AccordionDetails
-        sx={{ borderTopWidth: "1px", borderColor: "primary.main" }}
+        sx={style.details}
       >
         <SubText text={answer} />
       </AccordionDetails>
     </Accordion>
   );
+}
+
+const style = {
+  accordionRoot: {
+    backgroundColor: "background.main",
+  },
+  summary: {
+    backgroundColor: "background.main",
+  },
+  details: {
+    borderTopWidth: "1px",
+    borderColor: "primary.main",
+  },
 }

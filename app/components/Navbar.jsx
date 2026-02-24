@@ -18,8 +18,6 @@ import { NavLink, useLocation } from "react-router";
 import "../app.css";
 import { hoverAnims } from "../Style/Animations";
 
-import { diagonal } from '../Style/Gradients';
-
 function checkLocation(link, location) {
   if (link === location.pathname) {
     return "primary.light";
@@ -32,17 +30,17 @@ export default function Navbar() {
   const { mode, setMode } = useColorScheme();
   const location = useLocation();
   const [openDrawer, setOpenDrawer] = useState(false);
-  
+
   // Change color theme
   const handleThemeToggle = () => {
     setMode(mode === "light" ? "dark" : "light");
   };
-  
+
   // Change nav drawer open and close state
   const toggleDrawer = (newState) => () => {
     setOpenDrawer(newState);
   };
-  
+
   // Change icon for the color theme button
   const ThemeIcon = mode === "light" ? LightMode : DarkMode;
 
@@ -59,31 +57,19 @@ export default function Navbar() {
   ];
 
   const DrawerList = (
-    <Box role="presentation" sx={{ width: { xs: "70vw", sm: "50vw" } }}>
+    <Box role="presentation" sx={style.drawerListBox}>
       <List>
         {navLinks.map((link) => (
-          <ListItem
-            key={link.destination}
-            sx={{ marginTop: "2vh"}}
-          >
+          <ListItem key={link.destination} sx={style.drawerListItem}>
             <ListItemButton
               onClick={toggleDrawer(false)}
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                ...hoverAnims.drawerLink,
-              }}
+              sx={style.drawerListButton}
             >
-              <NavLink to={link.destination} style={{ height: 0 }}>
+              <NavLink to={link.destination} style={style.drawerNavLink}>
                 <Typography
                   variant="button"
                   color={checkLocation(link.destination, location)}
-                  sx={{
-                    fontSize: "0.95rem",
-                    cursor: "pointer",
-                    ...hoverAnims.linkHover,
-                  }}
+                  sx={style.drawerTypography}
                 >
                   {link.text}
                 </Typography>
@@ -92,27 +78,13 @@ export default function Navbar() {
           </ListItem>
         ))}
 
-        <ListItem
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            marginTop: "2vh"
-          }}
-        >
+        <ListItem style={style.drawerIconListItem}>
           <IconButton
             onClick={handleThemeToggle}
-            aria-label='Toggle theme'
-            sx={{ "&:hover": { backgroundColor: "transparent" } }}
+            aria-label="Toggle theme"
+            sx={style.drawerIconButton}
           >
-            <ThemeIcon
-              sx={{
-                color: "text.primary",
-                width: "2rem",
-                height: "2rem",
-                ...hoverAnims.themeIcon,
-              }}
-            />
+            <ThemeIcon sx={style.drawerThemeIcon} />
           </IconButton>
         </ListItem>
       </List>
@@ -120,84 +92,33 @@ export default function Navbar() {
   );
 
   return (
-    <Paper
-      square
-      variant="outlined"
-      sx={{
-        width: "100%",
-        backgroundColor: "background.navbar",
-        position: "sticky",
-        zIndex: 1000,
-        borderTopWidth: 0,
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-        borderBottomWidth: 1,
-        borderBottomColor: "secondary.main",
-      }}
-    >
-      <Box
-        sx={{
-          maxWidth: "80vw",
-          margin: "auto",
-          paddingY: "1rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: 2,
-          }}
-        >
+    <Paper square variant="outlined" sx={style.rootPaper}>
+      <Box sx={style.rootBox}>
+        <Box sx={style.brandRootBox}>
           <NavLink to={"/"}>
             <img
               src="/Photos/Logos/Logo-2-250x150.webp"
               alt="MJF Home Solutions Logo"
-              style={{ height: "75px" }}
+              style={style.logo}
             />
           </NavLink>
-          <Box sx={{ display: { xs: "none", lg: "block" } }}>
+          <Box sx={style.brandBox}>
             <span>
-              <Typography
-                variant="h4"
-                sx={{
-                  color: "text.primary"
-                }}
-              >
+              <Typography variant="h4" sx={style.brandText}>
                 MJF Home Solutions
               </Typography>
             </span>
           </Box>
         </Box>
 
-        <Box
-          sx={{
-            display: { xs: "none", md: "flex" },
-            gap: 3,
-            alignItems: "center",
-          }}
-        >
+        <Box sx={style.navLinkBox}>
           {navLinks.map((link) => (
-            <Button
-              key={link.destination}
-              sx={{
-                ...hoverAnims.scale,
-                padding: 0,
-                backgroundColor: "transparent",
-              }}
-            >
+            <Button key={link.destination} sx={style.navLinkButton}>
               <NavLink to={link.destination}>
                 <Typography
                   variant="button"
                   color={checkLocation(link.destination, location)}
-                  sx={{
-                    fontSize: "1.1rem",
-                    cursor: "pointer",
-                    ...hoverAnims.linkHover
-                  }}
+                  sx={style.navLinkText}
                 >
                   {link.text}
                 </Typography>
@@ -206,31 +127,17 @@ export default function Navbar() {
           ))}
 
           <IconButton
-            aria-label='Toggle theme'
+            aria-label="Toggle theme"
             onClick={handleThemeToggle}
-            sx={{ "&:hover": { backgroundColor: "transparent" } }}
+            sx={style.themeIconButton}
           >
-            <ThemeIcon
-              sx={{
-                color: "text.primary",
-                width: "2rem",
-                height: "2rem",
-                ...hoverAnims.themeIcon,
-              }}
-            />
+            <ThemeIcon sx={style.themeIcon} />
           </IconButton>
         </Box>
 
-        <Box sx={{ display: { xs: "block", md: "none" } }}>
+        <Box sx={style.toggleBox}>
           <Button onClick={toggleDrawer(true)} aria-label="Open menu">
-            <Menu
-              sx={{
-                ...hoverAnims.scale,
-                color: "text.primary",
-                width: "2em",
-                height: "2em",
-              }}
-            />
+            <Menu sx={style.toggleMenu} />
           </Button>
           <Drawer
             open={openDrawer}
@@ -244,3 +151,107 @@ export default function Navbar() {
     </Paper>
   );
 }
+
+const style = {
+  drawerListBox: {
+    width: { xs: "70vw", sm: "50vw" },
+  },
+  drawerListItem: {
+    marginTop: "2vh",
+  },
+  drawerListButton: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    ...hoverAnims.drawerLink,
+  },
+  drawerNavLink: {
+    height: 0,
+  },
+  drawerTypography: {
+    fontSize: "0.95rem",
+    cursor: "pointer",
+    ...hoverAnims.linkHover,
+  },
+  drawerIconListItem: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    marginTop: "2vh",
+  },
+  drawerIconButton: {
+    "&:hover": { backgroundColor: "transparent" },
+  },
+  drawerThemeIcon: {
+    color: "text.primary",
+    width: "2rem",
+    height: "2rem",
+    ...hoverAnims.themeIcon,
+  },
+  rootPaper: {
+    width: "100%",
+    backgroundColor: "background.navbar",
+    position: "sticky",
+    zIndex: 1000,
+    borderTopWidth: 0,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: "secondary.main",
+  },
+  rootBox: {
+    maxWidth: "80vw",
+    margin: "auto",
+    paddingY: "1rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  brandRootBox: {
+    display: "flex",
+    alignItems: "center",
+    gap: 2,
+  },
+  logo: {
+    height: "75px",
+  },
+  brandBox: {
+    display: { xs: "none", lg: "block" },
+  },
+  brandText: {
+    color: "text.primary",
+  },
+  navLinkBox: {
+    display: { xs: "none", md: "flex" },
+    gap: 3,
+    alignItems: "center",
+  },
+  navLinkButton: {
+    ...hoverAnims.scale,
+    padding: 0,
+    backgroundColor: "transparent",
+  },
+  navLinkText: {
+    fontSize: "1.1rem",
+    cursor: "pointer",
+    ...hoverAnims.linkHover,
+  },
+  themeIconButton: {
+    "&:hover": { backgroundColor: "transparent" },
+  },
+  themeIcon: {
+    color: "text.primary",
+    width: "2rem",
+    height: "2rem",
+    ...hoverAnims.themeIcon,
+  },
+  toggleBox: {
+    display: { xs: "block", md: "none" },
+  },
+  toggleMenu: {
+    ...hoverAnims.scale,
+    color: "text.primary",
+    width: "2em",
+    height: "2em",
+  },
+};

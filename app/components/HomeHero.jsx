@@ -17,51 +17,53 @@ export default function HomeHero() {
   ];
 
   return (
-    <Paper
-      square
-      variant="outlined"
-      sx={{
-        width: "100%",
-        backgroundColor: "background.main",
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-        borderTopWidth: 0,
-        borderBottomWidth: 1,
-      }}
-    >
+    <Paper square variant="outlined" sx={style.root}>
       <Stack direction={{ xs: "column", lg: "row" }}>
-        <Box
-          sx={{
-            width: { xs: "100%", lg: "40%" },
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            paddingX: "2vw",
-            paddingY: { xs: "2vh", lg: 0 },
-          }}
-        >
+        <Box sx={style.textContainer}>
           <Header text={HomeInfo.hero.text.header} />
 
           <GradientDivider />
 
-          <Box sx={{ marginY: "1vh", maxWidth: 520, textAlign: "center" }}>
-            <BodyText text={HomeInfo.hero.text.body}/>
+          <Box sx={style.bodyTextContainer}>
+            <BodyText text={HomeInfo.hero.text.body} />
           </Box>
 
           <Box>
             <CTASmall />
           </Box>
-          
         </Box>
-        <Box
-          sx={{
-            width: { xs: "100%", lg: "60%" },
-          }}
-        >
+        <Box sx={style.carouselContainer}>
           <SlickAuto images={carouselImages} />
         </Box>
       </Stack>
     </Paper>
   );
 }
+
+const style = {
+  root: {
+    width: "100%",
+    backgroundColor: "background.main",
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    borderTopWidth: 0,
+    borderBottomWidth: 1,
+  },
+  textContainer: {
+    width: { xs: "100%", lg: "40%" },
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingX: "2vw",
+    paddingY: { xs: "2vh", lg: 0 },
+  },
+  bodyTextContainer: {
+    marginY: "1vh",
+    maxWidth: 520,
+    textAlign: "center",
+  },
+  carouselContainer: {
+    width: { xs: "100%", lg: "60%" },
+  },
+};

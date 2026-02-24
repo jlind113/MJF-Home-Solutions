@@ -22,14 +22,10 @@ export default function ReviewCard({
   function setIcon() {
     switch (linkIcon) {
       case "facebook":
-        return (
-          <FacebookRounded
-            sx={{ width: "100%", height: "100%", color: "primary.main" }}
-          />
-        );
+        return <FacebookRounded sx={style.facebookIcon} />;
       case "google":
         return (
-          <svg style={{ width: "100%", height: "100%" }}>
+          <svg style={style.googleIcon}>
             <path
               d="M20 10.2222C20 9.40001 19.9319 8.80001 19.7846 8.1778H10.2041V11.8889H15.8276C15.7143 12.8111 15.1021 14.2 13.7415 15.1333L13.7224 15.2575L16.7516 17.5573L16.9615 17.5778C18.8889 15.8333 20 13.2667 20 10.2222Z"
               fill="#3cba54"
@@ -52,16 +48,7 @@ export default function ReviewCard({
   }
 
   return (
-    <Paper
-      elevation={2}
-      sx={{
-        padding: "1em",
-        backgroundColor: "background.main",
-        borderRadius: 2,
-        width: { xs: "50%", md: "40%", lg: "30%" },
-        height: "100%",
-      }}
-    >
+    <Paper elevation={2} sx={style.paperRoot}>
       <Stack direction={"column"} spacing={2} alignItems={"center"}>
         <Box>
           <Stack direction={"row"} spacing={1.5}>
@@ -69,10 +56,7 @@ export default function ReviewCard({
           </Stack>
         </Box>
         <Box>
-          <Typography
-            variant="body1"
-            sx={{ color: "text.primary", textAlign: "center", fontSize: "1.1rem" }}
-          >
+          <Typography variant="body1" sx={style.reviewText}>
             {review}
           </Typography>
         </Box>
@@ -84,23 +68,14 @@ export default function ReviewCard({
             alignItems={"center"}
           >
             <Box>
-              <Typography
-                variant="body1"
-                sx={{ color: "text.primary", textAlign: "left" }}
-              >
+              <Typography variant="body1" sx={style.reviewSubtext}>
                 {name}
               </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "text.primary", textAlign: "left" }}
-              >
+              <Typography variant="body2" sx={style.reviewSubtext}>
                 {location}
               </Typography>
             </Box>
-            <a
-              href={link}
-              style={{ padding: 0, width: "2rem", height: "2rem" }}
-            >
+            <a href={link} style={style.reviewLink}>
               {setIcon()}
             </a>
           </Stack>
@@ -109,3 +84,40 @@ export default function ReviewCard({
     </Paper>
   );
 }
+
+const style = {
+  paperRoot: {
+    padding: "1em",
+    backgroundColor: "background.main",
+    borderRadius: 2,
+    width: { xs: "50%", md: "40%", lg: "30%" },
+    height: { xs: "50%", md: "40%", lg: "30%" },
+    minWidth: "250px",
+    minHeight: "250px",
+    maxWidth: "500px",
+    maxHeight: "500px",
+  },
+  reviewText: {
+    color: "text.primary",
+    textAlign: "left",
+    fontSize: "1.1rem",
+  },
+  reviewSubtext: {
+    color: "text.primary",
+    textAlign: "left",
+  },
+  reviewLink: {
+    padding: 0,
+    width: "2rem",
+    height: "2rem",
+  },
+  facebookIcon: {
+    width: "100%",
+    height: "100%",
+    color: "primary.main",
+  },
+  googleIcon: {
+    width: "100%",
+    height: "100%",
+  },
+};

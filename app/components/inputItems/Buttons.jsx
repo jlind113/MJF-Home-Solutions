@@ -8,19 +8,17 @@ export function CTAButton({ link, text }) {
       component={Link}
       to={link}
       variant="contained"
-      sx={{
-        ...hoverAnims.scale,
-        ...entranceAnims.fadeUpOnMount,
-        ...styles.CTAButton,
-      }}
+      sx={style.CTAButton}
     >
       {text}
     </Button>
   );
 }
 
-const styles = {
+const style = {
   CTAButton: {
+    ...hoverAnims.scale,
+    ...entranceAnims.fadeUpOnMount,
     paddingX: { xs: "1.5rem", lg: "2rem" },
     paddingY: { xs: "0.6rem", lg: "0.8rem" },
     fontSize: { xs: "1rem", lg: "1.2rem" },

@@ -12,9 +12,15 @@ export default function Contact() {
       direction={"column"}
       justifyContent={"center"}
       alignItems={"center"}
-      sx={{ backgroundColor: "background.dark" }}
+      sx={style.stack}
     >
       <ContactForm />
     </Stack>
   );
+}
+
+const style = {
+  stack: {
+    backgroundColor: "background.dark"
+  }
 }

@@ -8,12 +8,7 @@ import BodyText from "./textItems/BodyText";
 export default function ServiceShowcase() {
   return (
     <Box
-      sx={{
-        width: "100%",
-        paddingY: { xs: 3, sm: 4, md: 6 },
-        paddingX: { xs: 2, sm: 3, md: 4 },
-        backgroundColor: "transparent",
-      }}
+      sx={style.boxContainer}
     >
       <Stack
         direction="column"
@@ -21,18 +16,12 @@ export default function ServiceShowcase() {
         alignItems="center"
       >
         <Box
-          sx={{
-            textAlign: "center",
-            position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
+          sx={style.headerContainer}
         >
           <Header text={"Our Services"} />
           <GradientDivider />
 
-          <Box sx={{ maxWidth: "500px" }}>
+          <Box sx={style.bodyTextContainer}>
             <BodyText text={"Professional construction services tailored to meet your residential and commercial needs"} />
           </Box>
 
@@ -41,7 +30,7 @@ export default function ServiceShowcase() {
         <Grid
           container
           spacing={2}
-          sx={{ width: "100%", maxWidth: 1200 }}
+          sx={style.gridContainer}
           justifyContent="center"
         >
           <ShowcaseItem
@@ -78,4 +67,27 @@ export default function ServiceShowcase() {
       </Stack>
     </Box>
   );
+}
+
+const style = {
+  boxContainer: {
+    width: "100%",
+    paddingY: { xs: 3, sm: 4, md: 6 },
+    paddingX: { xs: 2, sm: 3, md: 4 },
+    backgroundColor: "transparent",
+  },
+  headerContainer: {
+    textAlign: "center",
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  bodyTextContainer: {
+    maxWidth: "500px"
+  },
+  gridContainer: {
+    width: "100%", 
+    maxWidth: 1200
+  }
 }

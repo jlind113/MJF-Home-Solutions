@@ -14,11 +14,8 @@ export default function CardRow() {
   return (
     <Stack
       direction={{ xs: "column", lg: "row" }}
-      alignItems={{ xs: "stretch", lg: "center" }}
-      justifyContent={"center"}
       spacing={{ xs: 3, lg: 8 }}
-      width={{ xs: "70%", lg: "100%" }}
-      paddingY={"2rem"}
+      sx={style.stackRoot}
     >
       {cards.map((card, index) => {
         const IconComponent = card.icon;
@@ -29,31 +26,11 @@ export default function CardRow() {
             key={card.id}
             sx={{
               ...entranceAnims.staggeredFadeUp(index),
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: { xs: "100%", lg: "20%" },
-              paddingY: "0.1rem",
-              borderWidth: 2,
-              borderColor: "text.primary",
-              backgroundColor: "background.light",
+              ...style.paperRoot,
             }}
           >
-            <IconComponent
-              sx={{
-                width: "3rem",
-                height: "3rem",
-                fill: "text.primary",
-              }}
-            />
-            <Typography
-              variant="button"
-              sx={{
-                fontSize: "1.5rem",
-                paddingX: 1,
-                color: "text.primary",
-              }}
-            >
+            <IconComponent sx={style.icon} />
+            <Typography variant="button" sx={style.text}>
               {card.text}
             </Typography>
           </Paper>
@@ -62,3 +39,32 @@ export default function CardRow() {
     </Stack>
   );
 }
+
+const style = {
+  stackRoot: {
+    alignItems: { xs: "stretch", lg: "center" },
+    justifyContent: "center",
+    width: { xs: "70%", lg: "100%" },
+    paddingY: "2rem",
+  },
+  paperRoot: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: { xs: "100%", lg: "20%" },
+    paddingY: "0.1rem",
+    borderWidth: 2,
+    borderColor: "text.primary",
+    backgroundColor: "background.light",
+  },
+  icon: {
+    width: "3rem",
+    height: "3rem",
+    fill: "text.primary",
+  },
+  text: {
+    fontSize: "1.5rem",
+    paddingX: 1,
+    color: "text.primary",
+  },
+};

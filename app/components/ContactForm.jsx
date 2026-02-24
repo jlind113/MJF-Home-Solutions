@@ -23,20 +23,9 @@ export default function ContactForm() {
       component={"form"}
       name="contact"
       method="post"
-      sx={{
-        width: { xs: "90vw", sm: "80vw", md: "70vw", lg: "60vw", xl: "50vw" },
-        height: "fit-content",
-        backgroundColor: "background.main",
-        marginY: { xs: "2em", lg: "2em" },
-        padding: { xs: "1em", lg: "2em" },
-      }}
+      sx={style.paperRoot}
     >
-      <Grid
-        container
-        rowSpacing={2}
-        columnSpacing={3}
-        sx={{ marginY: "1em", marginX: "1em" }}
-      >
+      <Grid container rowSpacing={2} columnSpacing={3} sx={style.gridRoot}>
         <input type="hidden" name="form-name" value="contact" />
 
         <Grid size={12}>
@@ -53,7 +42,7 @@ export default function ContactForm() {
               label={"First Name"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
+              sx={style.textInput}
             />
           </Tooltip>
         </Grid>
@@ -68,7 +57,7 @@ export default function ContactForm() {
               label={"Last Name"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
+              sx={style.textInput}
             />
           </Tooltip>
         </Grid>
@@ -83,7 +72,7 @@ export default function ContactForm() {
               label={"Phone Number"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
+              sx={style.textInput}
             />
           </Tooltip>
         </Grid>
@@ -98,7 +87,7 @@ export default function ContactForm() {
               label={"Email"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
+              sx={style.textInput}
             />
           </Tooltip>
         </Grid>
@@ -112,7 +101,7 @@ export default function ContactForm() {
               label={"Street Address"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
+              sx={style.textInput}
             />
           </Tooltip>
         </Grid>
@@ -126,7 +115,7 @@ export default function ContactForm() {
               label={"State"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
+              sx={style.textInput}
             />
           </Tooltip>
         </Grid>
@@ -140,7 +129,7 @@ export default function ContactForm() {
               label={"Zip Code"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
+              sx={style.textInput}
             />
           </Tooltip>
         </Grid>
@@ -155,25 +144,14 @@ export default function ContactForm() {
               label={"Preferred Date of Service"}
               size="small"
               fullWidth
-              sx={{ backgroundColor: "background.light", borderRadius: 1 }}
+              sx={style.textInput}
             />
           </Tooltip>
         </Grid>
 
         <Grid size={12}>
           <Typography variant="body2">Services</Typography>
-          <Paper
-            variant="outline"
-            sx={{
-              borderColor: "text.disabled",
-              borderWidth: 1,
-              backgroundColor: "background.light",
-              paddingY: "0.5em",
-              paddingX: "2em",
-              marginTop: "1em",
-              borderRadius: 1,
-            }}
-          >
+          <Paper variant="outlined" sx={style.serviceList}>
             <Stack direction={"row"} justifyContent={"space-between"}>
               <FormGroup>
                 <FormControlLabel
@@ -219,52 +197,19 @@ export default function ContactForm() {
             fullWidth
             minRows={4}
             placeholder={"Add any additional comments here..."}
-            sx={{
-              backgroundColor: "background.light",
-              marginTop: "1em",
-              borderRadius: 1,
-            }}
+            sx={style.commentBox}
           />
         </Grid>
         <Grid size={12}>
-          <Divider sx={{ width: "100%", backgroundColor: "text.disabled" }} />
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              variant="body2"
-              fontSize={13}
-              color="text.secondary"
-              width={"90%"}
-              marginY={"1em"}
-            >
+          <Divider sx={style.divider} />
+          <Box sx={style.disclaimerContainer}>
+            <Typography variant="body2" sx={style.disclaimerText}>
               By providing your phone number, you agree to receive text messages
               (SMS) from MJF Home Solutions. Message and data rates may apply.
             </Typography>
           </Box>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-            }}
-          >
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{
-                width: "40%",
-                marginTop: "1em",
-                backgroundColor: "primary.main",
-                ...hoverAnims.scale,
-              }}
-            >
+          <Box sx={style.sendButtonContainer}>
+            <Button type="submit" variant="contained" sx={style.sendButton}>
               Send
             </Button>
           </Box>
@@ -273,3 +218,63 @@ export default function ContactForm() {
     </Paper>
   );
 }
+
+const style = {
+  paperRoot: {
+    width: { xs: "90vw", sm: "80vw", md: "70vw", lg: "60vw", xl: "50vw" },
+    height: "fit-content",
+    backgroundColor: "background.main",
+    marginY: { xs: "2em", lg: "2em" },
+    padding: { xs: "1em", lg: "2em" },
+  },
+  gridRoot: {
+    marginY: "1em",
+    marginX: "1em",
+  },
+  textInput: {
+    backgroundColor: "background.light",
+    borderRadius: 1,
+  },
+  serviceList: {
+    borderWidth: "1px",
+    borderColor: "text.disabled",
+    backgroundColor: "background.light",
+    paddingY: "0.5em",
+    paddingX: "2em",
+    marginTop: "1em",
+    borderRadius: 1,
+  },
+  commentBox: {
+    backgroundColor: "background.light",
+    marginTop: "1em",
+    borderRadius: 1,
+  },
+  divider: {
+    width: "100%",
+    backgroundColor: "text.disabled",
+  },
+  disclaimerContainer: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  disclaimerText: {
+    fontSize: 13,
+    color: "text.secondary",
+    width: "90%",
+    marginY: "1em",
+  },
+  sendButtonContainer: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  sendButton: {
+    width: "40%",
+    marginTop: "1em",
+    backgroundColor: "primary.main",
+    ...hoverAnims.scale,
+  },
+};

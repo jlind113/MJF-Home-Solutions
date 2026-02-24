@@ -14,10 +14,7 @@ export function meta() {
 export default function Home() {
   return (
     <Box
-      sx={{
-        height: "100%",
-        backgroundColor: "background.dark",
-      }}
+      sx={style.rootBox}
     >
       <Stack
         direction={"column"}
@@ -32,8 +29,19 @@ export default function Home() {
         <ServiceShowcase />
         <ReviewSection />
         <FAQSection />
-        <Box width={"100%"} height={"1vh"} />
+        <Box sx={style.spacer} />
       </Stack>
     </Box>
   );
+}
+
+const style = {
+  rootBox: {
+    height: "100%",
+    backgroundColor: "background.dark",
+  },
+  spacer: {
+    width: "100%",
+    height: "1vh",
+  }
 }

@@ -55,55 +55,24 @@ export default function Gallery() {
   }, [imageData, selectedCategory]);
 
   return (
-    <Box
-      sx={{
-        backgroundColor: "background.dark",
-        minHeight: "100vh",
-        paddingY: { xs: 3, sm: 4, md: 6 },
-        paddingX: { xs: 2, sm: 3 },
-      }}
-    >
+    <Box sx={style.rootBoxContainer}>
       <Stack
         spacing={{ xs: 3, sm: 4, md: 5 }}
         alignItems="center"
-        justifyContent={"center"}
+        justifyContent="center"
       >
-        <Box
-          sx={{
-            textAlign: "center",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            maxWidth: 800,
-            ...entranceAnims.fadeUpOnMount,
-          }}
-        >
+        <Box sx={style.headerTextContainer}>
           <Header text={"Project Gallery"} />
 
-          <Box sx={{ marginBottom: 2 }}>
+          <Box sx={style.headerBox}>
             <BodyText text={"Showcasing Our Work"} />
           </Box>
 
           <GradientDivider />
         </Box>
 
-        <Box
-          sx={{
-            ...entranceAnims.fadeUpOnMount,
-            animationDelay: "0.2s",
-            animationFillMode: "both",
-          }}
-        >
-          <Stack
-            direction="row"
-            spacing={1}
-            sx={{
-              maxWidth: 700,
-              flexWrap: "wrap",
-              justifyContent: "center",
-              gap: 1,
-            }}
-          >
+        <Box sx={style.buttonBox}>
+          <Stack direction="row" spacing={1} sx={style.buttonStack}>
             {categories.map((category) => (
               <Chip
                 key={category.key}
@@ -115,42 +84,71 @@ export default function Gallery() {
                   selectedCategory === category.key ? "primary" : "default"
                 }
                 onClick={() => setSelectedCategory(category.key)}
-                sx={{
-                  margin: 0.5,
-                  cursor: "pointer",
-                  ...hoverAnims.scale,
-                }}
+                sx={style.sortingChip}
               />
             ))}
           </Stack>
         </Box>
 
-        <Typography
-          variant="body2"
-          sx={{
-            color: "text.secondary",
-            fontSize: "0.95rem",
-            ...entranceAnims.fadeUpOnMount,
-            animationDelay: "0.4s",
-            animationFillMode: "both",
-          }}
-        >
+        <Typography variant="body2" sx={style.sortingText}>
           Showing {filteredImages.length} project
           {filteredImages.length !== 1 ? "s" : ""}
         </Typography>
 
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: 1400,
-            ...entranceAnims.fadeUpOnMount,
-            animationDelay: "0.6s",
-            animationFillMode: "both",
-          }}
-        >
+        <Box sx={style.gridContainer}>
           <ImageGrid images={filteredImages} />
         </Box>
       </Stack>
     </Box>
   );
 }
+
+const style = {
+  rootBoxContainer: {
+    backgroundColor: "background.dark",
+    minHeight: "100vh",
+    paddingY: { xs: 3, sm: 4, md: 6 },
+    paddingX: { xs: 2, sm: 3 },
+  },
+  headerTextContainer: {
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    maxWidth: 800,
+    ...entranceAnims.fadeUpOnMount,
+  },
+  headerBox: {
+    marginBottom: 2,
+  },
+  buttonBox: {
+    ...entranceAnims.fadeUpOnMount,
+    animationDelay: "0.2s",
+    animationFillMode: "both",
+  },
+  buttonStack: {
+    maxWidth: 700,
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: 1,
+  },
+  sortingChip: {
+    margin: 0.5,
+    cursor: "pointer",
+    ...hoverAnims.scale,
+  },
+  sortingText: {
+    color: "text.secondary",
+    fontSize: "0.95rem",
+    ...entranceAnims.fadeUpOnMount,
+    animationDelay: "0.4s",
+    animationFillMode: "both",
+  },
+  gridContainer: {
+    width: "100%",
+    maxWidth: 1400,
+    ...entranceAnims.fadeUpOnMount,
+    animationDelay: "0.6s",
+    animationFillMode: "both",
+  },
+};

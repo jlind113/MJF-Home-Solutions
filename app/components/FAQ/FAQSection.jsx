@@ -6,30 +6,28 @@ import GradientDivider from "../GradientDivider";
 
 export default function FAQSection() {
   return (
-    <Box
-      sx={{
-        width: "80vw",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <Box sx={style.boxRoot}>
       <Header text={"Frequently Asked Questions"} />
-      <Box sx={{ marginBottom: "1em", width: "100%" }}>
+      <Box sx={style.gradientContainer}>
         <GradientDivider />
       </Box>
-      <FAQItem
-        question={FAQInfo.estimates.question}
-        answer={FAQInfo.estimates.answer}
-      />
-      <FAQItem
-        question={FAQInfo.difference.question}
-        answer={FAQInfo.difference.answer}
-      />
-      <FAQItem
-        question={FAQInfo.drywallServices.question}
-        answer={FAQInfo.drywallServices.answer}
-      />
+      {FAQInfo.map((item, index) => (
+        <FAQItem key={index} question={item.question} answer={item.answer} />
+      ))}
     </Box>
   );
 }
+
+const style = {
+  boxRoot: {
+    width: "50vw",
+    maxWidth: "1080px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  gradientContainer: {
+    marginBottom: "1em",
+    width: "100%",
+  },
+};

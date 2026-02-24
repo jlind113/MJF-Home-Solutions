@@ -5,20 +5,16 @@ import { Reviews } from "../../Util/ReviewInfo";
 export default function ReviewSection() {
   return (
     <Box
-      sx={{
-        backgroundColor: "transparent",
-        width: "100%",
-        padding: "1rem",
-      }}
+      sx={style.boxRoot}
     >
       <Stack
         direction={{ xs: "column", md: "row" }}
         spacing={{ xs: 2, md: 4 }}
-        sx={{ justifyContent: "center", alignItems: "center", padding: "1em" }}
+        sx={style.stack}
       >
-        {Reviews.map((review, i) => (
+        {Reviews.map((review, index) => (
           <ReviewCard
-            key={i}
+            key={index}
             review={review.review}
             name={review.name}
             location={review.location}
@@ -30,4 +26,18 @@ export default function ReviewSection() {
       </Stack>
     </Box>
   );
+}
+
+const style = {
+  boxRoot: {
+    backgroundColor: "transparent",
+    width: "100%",
+    maxWidth: "1080px",
+    padding: "1rem",
+  },
+  stack: {
+    justifyContent: "center", 
+    alignItems: "center", 
+    padding: "1em",
+  },
 }

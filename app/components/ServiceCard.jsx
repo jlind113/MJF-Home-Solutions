@@ -1,7 +1,7 @@
 import { Typography, Box, Card } from "@mui/material";
 import { useState } from "react";
-import { bottomToTop } from '../Style/Gradients';
-import { hoverAnims } from '../Style/Animations';
+import { bottomToTop } from "../Style/Gradients";
+import { hoverAnims } from "../Style/Animations";
 
 export default function ServiceCard({ imgSource, serviceText }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -13,18 +13,12 @@ export default function ServiceCard({ imgSource, serviceText }) {
         height: { xs: 250, sm: 280, md: 320 },
         borderRadius: 2,
         cursor: "pointer",
-        ...hoverAnims.image
+        ...hoverAnims.image,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Box
-        sx={{
-          position: "relative",
-          height: "100%",
-          overflow: "hidden",
-        }}
-      >
+      <Box sx={{ position: "relative", height: "100%", overflow: "hidden" }}>
         <Box
           component="img"
           src={imgSource}

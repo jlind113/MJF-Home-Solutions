@@ -2,7 +2,7 @@ import { Box, Paper, Dialog, IconButton, Typography } from "@mui/material";
 import { Close, ZoomIn } from "@mui/icons-material";
 import { useState } from "react";
 import { entranceAnims, hoverAnims } from "../Style/Animations";
-import { leftToRight } from '../Style/Gradients';
+import { leftToRight } from "../Style/Gradients";
 
 export default function ImageCard({ src, title, alt }) {
   const [open, setOpen] = useState(false);
@@ -15,15 +15,7 @@ export default function ImageCard({ src, title, alt }) {
     <>
       <Paper
         elevation={2}
-        sx={{
-          width: { xs: "12em", sm: "14em", lg: "16em" },
-          height: { xs: "9em", sm: "10.5em", lg: "12em" },
-          overflow: "hidden",
-          cursor: "pointer",
-          position: "relative",
-          borderRadius: 2,
-          ...hoverAnims.scale,
-        }}
+        sx={style.root}
         onClick={handleOpen}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -43,51 +35,14 @@ export default function ImageCard({ src, title, alt }) {
         />
 
         {isHovered && (
-          <Box
-            sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              ...leftToRight.blueToOrange,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              ...entranceAnims.fadeIn,
-            }}
-          >
-            <ZoomIn
-              sx={{
-                color: "white",
-                fontSize: "2rem",
-                ...entranceAnims.fadeUpOnMount,
-              }}
-            />
+          <Box sx={style.imageBox}>
+            <ZoomIn sx={style.zoom} />
           </Box>
         )}
 
         {isHovered && (
-          <Box
-            sx={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              right: 0,
-              background: "#000000cc",
-              padding: 1,
-              ...hoverAnims.imageCardHover,
-            }}
-          >
-            <Typography
-              variant="body2"
-              sx={{
-                color: "white",
-                fontSize: "0.8rem",
-                fontWeight: 500,
-                textAlign: "center",
-              }}
-            >
+          <Box sx={style.hoverTextContainer}>
+            <Typography variant="body2" sx={style.hoverText}>
               {title}
             </Typography>
           </Box>
@@ -99,56 +54,95 @@ export default function ImageCard({ src, title, alt }) {
         onClose={handleClose}
         maxWidth="lg"
         fullWidth
-        slotProps={{
-          paper: {
-            sx: {
-              backgroundColor: "transparent",
-              boxShadow: "none",
-            },
-          },
-          backdrop: {
-            sx: {
-              backgroundColor: "#000000e6",
-            },
-          },
-        }}
+        slotProps={style.dialogProps}
         sx={{ ...entranceAnims.fadeIn }}
       >
-        <Box
-          sx={{
-            position: "relative",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: 2,
-          }}
-        >
-          <IconButton
-            onClick={handleClose}
-            sx={{
-              position: "absolute",
-              top: 8,
-              right: 8,
-              color: "white",
-              backgroundColor: "#000000",
-              ...hoverAnims.linkHover,
-            }}
-          >
+        <Box sx={style.dialogContainer}>
+          <IconButton onClick={handleClose} sx={style.closeButton}>
             <Close />
           </IconButton>
 
-          <img
-            src={src}
-            alt={title}
-            style={{
-              maxWidth: "100%",
-              maxHeight: "90vh",
-              objectFit: "contain",
-              borderRadius: "8px",
-            }}
-          />
+          <img src={src} alt={title} style={style.dialogImage} />
         </Box>
       </Dialog>
     </>
   );
 }
+
+const style = {
+  root: {
+    width: { xs: "12em", sm: "14em", lg: "16em" },
+    height: { xs: "9em", sm: "10.5em", lg: "12em" },
+    overflow: "hidden",
+    cursor: "pointer",
+    position: "relative",
+    borderRadius: 2,
+    ...hoverAnims.scale,
+  },
+  imageBox: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    ...leftToRight.blueToOrange,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    ...entranceAnims.fadeIn,
+  },
+  zoom: {
+    color: "white",
+    fontSize: "2rem",
+    ...entranceAnims.fadeUpOnMount,
+  },
+  hoverTextContainer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    background: "#000000cc",
+    padding: 1,
+    ...hoverAnims.imageCardHover,
+  },
+  hoverText: {
+    color: "white",
+    fontSize: "0.8rem",
+    fontWeight: 500,
+    textAlign: "center",
+  },
+  dialogProps: {
+    paper: {
+      sx: {
+        backgroundColor: "transparent",
+        boxShadow: "none",
+      },
+    },
+    backdrop: {
+      sx: {
+        backgroundColor: "#000000e6",
+      },
+    },
+  },
+  dialogContainer: {
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 2,
+  },
+  closeButton: {
+    position: "absolute",
+    top: 8,
+    right: 8,
+    color: "white",
+    backgroundColor: "#000000",
+    ...hoverAnims.linkHover,
+  },
+  dialogImage: {
+    maxWidth: "100%",
+    maxHeight: "90vh",
+    objectFit: "contain",
+    borderRadius: "8px",
+  },
+};
