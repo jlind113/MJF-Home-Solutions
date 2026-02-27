@@ -1,9 +1,10 @@
 import { Typography, Box, Card } from "@mui/material";
 import { useState } from "react";
+import { bottomToTop } from "../Style/Gradients";
+import { hoverAnims } from "../Style/Animations";
 
 export default function ServiceCard({ imgSource, serviceText }) {
   const [isHovered, setIsHovered] = useState(false);
-  // State to trigger animations
 
   return (
     <Card
@@ -12,22 +13,12 @@ export default function ServiceCard({ imgSource, serviceText }) {
         height: { xs: 250, sm: 280, md: 320 },
         borderRadius: 2,
         cursor: "pointer",
-        transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-        "&:hover": {
-          transform: "translateY(-8px)",
-        },
+        ...hoverAnims.image,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Box
-        sx={{
-          position: "relative",
-          height: "100%",
-          overflow: "hidden",
-        }}
-      >
-        {/* Image Component */}
+      <Box sx={{ position: "relative", height: "100%", overflow: "hidden" }}>
         <Box
           component="img"
           src={imgSource}
@@ -44,7 +35,6 @@ export default function ServiceCard({ imgSource, serviceText }) {
           }}
         />
 
-          {/* Image Gradient overlay */}
         <Box
           sx={{
             position: "absolute",
@@ -53,8 +43,8 @@ export default function ServiceCard({ imgSource, serviceText }) {
             right: 0,
             bottom: 0,
             background: isHovered
-              ? "linear-gradient(to top, #1f7fcc 0%, #1f7eccbe 15%, transparent 30%)"
-              : "linear-gradient(to top, #000000 0%, #00000096 15%, transparent 30%)",
+              ? bottomToTop.blueToTransparent.background
+              : bottomToTop.blackToTransparent.background,
             transition: "background 0.3s ease",
           }}
         />
@@ -90,7 +80,7 @@ export default function ServiceCard({ imgSource, serviceText }) {
           <Typography
             variant="body2"
             sx={{
-              color: "#ffffffe6",
+              color: "white",
               fontSize: "0.85rem",
               marginTop: 0.5,
               opacity: isHovered ? 1 : 0,

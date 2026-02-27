@@ -8,37 +8,12 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import {services} from "../Util/ServiceInfo";
+import { services } from "../Util/ServiceInfo";
 import ServiceItem from "../components/ServiceItem";
+import { ServiceMeta } from "../Util/MetaInfo";
 
 export function meta() {
-  return [
-    { title: "Services - MJF Home Solutions Drywall, Carpentry & Flooring Services Utah" },
-    { 
-      name: "description", 
-      content: "Comprehensive home improvement services including drywall installation & repair, custom carpentry, flooring, ceiling texture application. Licensed professionals serving Utah communities." 
-    },
-    { 
-      name: "keywords", 
-      content: "drywall installation Utah, drywall repair services, carpentry contractors, flooring installation, ceiling texture, custom drywall work, home improvement services Utah, construction contractors" 
-    },
-    { name: "author", content: "Jack Lindgren" },
-    { property: "og:title", content: "Professional Home Improvement Services - MJF Home Solutions Utah" },
-    { 
-      property: "og:description", 
-      content: "Expert drywall, carpentry, and flooring services in Utah. Custom installations, repairs, and finishing work by licensed professionals." 
-    },
-    { property: "og:type", content: "website" },
-    { property: "og:url", content: "https://mjf-home-solutions.netlify.app/Services" },
-    { property: "og:image", content: "https://mjf-home-solutions.netlify.app/Photos/1100x800/drywallInstall.webp" },
-    { name: "geo.region", content: "UT" },
-    { name: "geo.placename", content: "Bountiful, Utah" },
-    { name: "ICBM", content: "40.889389, -111.880768" },
-    { name: "robots", content: "index, follow" },
-    { name: "contact", content: "(801) 300-5579" },
-    { name: "service-type", content: "home improvement, drywall, carpentry, flooring" },
-    { name: "service-area", content: "Utah, Bountiful, Ogden, Layton, Kaysville" }
-  ];
+  return ServiceMeta;
 }
 
 export default function Services() {
@@ -51,8 +26,8 @@ export default function Services() {
     services.finishing,
     services.installation,
     services.repair,
-    services.flooring
-  ]
+    services.flooring,
+  ];
 
   function handleChange(event) {
     setService(event.target.value);
@@ -60,41 +35,28 @@ export default function Services() {
 
   return (
     <Box
-      sx={{
-        minHeight: "100%",
-        backgroundColor: "background.dark",
-        py: { xs: 4, md: 6 },
-      }}
+      sx={style.rootBox}
     >
       <Box
-        sx={{
-          width: "100%",
-          maxWidth: 1200,
-          mx: "auto",
-          px: { xs: 2, sm: 3, md: 4 },
-        }}
+        sx={style.subRootBox}
       >
-        <Stack spacing={2} alignItems="center" textAlign="center">
+        <Stack spacing={2} sx={style.stack}>
           <Typography
-            sx={{ typography: { xs: "h4", md: "h3" }, color: "text.primary" }}
+            sx={style.header}
           >
             Services
           </Typography>
 
           <Typography
             variant="body1"
-            color="text.secondary"
-            sx={{ maxWidth: 760 }}
+            sx={style.subText}
           >
             Choose a service to see a description and photos.
           </Typography>
 
           <Paper
             elevation={1}
-            sx={{
-              width: { xs: "100%", sm: 360 },
-              backgroundColor: "background.light",
-            }}
+            sx={style.paper}
           >
             <FormControl fullWidth size="small">
               <Select
@@ -115,7 +77,7 @@ export default function Services() {
           </Paper>
         </Stack>
 
-        <Box sx={{ marginTop: { xs: 3, md: 5 } }}>
+        <Box sx={style.serviceItemBox}>
           <ServiceItem
             name={serviceArray[service].name}
             subtext={serviceArray[service].subtext}
@@ -126,4 +88,37 @@ export default function Services() {
       </Box>
     </Box>
   );
+}
+
+const style = {
+  rootBox: {
+    minHeight: "100%",
+    backgroundColor: "background.dark",
+    py: { xs: 4, md: 6 },
+  },
+  subRootBox: {
+    width: "100%",
+    maxWidth: 1200,
+    mx: "auto",
+    px: { xs: 2, sm: 3, md: 4 },
+  },
+  stack: {
+    alignItems: "center",
+    textAlign: "center"
+  },
+  header: {
+    typography: { xs: "h4", md: "h3" }, 
+    color: "text.primary"
+  },
+  subText: {
+    maxWidth: 760,
+    color: "text.secondary"
+  },
+  paper: {
+    width: { xs: "100%", sm: 360 },
+    backgroundColor: "background.light",
+  },
+  serviceItemBox: {
+    marginTop: { xs: 3, md: 5 }
+  }
 }

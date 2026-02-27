@@ -10,7 +10,10 @@
 .netlify
 
 # .vscode folder
+/.vscode
 mcp.json
+extensions.json
+settings.json
 
 # Test folder
 Test
@@ -21,3 +24,4 @@ TestPage
 client-only-route.jsx
 PresentationChecklist.md
 .github
+ProjectNotes.md

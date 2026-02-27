@@ -3,102 +3,37 @@ import GradientDivider from "./GradientDivider";
 import FacebookLink from "./FacebookLink";
 import Header from "./textItems/Header";
 import BodyText from "./textItems/BodyText";
+import { HomeInfo } from "../Util/HomeInfo";
 
 export default function About() {
   return (
-    <Paper
-      square
-      variant="outlined"
-      sx={{
-        width: "100%",
-        backgroundColor: "background.light",
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-      }}
-    >
+    <Paper square variant="outlined" sx={style.paperRoot}>
       <Stack
         direction={{ xs: "column", lg: "row" }}
         alignItems={"center"}
         spacing={2}
       >
-        <Box
-          sx={{
-            height: {
-              xs: "100%",
-              lg: "576px",
-              xl: "720px",
-            },
-            width: {
-              xs: "100%",
-              lg: "1024px",
-              xl: "1280px",
-            },
-            order: { xs: 2, lg: 0 },
-          }}
-        >
+        <Box sx={style.imgBox}>
           <img
-            src="/Photos/Hero/kitchenRemodel-2.webp"
-            alt="Drywall work"
+            src={HomeInfo.about.image.src}
+            alt={HomeInfo.about.image.alt}
             loading="lazy"
-            style={{
-              height: "100%",
-              width: "100%",
-              objectFit: "cover",
-            }}
+            style={style.image}
           />
         </Box>
-        <Box
-          sx={{
-            height: { xs: "50%", lg: "100%" },
-            width: { xs: "100%", lg: "50%" },
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <Box sx={style.textRoot}>
           <Header text={"About Us"} />
 
-          <Box sx={{ width: "100%", paddingX: { xs: "2vw", lg: 0 } }}>
+          <Box sx={style.gradientContainer}>
             <GradientDivider />
           </Box>
 
-          <Box
-            sx={{
-              textAlign: "left",
-              paddingX: { xs: "3vw", lg: "1vw" },
-              marginY: 1,
-              maxWidth: { xs: 500, md: 800 },
-            }}
-          >
-            <BodyText
-              text={
-                "At MJF Home Solutions, we are a trusted drywall company proudly " +
-                "serving Bountiful, UT, and surrounding areas. With our team of " +
-                "skilled professionals, we provide top-quality drywall installation " +
-                "and repair services to meet all your needs. Count on us for reliable " +
-                "workmanship and exceptional customer service to enhance your home's " +
-                "appeal."
-              }
-            />
+          <Box sx={style.bodyTextContainer}>
+            <BodyText text={HomeInfo.about.text} />
           </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              gap: 2,
-              marginBottom: 2,
-            }}
-          >
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 500,
-                color: "text.primary",
-              }}
-            >
+          <Box sx={style.connectContainer}>
+            <Typography variant="h6" sx={style.connectText}>
               Connect with us
             </Typography>
             <Box>
@@ -110,3 +45,59 @@ export default function About() {
     </Paper>
   );
 }
+
+const style = {
+  paperRoot: {
+    width: "100%",
+    backgroundColor: "background.main",
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+  },
+  imgBox: {
+    height: {
+      xs: "100%",
+      lg: "576px",
+      xl: "720px",
+    },
+    width: {
+      xs: "100%",
+      lg: "1024px",
+      xl: "1280px",
+    },
+    order: { xs: 2, lg: 0 },
+  },
+  image: {
+    height: "100%",
+    width: "100%",
+    objectFit: "cover",
+  },
+  textRoot: {
+    height: { xs: "50%", lg: "100%" },
+    width: { xs: "100%", lg: "50%" },
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  gradientContainer: {
+    width: "100%",
+    paddingX: { xs: "2vw", lg: 0 },
+  },
+  bodyTextContainer: {
+    textAlign: "left",
+    paddingX: { xs: "3vw", lg: "1vw" },
+    marginY: 1,
+    maxWidth: { xs: 500, md: 800 },
+  },
+  connectContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 2,
+    marginBottom: 2,
+  },
+  connectText: {
+    fontWeight: 500,
+    color: "text.primary",
+  },
+};

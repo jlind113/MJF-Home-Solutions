@@ -6,31 +6,10 @@ import { services } from "../Util/ServiceInfo";
 import Header from "../components/textItems/Header";
 import GradientDivider from "../components/GradientDivider";
 import BodyText from "../components/textItems/BodyText";
+import { GalleryMeta } from "../Util/MetaInfo";
 
 export function meta() {
-  return [
-    { title: "Project Gallery - MJF Home Solutions Drywall & Construction Portfolio Utah" },
-    { 
-      name: "description", 
-      content: "Browse our project gallery showcasing professional drywall installation, carpentry, flooring, and custom construction work throughout Utah. See the quality of our craftsmanship." 
-    },
-    { 
-      name: "keywords", 
-      content: "drywall gallery Utah, construction portfolio, carpentry examples, flooring projects, before after drywall, professional construction gallery, Utah home improvement examples" 
-    },
-    { name: "author", content: "Jack Lindgren" },
-    { property: "og:title", content: "Project Gallery - MJF Home Solutions Construction Portfolio" },
-    { 
-      property: "og:description", 
-      content: "Explore our gallery of completed drywall, carpentry, and flooring projects throughout Utah. Quality craftsmanship and professional results." 
-    },
-    { property: "og:type", content: "website" },
-    { property: "og:url", content: "https://mjf-home-solutions.netlify.app/Gallery" },
-    { property: "og:image", content: "https://mjf-home-solutions.netlify.app/Photos/Hero/kitchenRemodel.webp" },
-    { name: "robots", content: "index, follow" },
-    { name: "geo.region", content: "UT" },
-    { name: "geo.placename", content: "Bountiful, Utah" }
-  ];
+  return GalleryMeta;
 }
 
 export default function Gallery() {
@@ -76,55 +55,24 @@ export default function Gallery() {
   }, [imageData, selectedCategory]);
 
   return (
-    <Box
-      sx={{
-        backgroundColor: "background.dark",
-        minHeight: "100vh",
-        paddingY: { xs: 3, sm: 4, md: 6 },
-        paddingX: { xs: 2, sm: 3 },
-      }}
-    >
+    <Box sx={style.rootBoxContainer}>
       <Stack
         spacing={{ xs: 3, sm: 4, md: 5 }}
         alignItems="center"
-        justifyContent={"center"}
+        justifyContent="center"
       >
-        <Box
-          sx={{
-            textAlign: "center",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            maxWidth: 800,
-            ...entranceAnims.fadeUpOnMount,
-          }}
-        >
+        <Box sx={style.headerTextContainer}>
           <Header text={"Project Gallery"} />
 
-          <Box sx={{ marginBottom: 2 }}>
+          <Box sx={style.headerBox}>
             <BodyText text={"Showcasing Our Work"} />
           </Box>
 
           <GradientDivider />
         </Box>
 
-        <Box
-          sx={{
-            ...entranceAnims.fadeUpOnMount,
-            animationDelay: "0.2s",
-            animationFillMode: "both",
-          }}
-        >
-          <Stack
-            direction="row"
-            spacing={1}
-            sx={{
-              maxWidth: 700,
-              flexWrap: "wrap",
-              justifyContent: "center",
-              gap: 1,
-            }}
-          >
+        <Box sx={style.buttonBox}>
+          <Stack direction="row" spacing={1} sx={style.buttonStack}>
             {categories.map((category) => (
               <Chip
                 key={category.key}
@@ -136,42 +84,71 @@ export default function Gallery() {
                   selectedCategory === category.key ? "primary" : "default"
                 }
                 onClick={() => setSelectedCategory(category.key)}
-                sx={{
-                  margin: 0.5,
-                  cursor: "pointer",
-                  ...hoverAnims.scale,
-                }}
+                sx={style.sortingChip}
               />
             ))}
           </Stack>
         </Box>
 
-        <Typography
-          variant="body2"
-          sx={{
-            color: "text.secondary",
-            fontSize: "0.95rem",
-            ...entranceAnims.fadeUpOnMount,
-            animationDelay: "0.4s",
-            animationFillMode: "both",
-          }}
-        >
+        <Typography variant="body2" sx={style.sortingText}>
           Showing {filteredImages.length} project
           {filteredImages.length !== 1 ? "s" : ""}
         </Typography>
 
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: 1400,
-            ...entranceAnims.fadeUpOnMount,
-            animationDelay: "0.6s",
-            animationFillMode: "both",
-          }}
-        >
+        <Box sx={style.gridContainer}>
           <ImageGrid images={filteredImages} />
         </Box>
       </Stack>
     </Box>
   );
 }
+
+const style = {
+  rootBoxContainer: {
+    backgroundColor: "background.dark",
+    minHeight: "100vh",
+    paddingY: { xs: 3, sm: 4, md: 6 },
+    paddingX: { xs: 2, sm: 3 },
+  },
+  headerTextContainer: {
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    maxWidth: 800,
+    ...entranceAnims.fadeUpOnMount,
+  },
+  headerBox: {
+    marginBottom: 2,
+  },
+  buttonBox: {
+    ...entranceAnims.fadeUpOnMount,
+    animationDelay: "0.2s",
+    animationFillMode: "both",
+  },
+  buttonStack: {
+    maxWidth: 700,
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: 1,
+  },
+  sortingChip: {
+    margin: 0.5,
+    cursor: "pointer",
+    ...hoverAnims.scale,
+  },
+  sortingText: {
+    color: "text.secondary",
+    fontSize: "0.95rem",
+    ...entranceAnims.fadeUpOnMount,
+    animationDelay: "0.4s",
+    animationFillMode: "both",
+  },
+  gridContainer: {
+    width: "100%",
+    maxWidth: 1400,
+    ...entranceAnims.fadeUpOnMount,
+    animationDelay: "0.6s",
+    animationFillMode: "both",
+  },
+};
