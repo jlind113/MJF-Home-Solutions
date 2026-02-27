@@ -80,7 +80,7 @@ export default function ServiceCard({ imgSource, serviceText }) {
           <Typography
             variant="body2"
             sx={{
-              color: "#ffffffe6",
+              color: "white",
               fontSize: "0.85rem",
               marginTop: 0.5,
               opacity: isHovered ? 1 : 0,

@@ -275,6 +275,7 @@ const style = {
     width: "40%",
     marginTop: "1em",
     backgroundColor: "primary.main",
+    fontSize: "1rem",
     ...hoverAnims.scale,
   },
 };

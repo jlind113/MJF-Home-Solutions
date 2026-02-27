@@ -30,6 +30,9 @@ export const theme = createTheme({
           secondary: "#6b7280",
           disabled: "#9aa5b1",
         },
+        reviewStars: {
+          primary: "#fcb103"
+        }
       },
     },
     dark: {
@@ -60,6 +63,9 @@ export const theme = createTheme({
           secondary: "#b0b6bb",
           disabled: "#8b94a3",
         },
+        reviewStars: {
+          primary: "#fcdf03"
+        }
       },
     },
   },

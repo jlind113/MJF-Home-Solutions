@@ -53,7 +53,6 @@ export default function ImageCard({ src, title, alt }) {
         open={open}
         onClose={handleClose}
         maxWidth="lg"
-        fullWidth
         slotProps={style.dialogProps}
         sx={{ ...entranceAnims.fadeIn }}
       >
@@ -76,7 +75,7 @@ const style = {
     overflow: "hidden",
     cursor: "pointer",
     position: "relative",
-    borderRadius: 2,
+    borderRadius: 1,
     ...hoverAnims.scale,
   },
   imageBox: {
@@ -112,12 +111,6 @@ const style = {
     textAlign: "center",
   },
   dialogProps: {
-    paper: {
-      sx: {
-        backgroundColor: "transparent",
-        boxShadow: "none",
-      },
-    },
     backdrop: {
       sx: {
         backgroundColor: "#000000e6",
@@ -129,20 +122,22 @@ const style = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: 2,
+    padding: 0,
   },
   closeButton: {
     position: "absolute",
-    top: 8,
-    right: 8,
-    color: "white",
-    backgroundColor: "#000000",
-    ...hoverAnims.linkHover,
+    top: 4,
+    right: 4,
+    height: "2rem",
+    width: "2rem",
+    color: "background.dark",
+    backgroundColor: "text.primary",
+    "&:hover": { backgroundColor: "primary.dark", ...hoverAnims.scale },
   },
   dialogImage: {
     maxWidth: "100%",
     maxHeight: "90vh",
     objectFit: "contain",
-    borderRadius: "8px",
+    borderRadius: 1,
   },
 };
